@@ -6,7 +6,7 @@ on:
     - cron: '5 * * * *'
 
 jobs:
-  auto-update-epg:
+  epg:
     runs-on: ubuntu-latest
 
     permissions: write-all

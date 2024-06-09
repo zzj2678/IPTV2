@@ -6,7 +6,7 @@ on:
     - cron: "*/15 * * * *"
 
 jobs:
-  auto-update-iptv:
+  iptv:
     runs-on: ubuntu-latest
 
     permissions: write-all
@@ -21,6 +21,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
+
+      - name: Install dependencies
+          run: |
+            pip install -r requirements.txt
 
       - name: Get Currrent Date
         run: echo "DATE=$(date +'%Y-%m-%d %H:%M:%S %Z')" >> $GITHUB_ENV
