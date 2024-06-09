@@ -73,9 +73,11 @@ def main():
 
     discovery_m3u = file_to_m3u(os.path.join(TXT_DIR, "Discovery.txt"), "求索频道")
 
+    migu_m3u = file_to_m3u(os.path.join(TXT_DIR, "MiGu.txt"), "咪咕直播")
+
     chun_wan = file_to_m3u(os.path.join(TXT_DIR, "Chunwan.txt"), "历年春晚")
 
-    iptv_m3u = cctv_m3u + cntv_m3u + shu_zi_m3u + discovery_m3u + i_hot + chun_wan
+    iptv_m3u = cctv_m3u + cntv_m3u + shu_zi_m3u + i_hot + discovery_m3u + migu_m3u + chun_wan
 
     write_m3u_to_file(os.path.join(M3U_DIR, "CCTV.m3u"), cctv_m3u)
     write_m3u_to_file(os.path.join(M3U_DIR, "CNTV.m3u"), cntv_m3u)
