@@ -17,13 +17,17 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+
       - name: Get Currrent Date
         run: echo "DATE=$(date +'%Y-%m-%d %H:%M:%S %Z')" >> $GITHUB_ENV
 
       - name: Run Update IPTV
         run: |
-            chmod +x update_iptv.sh
-            ./update_iptv.sh
+            python  iptv.py
 
       - name: Update Deployment Time
         run: |
