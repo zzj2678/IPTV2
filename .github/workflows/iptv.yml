@@ -21,7 +21,7 @@ jobs:
         run: echo "DATE=$(date +'%Y-%m-%d %H:%M:%S %Z')" >> $GITHUB_ENV
 
       - name: Run Update IPTV
-          run: |
+        run: |
             chmod +x update_iptv.sh
             ./update_iptv.sh
 
