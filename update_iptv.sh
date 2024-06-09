@@ -14,7 +14,7 @@ sed -i '/^\s*$/d' "$M3U_DIR/CCTV.m3u"
 
 # 卫视源
 touch "$M3U_DIR/CNTV.m3u"
-for keyword in "卫视频道" "NewTV系列" "超清频道"; do
+for keyword in "卫视频道" "数字频道"; do
   wget https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u -O "$M3U_DIR/temp.m3u"
   sed -i -n "/$keyword/,+1p" "$M3U_DIR/temp.m3u"
   cat "$M3U_DIR/temp.m3u" >> "$M3U_DIR/CNTV.m3u"
