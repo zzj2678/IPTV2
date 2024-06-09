@@ -8,7 +8,7 @@ mkdir -p "$M3U_DIR"
 
 # 央视源
 wget https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u -O "$M3U_DIR/CCTV.m3u"
-sed -i -n '/央视/,+1p' "$M3U_DIR/CCTV.m3u"
+sed -i -n '/央视频道/,+1p' "$M3U_DIR/CCTV.m3u"
 sed -i '1i #EXTM3U' "$M3U_DIR/CCTV.m3u"
 sed -i '/^\s*$/d' "$M3U_DIR/CCTV.m3u"
 
