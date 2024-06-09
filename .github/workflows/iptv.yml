@@ -23,7 +23,7 @@ jobs:
           python-version: 3.11
 
       - name: Install dependencies
-          run: |
+        run: |
             pip install -r requirements.txt
 
       - name: Get Currrent Date
