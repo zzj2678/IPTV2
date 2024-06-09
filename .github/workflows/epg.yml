@@ -3,7 +3,7 @@ name: Auto Update EPG
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15 * * * *'
+    - cron: '5 * * * *'
 
 jobs:
   auto-update-epg:
@@ -33,7 +33,7 @@ jobs:
         uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
         with:
           repository: ${{ github.repository }}
-          workflow: ".github/workflows/auto-deploy.yml"
+          workflow: ".github/workflows/epg.yml"
           older-than-seconds: 3600
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
