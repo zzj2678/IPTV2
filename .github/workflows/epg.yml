@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 1
 
       - name: Run Update EPG Files
-          run: |
+        run: |
             rm -f EPG.xml
             wget https://epg.112114.xyz/pp.xml -O EPG.xml
 
