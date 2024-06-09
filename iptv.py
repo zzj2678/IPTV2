@@ -45,6 +45,9 @@ def txt_to_m3u(content):
 
     return result
 
+def file_to_m3u(file_path, keyword):
+    return extract_channels(keyword, txt_to_m3u(read_file_content(file_path)))
+
 def read_file_content(file_path):
     with open(file_path, 'r') as file:
         content = file.read() 
@@ -62,11 +65,17 @@ def main():
 
     cctv_m3u = extract_channels("央视频道", m3u_content)
 
-    cntv_m3u = extract_channels("卫视频道", m3u_content) + extract_channels("数字频道", m3u_content)
+    cntv_m3u = extract_channels("卫视频道", m3u_content)
+    
+    shu_zi_m3u = extract_channels("数字频道", m3u_content)
 
-    discovery_m3u = extract_channels("求索频道", txt_to_m3u(read_file_content(os.path.join(TXT_DIR, "Discovery.txt"))))
+    i_hot = file_to_m3u(os.path.join(TXT_DIR, "iHOT.txt"), "iHOT")
 
-    iptv_m3u = cctv_m3u + cntv_m3u + discovery_m3u
+    discovery_m3u = file_to_m3u(os.path.join(TXT_DIR, "Discovery.txt"), "求索频道")
+
+    chun_wan = file_to_m3u(os.path.join(TXT_DIR, "Chunwan.txt"), "历年春晚")
+
+    iptv_m3u = cctv_m3u + cntv_m3u + shu_zi_m3u + discovery_m3u + i_hot + chun_wan
 
     write_m3u_to_file(os.path.join(M3U_DIR, "CCTV.m3u"), cctv_m3u)
     write_m3u_to_file(os.path.join(M3U_DIR, "CNTV.m3u"), cntv_m3u)
