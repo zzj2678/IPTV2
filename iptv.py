@@ -63,31 +63,36 @@ def main():
 
     m3u_content = open(os.path.join(M3U_DIR, "ipv6.m3u")).read()
 
-    cctv_m3u = extract_channels("央视频道", m3u_content)
+    # cctv_m3u = extract_channels("央视频道", m3u_content)
+    cctv_m3u = file_to_m3u(os.path.join(TXT_DIR, "CCTV.txt"))
 
-    cntv_m3u = extract_channels("卫视频道", m3u_content)
+    # cntv_m3u = extract_channels("卫视频道", m3u_content)
+    cntv_m3u = file_to_m3u(os.path.join(TXT_DIR, "CNTV.txt"))
     
-    shu_zi_m3u = extract_channels("数字频道", m3u_content)
+    # shu_zi_m3u = extract_channels("数字频道", m3u_content)
+    shu_zi_m3u = file_to_m3u(os.path.join(TXT_DIR, "Shuzi.txt"))
+
+    new_tv_m3u = file_to_m3u(os.path.join(TXT_DIR, "NewTV.txt"))
 
     i_hot = file_to_m3u(os.path.join(TXT_DIR, "iHOT.txt"))
 
-    discovery_m3u = file_to_m3u(os.path.join(TXT_DIR, "Discovery.txt"))
+    # discovery_m3u = file_to_m3u(os.path.join(TXT_DIR, "Discovery.txt"))
 
     migu_m3u = file_to_m3u(os.path.join(TXT_DIR, "MiGu.txt"))
 
     huya_m3u = file_to_m3u(os.path.join(TXT_DIR, "huya.txt"))
 
-    tvb_m3u = file_to_m3u(os.path.join(TXT_DIR, "tvb.txt"))
+    tvb_m3u = file_to_m3u(os.path.join(TXT_DIR, "TVB.txt"))
 
     maiduidui_m3u = file_to_m3u(os.path.join(TXT_DIR, "maiduidui.txt"))
 
     cartoon_m3u = file_to_m3u(os.path.join(TXT_DIR, "cartoon.txt"))
 
-    other_m3u = file_to_m3u(os.path.join(TXT_DIR, "other.txt"))
+    other_m3u = file_to_m3u(os.path.join(TXT_DIR, "Other.txt"))
 
     chun_wan_m3u = file_to_m3u(os.path.join(TXT_DIR, "Chunwan.txt"))
 
-    iptv_m3u = cctv_m3u + cntv_m3u + shu_zi_m3u + i_hot + discovery_m3u + migu_m3u + huya_m3u + tvb_m3u + maiduidui_m3u + cartoon_m3u + other_m3u +chun_wan_m3u
+    iptv_m3u = cctv_m3u + cntv_m3u + shu_zi_m3u + new_tv_m3u + i_hot + migu_m3u + huya_m3u + tvb_m3u + maiduidui_m3u + cartoon_m3u + other_m3u +chun_wan_m3u
 
     write_m3u_to_file(os.path.join(M3U_DIR, "CCTV.m3u"), cctv_m3u)
     write_m3u_to_file(os.path.join(M3U_DIR, "CNTV.m3u"), cntv_m3u)
