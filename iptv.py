@@ -83,9 +83,11 @@ def main():
 
     cartoon_m3u = file_to_m3u(os.path.join(TXT_DIR, "cartoon.txt"))
 
-    chun_wan = file_to_m3u(os.path.join(TXT_DIR, "Chunwan.txt"))
+    other_m3u = file_to_m3u(os.path.join(TXT_DIR, "other.txt"))
 
-    iptv_m3u = cctv_m3u + cntv_m3u + shu_zi_m3u + i_hot + discovery_m3u + migu_m3u + huya_m3u + tvb_m3u + maiduidui_m3u + cartoon_m3u + chun_wan
+    chun_wan_m3u = file_to_m3u(os.path.join(TXT_DIR, "Chunwan.txt"))
+
+    iptv_m3u = cctv_m3u + cntv_m3u + shu_zi_m3u + i_hot + discovery_m3u + migu_m3u + huya_m3u + tvb_m3u + maiduidui_m3u + cartoon_m3u + other_m3u +chun_wan_m3u
 
     write_m3u_to_file(os.path.join(M3U_DIR, "CCTV.m3u"), cctv_m3u)
     write_m3u_to_file(os.path.join(M3U_DIR, "CNTV.m3u"), cntv_m3u)
