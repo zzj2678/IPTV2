@@ -106,7 +106,7 @@ def process_url(ip_port, results):
                 urlx = item.get('url', '')
                 if name and urlx:
                     name = clean_name(name)
-                    results.append(f"{name},{url}/{urlx}")
+                    results.append(f"{name},http://{ip_port}{urlx}")
                     logging.info(f"Appended cleaned name and URL: {name}, {urlx}")
     except requests.exceptions.RequestException as e:
         logging.error(f"Failed to process JSON for URL {url}. Error: {str(e)}")
