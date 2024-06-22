@@ -88,13 +88,19 @@ def main():
 
     maiduidui_m3u = file_to_m3u(os.path.join(TXT_DIR, "maiduidui.txt"))
 
-    cartoon_m3u = file_to_m3u(os.path.join(TXT_DIR, "cartoon.txt"))
+    Sport_m3u = file_to_m3u(os.path.join(TXT_DIR, "Sport.txt"))
 
-    other_m3u = file_to_m3u(os.path.join(TXT_DIR, "Other.txt"))
+    live_china_m3u = file_to_m3u(os.path.join(TXT_DIR, "LiveChina.txt"))
+
+    panda_m3u = file_to_m3u(os.path.join(TXT_DIR, "Panda.txt"))
+
+    documentary_m3u = file_to_m3u(os.path.join(TXT_DIR, "Documentary.txt"))
 
     chun_wan_m3u = file_to_m3u(os.path.join(TXT_DIR, "Chunwan.txt"))
 
-    iptv_m3u = cctv_m3u + cntv_m3u + shu_zi_m3u + new_tv_m3u + i_hot_m3u + sitv_m3u + tvb_m3u + maiduidui_m3u + migu_m3u + huya_m3u + other_m3u + chun_wan_m3u + cartoon_m3u
+    animated_m3u = file_to_m3u(os.path.join(TXT_DIR, "Animated.txt"))
+
+    iptv_m3u = cctv_m3u + cntv_m3u + shu_zi_m3u + new_tv_m3u + i_hot_m3u + sitv_m3u + tvb_m3u + maiduidui_m3u + migu_m3u + huya_m3u + Sport_m3u + live_china_m3u + panda_m3u + chun_wan_m3u + animated_m3u
 
     write_m3u_to_file(os.path.join(M3U_DIR, "CCTV.m3u"), cctv_m3u)
     write_m3u_to_file(os.path.join(M3U_DIR, "CNTV.m3u"), cntv_m3u)
