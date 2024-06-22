@@ -3,7 +3,7 @@ name: Auto Update JiuDian IPTV
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */2 * * *"
+    - cron: "0 */4 * * *"
 
 jobs:
   iptv:
