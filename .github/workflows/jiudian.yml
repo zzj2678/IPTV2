@@ -33,14 +33,6 @@ jobs:
         run: |
             python jiudian.py
 
-      - name: Update Deployment Time
-        run: |
-          if grep -q "Last deployment time:" README.md; then
-            sed -i "/Last deployment time:/c\Last deployment time: $DATE" README.md
-          else
-            echo "Last deployment time: $DATE" >> README.md
-          fi
-
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
