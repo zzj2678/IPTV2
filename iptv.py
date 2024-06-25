@@ -26,6 +26,10 @@ def write_m3u_to_file(file_path, content):
         f.write("#EXTM3U\n")
         f.write(content.strip())
 
+        now = datetime.now()
+        f.write(f"更新时间,#genre#\n")
+        f.write(f"{now.strftime("%Y-%m-%d %H:%M:%S")}\n")
+
 def txt_to_m3u(content):
     result = '#EXTM3U x-tvg-url="https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/e.xml"\n'
     
