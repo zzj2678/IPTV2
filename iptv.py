@@ -27,12 +27,6 @@ def write_m3u_to_file(file_path, content):
         f.write("#EXTM3U\n")
         f.write(content.strip())
 
-        now = datetime.now()
-
-
-        f.write(f"更新时间,#genre#\n")
-        f.write(f'{now.strftime("%Y-%m-%d %H:%M:%S")}\n')
-
 def txt_to_m3u(content):
     result = '#EXTM3U x-tvg-url="https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/e.xml"\n'
     
@@ -114,6 +108,11 @@ def main():
     write_m3u_to_file(os.path.join(M3U_DIR, "CCTV.m3u"), cctv_m3u)
     write_m3u_to_file(os.path.join(M3U_DIR, "CNTV.m3u"), cntv_m3u)
     write_m3u_to_file(os.path.join(M3U_DIR, "IPTV.m3u"), iptv_m3u)
+
+    with open(os.path.join(M3U_DIR, "IPTV.m3u"), "a", encoding="utf-8") as f:
+        update_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        f.write(f"更新时间,#genre#\n")
+        f.write(f"{update_time},\n")
 
 if __name__ == "__main__":
     main()
