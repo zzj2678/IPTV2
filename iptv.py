@@ -1,5 +1,6 @@
 import os
 import requests
+from datetime import datetime
 
 IPTV_URL = "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
 M3U_DIR = "m3u"
@@ -27,8 +28,10 @@ def write_m3u_to_file(file_path, content):
         f.write(content.strip())
 
         now = datetime.now()
+
+
         f.write(f"更新时间,#genre#\n")
-        f.write(f"{now.strftime("%Y-%m-%d %H:%M:%S")}\n")
+        f.write(f'{now.strftime("%Y-%m-%d %H:%M:%S")}\n')
 
 def txt_to_m3u(content):
     result = '#EXTM3U x-tvg-url="https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/e.xml"\n'
