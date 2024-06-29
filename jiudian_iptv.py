@@ -272,7 +272,7 @@ async def main():
             logging.error(f"Error fetching page content for {region}: {str(e)}")
             content = None
 
-        await asyncio.sleep(randint(1, 3))  
+        # await asyncio.sleep(randint(1, 3))  
 
         if not content: 
             logging.warning(f"Empty content for region {region}. Skipping...")
