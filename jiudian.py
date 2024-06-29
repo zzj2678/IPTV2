@@ -6,72 +6,37 @@ from pyppeteer import launch
 import requests
 import json
 import concurrent.futures
+from pypinyin import lazy_pinyin
+import base64
+import shutil
+
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 
-# 定义各个地区的FOFA搜索链接
-regions = {
-    'hebei': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iSGViZWki",
-    'beijing': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iYmVpamluZyI%3D",
-    'guangdong': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iZ3Vhbmdkb25nIg%3D%3D",
-    'shanghai': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0ic2hhbmdoYWki",
-    'tianjin': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0idGlhbmppbiI%3D",
-    'chongqing': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iY2hvbmdxaW5nIg%3D%3D",
-    'shanxi': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0ic2hhbnhpIg%3D%3D",
-    'shaanxi': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iU2hhYW54aSI%3D",
-    'liaoning': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0ibGlhb25pbmci",
-    'jiangsu': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iamlhbmdzdSI%3D",
-    'zhejiang': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iemhlamlhbmci",
-    'anhui': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0i5a6J5b69Ig%3D%3D",
-    'fujian': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iRnVqaWFuIg%3D%3D",
-    'jiangxi': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0i5rGf6KW%2FIg%3D%3D",
-    'shandong': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0i5bGx5LicIg%3D%3D",
-    'henan': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0i5rKz5Y2XIg%3D%3D",
-    'hubei': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0i5rmW5YyXIg%3D%3D",
-    'hunan': "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0i5rmW5Y2XIg%3D%3D"
-
-    # "hebei": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22hebei%22",
-    # "beijing": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22beijing%22",
-    # "guangdong": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22guangdong%22",
-    # "shanghai": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22shanghai%22",
-    # "tianjin": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22tianjin%22",
-    # "chongqing": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22chongqing%22",
-    # "shanxi": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22shanxi%22",
-    # "shaanxi": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22shaanxi%22",
-    # "liaoning": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22liaoning%22",
-    # "jiangsu": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22jiangsu%22",
-    # "zhejiang": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22zhejiang%22",
-    # "anhui": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22anhui%22",
-    # "fujian": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22fujian%22",
-    # "jiangxi": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22jiangxi%22",
-    # "shandong": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22shandong%22",
-    # "henan": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22henan%22",
-    # "hubei": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22hubei%22",
-    # "hunan": "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22hunan%22"
-    # 其他地区链接可以按照需要添加
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
 }
 
-region_names = {
-    'hebei': '河北',
-    'beijing': '北京',
-    'guangdong': '广东',
-    'shanghai': '上海',
-    'tianjin': '天津',
-    'chongqing': '重庆',
-    'shanxi': '山西',
-    'shaanxi': '陕西',
-    'liaoning': '辽宁',
-    'jiangsu': '江苏',
-    'zhejiang': '浙江',
-    'anhui': '安徽',
-    'fujian': '福建',
-    'jiangxi': '江西',
-    'shandong': '山东',
-    'henan': '河南',
-    'hubei': '湖北',
-    'hunan': '湖南'
-    # 其他地区的中文名称
+regions = [
+    '北京', '天津', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江',
+    '上海', '江苏', '浙江', '安徽', '福建', '江西', '山东',
+    '河南', '湖北', '湖南', '广东', '广西', '海南', '重庆',
+    '四川', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆'
+]
+
+# regions = [
+#     '北京',
+#     '上海', 
+#     '江苏', 
+#     '浙江',
+#     '广东'
+# ]
+
+isp_dict = {
+    "中国电信": "Chinanet",
+    "中国联通": "CHINA UNICOM China169 Backbone",
+    "中国移动": "China Mobile Communications Corporation"
 }
 
 OUTPUT_DIR = 'txt/jiudian'
@@ -88,15 +53,31 @@ async def fetch_page_content(url, region):
         content = await page.content()
         await browser.close()
         logging.info(f"Finished fetching content from {url} for region {region}")
-        return content 
+        return region, content  # Return both region and content as a tuple
     except Exception as e:
         logging.error(f"Error fetching page content for {region}: {str(e)}")
-        return None
+        return region, None  # Return None for content in case of error
+
+# async def fetch_page_content(url, region):
+#     try:
+#         logging.info(f"Fetching content from {url} for region {region}")
+#         browser = await launch(headless=True, args=['--no-sandbox', '--disable-setuid-sandbox'])
+#         page = await browser.newPage()
+#         await page.evaluateOnNewDocument('() =>{ Object.defineProperties(navigator,' '{ webdriver:{ get: () => false } }) }')   
+#         await page.goto(url)
+#         await asyncio.sleep(5)  # Adjust as necessary based on page load time
+#         content = await page.content()
+#         await browser.close()
+#         logging.info(f"Finished fetching content from {url} for region {region}")
+#         return content 
+#     except Exception as e:
+#         logging.error(f"Error fetching page content for {region}: {str(e)}")
+#         return None
 
 def process_url(ip_port, results):
     url = f"http://{ip_port}/iptv/live/1000.json?key=txiptv"
     try:
-        response = requests.get(url, timeout=3)
+        response = requests.get(url, headers=headers, timeout=3)
         response.raise_for_status()  # 检查请求是否成功
         json_data = response.json()
 
@@ -131,7 +112,7 @@ def process_urls(page_content, region_name):
 
     logging.info(f"Found {len(ip_ports)} unique URLs for region {region_name}")
 
-    results = [f"{region_name}酒店,#genre#"]
+    results = [f"{region_name}-酒店,#genre#"]
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
         futures = [executor.submit(process_url, ip_port, results) for ip_port in ip_ports]
@@ -230,30 +211,72 @@ def clean_name(name):
     name = name.replace("影视剧", "影视")
     return name
 
+def is_province(region):
+    provinces = ['北京', '天津', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江',
+                 '上海', '江苏', '浙江', '安徽', '福建', '江西', '山东',
+                 '河南', '湖北', '湖南', '广东', '广西', '海南', '重庆',
+                 '四川', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
+    return region in provinces
+
+def is_city(region):
+    return not is_province(region)
+
+def generate_search_url(region, isp_name, org_name):
+    pinyin_name = "".join(lazy_pinyin(region, errors=lambda x: x))
+    if is_province(region):
+        search_txt = f'"iptv/live/zh_cn.js" && country="CN" && region="{pinyin_name}" && org="{org_name}"'
+    elif not is_province(region):
+        search_txt = f'"iptv/live/zh_cn.js" && country="CN" && city="{pinyin_name}" && org="{org_name}"'
+    else:
+        return None
+    
+    bytes_string = search_txt.encode('utf-8')
+    encoded_search_txt = base64.b64encode(bytes_string).decode('utf-8')
+    return f'https://fofa.info/result?qbase64={encoded_search_txt}'
+
+def generate_region_urls(regions, isp_dict):
+    url_dict = {}
+    for region in regions:
+        for isp_name, org_name in isp_dict.items():
+            url = generate_search_url(region, isp_name, org_name)
+            if url:
+                key = f'{region}-{isp_name}'
+                url_dict[key] = url
+    return url_dict
+
+def get_province_name(region):
+    return region.split('-')[0]
+
 async def main():
-    tasks = []
-    for region, url in regions.items():
-        tasks.append(fetch_page_content(url, region))
+    if os.path.exists(OUTPUT_DIR):
+        shutil.rmtree(OUTPUT_DIR)
+
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    region_urls = generate_region_urls(regions, isp_dict)
+    
+    tasks = [fetch_page_content(url, region) for region, url in region_urls.items()]
 
     try:
-        html_contents = await asyncio.gather(*tasks)
+        results = await asyncio.gather(*tasks)
+        html_contents = {region: content for region, content in results if content is not None}
     except Exception as e:
         logging.error(f"Error occurred during asyncio.gather: {str(e)}")
-        html_contents = [None] * len(tasks)  # Assigning None to handle missing content
+        html_contents = {region: None for region in region_urls.keys()}  # Handle missing content
 
     all_results = []
-    for region, content in zip(regions.keys(), html_contents):
+    for region, content in html_contents.items():
         if not content: 
                 logging.warning(f"Empty content for region {region}. Skipping...")
                 continue
 
-        region_name = region_names.get(region)
-        if region_name is None:
-                logging.warning(f"Region name not found for {region}. Skipping...")
-                continue
-        results = process_urls(content, region_name)
-        file_path = os.path.join(OUTPUT_DIR, f"{region}.txt")
-        with open(file_path, 'w', encoding='utf-8') as f:
+        region_name = get_province_name(region)
+
+        results = process_urls(content, region)
+
+        file_path = os.path.join(OUTPUT_DIR, f"{get_province_name(region)}.txt")
+
+        with open(file_path, 'a', encoding='utf-8') as f:
             for result in results:
                 f.write(result + '\n')
 
@@ -261,7 +284,7 @@ async def main():
 
         logging.info(f"Results for {region_name} written to {file_path}")
 
-    all_regions_file = os.path.join(OUTPUT_DIR, "all.txt")
+    all_regions_file = os.path.join(OUTPUT_DIR, "全国.txt")
     with open(all_regions_file, 'w', encoding='utf-8') as f:
         for result in all_results:
             f.write(result + '\n')

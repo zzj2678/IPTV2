@@ -24,12 +24,12 @@ def write_to_file(file_path, content):
 
 def write_m3u_to_file(file_path, content):
     with open(file_path, "w", encoding="utf-8") as f:
-        f.write("#EXTM3U\n")
+        f.write('#EXTM3U x-tvg-url="https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/e.xml"\n')
         f.write(content.strip())
 
 def txt_to_m3u(content):
-    result = '#EXTM3U x-tvg-url="https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/e.xml"\n'
-    
+    # result = '#EXTM3U x-tvg-url="https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/e.xml"\n'
+    result = ''
     genre = ''  # 初始化genre变量
 
     for line in content.split('\n'):
@@ -53,6 +53,35 @@ def read_file_content(file_path):
     with open(file_path, 'r') as file:
         content = file.read() 
     return content
+
+def m3u_to_txt(m3u_content):
+    # 移除第一行并按行分割
+    lines = m3u_content.strip().split('\n')[1:]
+
+    # 初始化变量
+    output_dict = {}
+    group_name = channel_name = ""
+
+    # 逐行处理输入内容
+    for line in lines:
+        if line.startswith("#EXTINF"):
+            # 获取 group-title 的值和频道名
+            group_title_part = line.split('group-title="')[1]
+            group_name = group_title_part.split('"')[0]
+            channel_name = line.split(',')[-1]
+        elif line.startswith("http"):
+            # 获取频道链接并合并频道名
+            channel_link = line
+            combined_link = f"{channel_name},{channel_link}"
+            # 将组名作为键，合并链接作为值存储在字典中
+            output_dict.setdefault(group_name, []).append(combined_link)
+
+    # 准备返回的字符串
+    output_lines = [
+        f"{group},#genre#\n" + "\n".join(links) for group, links in output_dict.items()
+    ]
+
+    return "\n".join(output_lines)
 
 def main():
     os.makedirs(M3U_DIR, exist_ok=True)
@@ -103,16 +132,22 @@ def main():
 
     about_m3u = file_to_m3u(os.path.join(TXT_DIR, "About.txt"))
 
-    iptv_m3u = cctv_m3u + cntv_m3u + shu_zi_m3u + new_tv_m3u + i_hot_m3u + sitv_m3u + local_m3u + tvb_m3u + maiduidui_m3u + migu_m3u + huya_m3u + Sport_m3u + live_china_m3u + panda_m3u + documentary_m3u + chun_wan_m3u + animated_m3u + about_m3u
+    update_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    update_m3u =  txt_to_m3u(f"更新时间,#genre#\n{update_time},\n")
+
+    iptv_m3u = about_m3u + cctv_m3u + cntv_m3u + shu_zi_m3u + new_tv_m3u + i_hot_m3u + sitv_m3u + local_m3u + tvb_m3u + maiduidui_m3u + migu_m3u + huya_m3u + Sport_m3u + live_china_m3u + panda_m3u + documentary_m3u + chun_wan_m3u + animated_m3u + update_m3u
 
     write_m3u_to_file(os.path.join(M3U_DIR, "CCTV.m3u"), cctv_m3u)
     write_m3u_to_file(os.path.join(M3U_DIR, "CNTV.m3u"), cntv_m3u)
     write_m3u_to_file(os.path.join(M3U_DIR, "IPTV.m3u"), iptv_m3u)
 
-    with open(os.path.join(M3U_DIR, "IPTV.m3u"), "a", encoding="utf-8") as f:
-        update_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        f.write(f"更新时间,#genre#\n")
-        f.write(f"{update_time},\n")
+    with open(os.path.join(M3U_DIR, "IPTV.m3u"), "r", encoding="utf-8") as file:
+        m3u_content = file.read()
+
+    iptv_txt = m3u_to_txt(m3u_content)
+
+    with open(os.path.join(TXT_DIR, "IPTV.txt"), "w", encoding="utf-8") as file:
+        file.write(iptv_txt)
 
 if __name__ == "__main__":
     main()
