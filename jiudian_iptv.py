@@ -244,6 +244,18 @@ def generate_region_urls(regions, isp_dict):
 def get_province_name(region):
     return region.split('-')[0]
 
+def merge_files(output_dir, merged_file_path):
+    try:
+        with open(merged_file_path, 'w', encoding='utf-8') as outfile:
+            for filename in os.listdir(output_dir):
+                file_path = os.path.join(output_dir, filename)
+                if os.path.isfile(file_path):
+                    with open(file_path, 'r', encoding='utf-8') as infile:
+                        outfile.write(infile.read() + '\n')  # 读取并写入文件内容，添加换行符分隔
+        print(f"All files merged into {merged_file_path}")
+    except Exception as e:
+        print(f"Error merging files: {e}")
+
 async def main():
     if os.path.exists(OUTPUT_DIR):
         shutil.rmtree(OUTPUT_DIR)
@@ -252,43 +264,32 @@ async def main():
 
     region_urls = generate_region_urls(regions, isp_dict)
 
-    html_contents = {}
-    
     for region, url in region_urls.items():
         try:
             result = await fetch_page_content(url, region)
-            html_contents[region] = result[1] if result[1] is not None else None
+            content = result[1] if result[1] is not None else None
         except Exception as e:
             logging.error(f"Error fetching page content for {region}: {str(e)}")
-            html_contents[region] = None
-    
-        # await asyncio.sleep(5) 
-        await asyncio.sleep(randint(3, 5))
+            content = None
 
-    all_results = []
-    for region, content in html_contents.items():
+        await asyncio.sleep(randint(1, 3))  
+
         if not content: 
-                logging.warning(f"Empty content for region {region}. Skipping...")
-                continue
+            logging.warning(f"Empty content for region {region}. Skipping...")
+            continue
 
         region_name = get_province_name(region)
-
         results = process_urls(content, region)
-
-        file_path = os.path.join(OUTPUT_DIR, f"{get_province_name(region)}.txt")
+        file_path = os.path.join(OUTPUT_DIR, f"{region_name}.txt")
 
         with open(file_path, 'a', encoding='utf-8') as f:
             for result in results:
                 f.write(result + '\n')
 
-            all_results.extend(results)
-
         logging.info(f"Results for {region_name} written to {file_path}")
 
-    all_regions_file = os.path.join(OUTPUT_DIR, "全国.txt")
-    with open(all_regions_file, 'w', encoding='utf-8') as f:
-        for result in all_results:
-            f.write(result + '\n')
+    merge_files(OUTPUT_DIR, os.path.join(OUTPUT_DIR, "全国.txt"))
+
 
 if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(main())
