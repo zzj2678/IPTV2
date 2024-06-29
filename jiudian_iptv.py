@@ -50,7 +50,6 @@ async def fetch_page_content(url, region):
         page = await browser.newPage()
         await page.evaluateOnNewDocument('() =>{ Object.defineProperties(navigator,' '{ webdriver:{ get: () => false } }) }')   
         await page.goto(url, waitUntil="domcontentloaded")
-        await asyncio.sleep(5)  # Adjust as necessary based on page load time
         content = await page.content()
         await browser.close()
         logging.info(f"Finished fetching content from {url} for region {region}")
@@ -251,8 +250,12 @@ async def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     region_urls = generate_region_urls(regions, isp_dict)
-    
-    tasks = [fetch_page_content(url, region) for region, url in region_urls.items()]
+
+    tasks = []
+    for region, url in region_urls.items():
+        tasks.append(fetch_page_content(url, region))
+        # await asyncio.sleep(randint(3, 7))
+        await asyncio.sleep(5)
 
     try:
         results = await asyncio.gather(*tasks)
