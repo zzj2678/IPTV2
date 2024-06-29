@@ -11,6 +11,7 @@ import base64
 import shutil
 import aiohttp
 # from fofa_hack import fofa
+from random import randint 
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
@@ -28,9 +29,9 @@ regions = [
 
 # regions = [
 #     '北京',
-#     '上海', 
-#     '江苏', 
-#     '浙江',
+#     # '上海', 
+#     # '江苏', 
+#     # '浙江',
 #     '广东'
 # ]
 
@@ -251,21 +252,18 @@ async def main():
 
     region_urls = generate_region_urls(regions, isp_dict)
 
-    tasks = []
+    html_contents = {}
+    
     for region, url in region_urls.items():
-        tasks.append(fetch_page_content(url, region))
-        # await asyncio.sleep(randint(3, 7))
-        await asyncio.sleep(5)
-
-    try:
-        results = await asyncio.gather(*tasks)
-
-        # logging.info(results)
-
-        html_contents = {region: content for region, content in results if content is not None}
-    except Exception as e:
-        logging.error(f"Error occurred during asyncio.gather: {str(e)}")
-        html_contents = {region: None for region in region_urls.keys()}  # Handle missing content
+        try:
+            result = await fetch_page_content(url, region)
+            html_contents[region] = result[1] if result[1] is not None else None
+        except Exception as e:
+            logging.error(f"Error fetching page content for {region}: {str(e)}")
+            html_contents[region] = None
+    
+        # await asyncio.sleep(5) 
+        await asyncio.sleep(randint(3, 5))
 
     all_results = []
     for region, content in html_contents.items():
