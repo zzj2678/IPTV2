@@ -9,7 +9,8 @@ import concurrent.futures
 from pypinyin import lazy_pinyin
 import base64
 import shutil
-
+import aiohttp
+from fofa_hack import fofa
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
@@ -25,13 +26,13 @@ regions = [
     '四川', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆'
 ]
 
-# regions = [
-#     '北京',
-#     '上海', 
-#     '江苏', 
-#     '浙江',
-#     '广东'
-# ]
+regions = [
+    '北京',
+    '上海', 
+    '江苏', 
+    '浙江',
+    '广东'
+]
 
 isp_dict = {
     "中国电信": "Chinanet",
@@ -48,7 +49,7 @@ async def fetch_page_content(url, region):
         browser = await launch(headless=True, args=['--no-sandbox', '--disable-setuid-sandbox'])
         page = await browser.newPage()
         await page.evaluateOnNewDocument('() =>{ Object.defineProperties(navigator,' '{ webdriver:{ get: () => false } }) }')   
-        await page.goto(url)
+        await page.goto(url, waitUntil="domcontentloaded")
         await asyncio.sleep(5)  # Adjust as necessary based on page load time
         content = await page.content()
         await browser.close()
@@ -61,18 +62,14 @@ async def fetch_page_content(url, region):
 # async def fetch_page_content(url, region):
 #     try:
 #         logging.info(f"Fetching content from {url} for region {region}")
-#         browser = await launch(headless=True, args=['--no-sandbox', '--disable-setuid-sandbox'])
-#         page = await browser.newPage()
-#         await page.evaluateOnNewDocument('() =>{ Object.defineProperties(navigator,' '{ webdriver:{ get: () => false } }) }')   
-#         await page.goto(url)
-#         await asyncio.sleep(5)  # Adjust as necessary based on page load time
-#         content = await page.content()
-#         await browser.close()
-#         logging.info(f"Finished fetching content from {url} for region {region}")
-#         return content 
-#     except Exception as e:
+#         async with aiohttp.ClientSession() as session:
+#             async with session.get(url, headers=headers, timeout=10) as response:
+#                 content = await response.text()
+#                 logging.info(f"Finished fetching content from {url} for region {region}")
+#                 return region, content  # Return both region and content
+#     except aiohttp.ClientError as e:
 #         logging.error(f"Error fetching page content for {region}: {str(e)}")
-#         return None
+#         return region, None  # Return None for content in case of error
 
 def process_url(ip_port, results):
     url = f"http://{ip_port}/iptv/live/1000.json?key=txiptv"
@@ -259,6 +256,9 @@ async def main():
 
     try:
         results = await asyncio.gather(*tasks)
+
+        # logging.info(results)
+
         html_contents = {region: content for region, content in results if content is not None}
     except Exception as e:
         logging.error(f"Error occurred during asyncio.gather: {str(e)}")
