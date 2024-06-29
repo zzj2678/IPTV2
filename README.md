@@ -63,6 +63,7 @@
   - [YueChan/Live](https://github.com/YueChan/Live)
   - [YanG-1989/m3u](https://github.com/YanG-1989/m3u)
   - [fanmingming/live](https://github.com/fanmingming/live)
+  - [ChiSheng9/iptv](https://github.com/ChiSheng9/iptv)
   - [joevess/IPTV](https://github.com/joevess/IPTV)
 - EPG
   - [112114.xyz](https://diyp1.112114.xyz)

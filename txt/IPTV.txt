@@ -336,7 +336,7 @@ J2,http://bziyunshao.synology.me:8890/bysid/82
 云和新闻综合,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8
 北仑电视台,http://play-sh.quklive.com/live/1626327731714170.m3u8
 青田电视台,http://l.cztvcloud.com/channels/lantian/SXqingtian1/720p.m3u8
-港澳台,#genre#
+香港,#genre#
 凤凰中文,http://116.162.6.192/1.v.smtcdns.net/qctv.fengshows.cn/live/0701pcc72.m3u8
 凤凰资讯,http://116.162.6.192/1.v.smtcdns.net/qctv.fengshows.cn/live/0701pin72.m3u8
 凤凰香港,http://116.162.6.192/1.v.smtcdns.net/qctv.fengshows.cn/live/0701phk72.m3u8
@@ -347,9 +347,176 @@ J2,http://bziyunshao.synology.me:8890/bysid/82
 明珠台,http://php.jdshipin.com:8880/smt.php?id=pearl_twn
 星河台,http://v2h.jdshipin.com/xinghe/xinghe.stream/chunklist.m3u8
 无线新闻台,http://php.jdshipin.com:8880/smt.php?id=inews_twn
+TVB Plus,http://ncdsrti.7766.org:7550/hls/chunklistxufkwjw.m3u8
+TVB 娱乐新闻台,https://edge6a.v2h-cdn.com/enew/enew.stream/chunklist.m3u8
+TVB 娱乐新闻台,http://v2h.jdshipin.com/enew/enew.stream/chunklist.m3u8
 财经资讯台,http://php.jdshipin.com:8880/smt.php?id=tvbcaijing_twn
+功夫台,http://v2h.jdshipin.com/asia_action/asia_action.stream/chunklist.m3u8
 J2,http://php.jdshipin.com:8880/smt.php?id=j2_twn
-YouTube,#genre#
+港澳,#genre#
+TVB 翡翠台,https://histar.zapi.us.kg/?id=feicui
+TVB 无线新闻台,https://histar.zapi.us.kg/?id=tvb-news
+TVB PLUS,https://histar.zapi.us.kg/?id=tvb-plus
+TVB 黄金翡翠台,https://histar.zapi.us.kg/?id=golden-jade
+TVB 黄金华剧台,https://histar.zapi.us.kg/?id=golden-chinese-drama
+TVB 千禧经典台,https://histar.zapi.us.kg/?id=tvb-classic
+TVB 粤语片台,https://histar.zapi.us.kg/?id=tvb-yueyu
+TVB 星河台,https://histar.zapi.us.kg/?id=tvb-xinghe
+TVB 亚洲剧台,https://histar.zapi.us.kg/?id=tvb-asia-drama
+TVB 娱乐新闻台,https://histar.zapi.us.kg/?id=TVB ylxw
+J2,https://histar.zapi.us.kg/?id=j2
+TVB 明珠台,https://histar.zapi.us.kg/?id=pearl
+TVB 华语剧台,https://histar.zapi.us.kg/?id=tvb-drama
+凤凰卫视 资讯台,https://histar.zapi.us.kg/?id=phtv-info
+凤凰卫视 中文台,https://histar.zapi.us.kg/?id=phtv-cn
+凤凰卫视 香港台,https://histar.zapi.us.kg/?id=phtv-hk
+HOY 资讯台,https://histar.zapi.us.kg/?id=hoy-info
+HOY TV,https://histar.zapi.us.kg/?id=hoytv
+HOY国际财经,https://histar.zapi.us.kg/?id=hoy-ibc
+ViuTV,https://histar.zapi.us.kg/?id=viutv
+ViuTV6,https://histar.zapi.us.kg/?id=viutv6
+天映频道,https://histar.zapi.us.kg/?id=celestial
+天映经典,https://histar.zapi.us.kg/?id=cccm
+Thrill,https://histar.zapi.us.kg/?id=thrill
+星空卫视,https://histar.zapi.us.kg/?id=star-xing-kong
+香港卫视,https://histar.zapi.us.kg/?id=hks
+澳亚卫视,https://histar.zapi.us.kg/?id=mastv
+澳门卫视,https://histar.zapi.us.kg/?id=mstv
+澳门莲花卫视,https://histar.zapi.us.kg/?id=lotustv
+澳门资讯,https://histar.zapi.us.kg/?id=tdm-information
+澳视澳门,https://histar.zapi.us.kg/?id=tdm
+HKC 18台,https://histar.zapi.us.kg/?id=hkc18
+港台电视 31,https://histar.zapi.us.kg/?id=rthk31
+港台电视 32,https://histar.zapi.us.kg/?id=rthk32
+香港Now系列,#genre#
+Now Sports 618 欧洲杯,https://histar.zapi.us.kg/?id=now-sports-618
+Now Sports 619 欧洲杯,https://histar.zapi.us.kg/?id=now-sports-619
+Now Lucky 688 欧洲杯,https://histar.zapi.us.kg/?id=now-lucky-688
+Now 财经台,https://histar.zapi.us.kg/?id=now-finance
+Now 爆谷台,https://histar.zapi.us.kg/?id=baogu-movies
+Now 星影台,https://histar.zapi.us.kg/?id=now-baogu-superstars
+Now 新闻台,https://histar.zapi.us.kg/?id=now-news
+Now 直播台,https://histar.zapi.us.kg/?id=now-direct
+Now报价台,https://histar.zapi.us.kg/?id=now-data
+Now jelli紫金国际台,https://histar.zapi.us.kg/?id=now-jelli
+Now华剧台,https://histar.zapi.us.kg/?id=now-chinese-drama
+HBO Now115,https://histar.zapi.us.kg/?id=Now-HBO
+Now HBO Hits,https://histar.zapi.us.kg/?id=now-hbo-hits
+Now HBO Family,https://histar.zapi.us.kg/?id=now-hbof-amily
+Now HBO Signature,https://histar.zapi.us.kg/?id=now-hbo-signature
+MovieMovie,https://histar.zapi.us.kg/?id=moviemovie
+NowViu剧集台,https://histar.zapi.us.kg/?id=now-viu-drama
+Now Sports 641,https://histar.zapi.us.kg/?id=now-sports641
+Now NBA,https://histar.zapi.us.kg/?id=now-nba
+Now Sports精选,https://histar.zapi.us.kg/?id=now-sports-prime
+Now Sports 1,https://histar.zapi.us.kg/?id=now-sports-1
+Now Sports 2,https://histar.zapi.us.kg/?id=now-sports-2
+Now Sports 3,https://histar.zapi.us.kg/?id=now-sports-3
+Now Sports 4,https://histar.zapi.us.kg/?id=now-sports-4
+Now Sports 5,https://histar.zapi.us.kg/?id=now-sports-5
+Now Sports 6,https://histar.zapi.us.kg/?id=now-sports-6
+Now Sports 7,https://histar.zapi.us.kg/?id=now-sports-7
+Now Sports Plus,https://histar.zapi.us.kg/?id=now-sports-plus
+Now Sports 英超1,https://histar.zapi.us.kg/?id=now-sports-premier-league1
+Now beIN SPORTS 1,https://histar.zapi.us.kg/?id=now-bein-sports1
+Now beIN SPORTS 2,https://histar.zapi.us.kg/?id=now-bein-sports2
+Now beIN SPORTS 3,https://histar.zapi.us.kg/?id=now-bein-sports3
+Now 668,https://histar.zapi.us.kg/?id=now-668
+Now Golf 2,https://histar.zapi.us.kg/?id=now-golf2
+Now Golf 3,https://histar.zapi.us.kg/?id=now-golf3
+台湾综合,#genre#
+民视,https://histar.zapi.us.kg/?id=ftv
+民视台湾台,https://histar.zapi.us.kg/?id=ftv-tw
+民视第一台,https://histar.zapi.us.kg/?id=ftv-one
+纬来日本,https://histar.zapi.us.kg/?id=videoland-japan
+纬来综合,https://histar.zapi.us.kg/?id=videoland
+八大综合,https://histar.zapi.us.kg/?id=gtv28
+八大第一,https://histar.zapi.us.kg/?id=gtv27
+TVBS 精采台,https://histar.zapi.us.kg/?id=tvbs-jc
+TVBS 欢乐台,https://histar.zapi.us.kg/?id=tvbs-huanle
+TVBS Asia,https://histar.zapi.us.kg/?id=tvbs-asia
+三立台湾台,https://histar.zapi.us.kg/?id=settv-taiwan
+三立综合台,https://histar.zapi.us.kg/?id=settv-zonghe
+台视,https://histar.zapi.us.kg/?id=ttv
+东森超视,https://histar.zapi.us.kg/?id=ebc-super
+东森综合台,https://histar.zapi.us.kg/?id=ebc-ettv
+中视,https://histar.zapi.us.kg/?id=ctv
+中视菁采台,https://histar.zapi.us.kg/?id=bravo
+中天亚洲,https://histar.zapi.us.kg/?id=cti-asia
+中天综合,https://histar.zapi.us.kg/?id=ctitv36
+华视,https://histar.zapi.us.kg/?id=cts
+LiveABC 互动英语频道,https://histar.zapi.us.kg/?id=liveabc
+好消息,https://histar.zapi.us.kg/?id=goodtv
+KLT-靖天国际台,https://histar.zapi.us.kg/?id=jtgj
+ELTA综合台,https://histar.zapi.us.kg/?id=elta-zonghe
+公视,https://histar.zapi.us.kg/?id=pts
+公视3台,https://histar.zapi.us.kg/?id=pts-3
+公视台语台,https://histar.zapi.us.kg/?id=pts-ty
+靖天综合台,https://histar.zapi.us.kg/?id=jtzh
+靖天日本台,https://histar.zapi.us.kg/?id=jtrb
+客家电视台,https://histar.zapi.us.kg/?id=hakkatv
+大爱一台,https://histar.zapi.us.kg/?id=daai1
+大爱二台,https://histar.zapi.us.kg/?id=daai2
+ARIRANG 阿里郎频道,https://histar.zapi.us.kg/?id=arirang
+台湾新闻财经,#genre#
+中天新闻,https://histar.zapi.us.kg/?id=cti-news
+TVBS 新闻台,https://histar.zapi.us.kg/?id=tvbs-news
+TVBS HD,https://histar.zapi.us.kg/?id=tvbs-hd
+东森新闻,https://histar.zapi.us.kg/?id=ebc-news
+东森财经新闻,https://histar.zapi.us.kg/?id=ebc-finance
+寰宇新闻台,https://histar.zapi.us.kg/?id=global-news
+寰宇财经台,https://histar.zapi.us.kg/?id=global-finance
+寰宇新闻台湾台,https://histar.zapi.us.kg/?id=global-news-tw
+壹新闻 HD,https://histar.zapi.us.kg/?id=nexttv
+三立新闻,https://histar.zapi.us.kg/?id=settv-news
+三立iNews,https://histar.zapi.us.kg/?id=settv-inews
+中视新闻,https://histar.zapi.us.kg/?id=ctv-news
+非凡新闻,https://histar.zapi.us.kg/?id=unique-business-news
+年代新闻,https://histar.zapi.us.kg/?id=era-news
+民视新闻台,https://histar.zapi.us.kg/?id=ftv-news
+台视新闻,https://histar.zapi.us.kg/?id=ttv-news
+镜电视新闻台,https://histar.zapi.us.kg/?id=mnews
+华视新闻,https://histar.zapi.us.kg/?id=cts-news
+半岛国际新闻台,https://histar.zapi.us.kg/?id=aljazeera
+SBN 全球财经台,https://histar.zapi.us.kg/?id=sbn
+靖天资讯台,https://histar.zapi.us.kg/?id=jtzx
+台湾影音娱乐,#genre#
+纬来电影台,https://histar.zapi.us.kg/?id=videoland-movie
+纬来戏剧,https://histar.zapi.us.kg/?id=videoland-drama
+TVBS综艺台,https://histar.zapi.us.kg/?id=tvbs-zongyi
+TVBS台剧台,https://histar.zapi.us.kg/?id=tvbs-taiju
+龙祥电影台,https://histar.zapi.us.kg/?id=lstime
+龙华电影台,https://histar.zapi.us.kg/?id=ltv-movies
+龙华戏剧台,https://histar.zapi.us.kg/?id=ltv-xiju
+龙华日韩台,https://histar.zapi.us.kg/?id=ltv-rihan
+东森电影,https://histar.zapi.us.kg/?id=ebc-movie
+东森戏剧,https://histar.zapi.us.kg/?id=ebc-drama
+东森洋片,https://histar.zapi.us.kg/?id=ebc-emovie
+八大精彩台,https://histar.zapi.us.kg/?id=gtv-jct
+八大戏剧,https://histar.zapi.us.kg/?id=gtv-41
+八大娱乐,https://histar.zapi.us.kg/?id=gtv-86
+八大综艺,https://histar.zapi.us.kg/?id=grt
+采昌影剧台,https://histar.zapi.us.kg/?id=caichang
+美亚电影台,https://histar.zapi.us.kg/?id=meiah-movies
+猪哥亮歌厅秀,https://histar.zapi.us.kg/?id=zglgtx
+民视综艺,https://histar.zapi.us.kg/?id=ftv-reality
+民视影剧,https://histar.zapi.us.kg/?id=ftv-drama
+三立都会台,https://histar.zapi.us.kg/?id=settv-city
+三立戏剧台,https://histar.zapi.us.kg/?id=settv-drama
+中视经典台,https://histar.zapi.us.kg/?id=ctv-classic
+中天娱乐,https://histar.zapi.us.kg/?id=cti-yule
+靖洋戏剧台,https://histar.zapi.us.kg/?id=jyxj
+靖天映画,https://histar.zapi.us.kg/?id=jtyh
+靖天电影台,https://histar.zapi.us.kg/?id=jtdy
+靖天戏剧台,https://histar.zapi.us.kg/?id=jtxjt
+韩国娱乐台 KMTV,https://histar.zapi.us.kg/?id=kmtv
+公视戏剧,https://histar.zapi.us.kg/?id=gsxj
+影迷数位纪实台,https://histar.zapi.us.kg/?id=ymswjst
+影迷数字电影台,https://histar.zapi.us.kg/?id=fans-cinema
+视纳华仁纪实频道,https://histar.zapi.us.kg/?id=cnex
+MTV Live HD 频道,https://histar.zapi.us.kg/?id=mtv
+ELTA 娱乐台,https://histar.zapi.us.kg/?id=elta-ylt
+YouTube「线路1」,#genre#
 公視新聞,https://live.lalifeier.eu.org/youtube/quwqlazU-c8
 鏡新聞,https://live.lalifeier.eu.org/youtube/5n0y6b0Q25o
 華視新聞,https://live.lalifeier.eu.org/youtube/wM0g8EoUZ_E
@@ -526,6 +693,97 @@ NASA 美國太空總署,https://live.lalifeier.eu.org/youtube/21X5lGlDOfg
 花蓮即時影像: 南濱守望哨,https://live.lalifeier.eu.org/youtube/OQnwVN5lzsk
 花蓮即時影像: 吉安,https://live.lalifeier.eu.org/youtube/JjDrTXSTJWI
 花蓮即時影像: 花蓮大橋,https://live.lalifeier.eu.org/youtube/BDs9UIRw4zc
+Youtube 「线路2」,#genre#
+三立iNEWS,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV01.m3u8
+寰宇新聞台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV02.m3u8
+東森財經新聞,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV03.m3u8
+momo購物一台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV04.m3u8
+momo購物二台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV05.m3u8
+運通財經台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV06.m3u8
+信大電視台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV07.m3u8
+DW News,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV08.m3u8
+中視新聞,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV09.m3u8
+Malaimurasu Tv 24X7,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV10.m3u8
+Asianet News,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV11.m3u8
+華視戲劇頻道,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV12.m3u8
+中天亞洲台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV13.m3u8
+Al Jazeera Arabic,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV14.m3u8
+JapaNews24,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV15.m3u8
+THE K-POP,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV16.m3u8
+民視新聞,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV17.m3u8
+東森購物台CH60,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV18.m3u8
+東森購物台CH46,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV19.m3u8
+LIVE NOW,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV20.m3u8
+Haberturk TV,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV21.m3u8
+鳳凰衛視資訊台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV22.m3u8
+新唐人LIVE,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV23.m3u8
+ABC News,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV24.m3u8
+台視新聞台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV25.m3u8
+華視綜藝頻道,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV26.m3u8
+Astro AWANI,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV27.m3u8
+中天新聞,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV28.m3u8
+Tokyo Walk,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV29.m3u8
+大愛一臺HD,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV30.m3u8
+TVBS NEWS,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV31.m3u8
+三立新聞台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV32.m3u8
+GB News,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV33.m3u8
+中視經典綜藝,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV34.m3u8
+Sky News,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV35.m3u8
+India Today,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV36.m3u8
+Euronews English,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV37.m3u8
+FRANCE 24 English,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV38.m3u8
+NBC News,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV39.m3u8
+News18 India,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV40.m3u8
+寰宇新聞台灣台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV41.m3u8
+MIT台灣誌,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV42.m3u8
+鳳凰衛視資訊台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV43.m3u8
+MediaoneTV Live,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV44.m3u8
+TBS NEWS,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV45.m3u8
+NewsTamil24x7,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV46.m3u8
+大愛二臺HD,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV47.m3u8
+JapaNews24,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV48.m3u8
+中天新聞2台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV49.m3u8
+Malayalam News,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV50.m3u8
+Arirang TV,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV51.m3u8
+CNA LIVE,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV52.m3u8
+HTB北海道ニュース,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV53.m3u8
+美好購物2台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV54.m3u8
+美好購物2台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV55.m3u8
+國會頻道１,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV56.m3u8
+立法院會議,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV57.m3u8
+123 GO! Live,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV58.m3u8
+Al Jazeera English,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV59.m3u8
+Muse木棉花-闔家歡,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV60.m3u8
+KBS News,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV61.m3u8
+ABCテレビニュース,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV62.m3u8
+YOYO TV,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV63.m3u8
+小猪佩奇,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV64.m3u8
+Talking Tom,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV65.m3u8
+TalkingFriendsTVMini,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV66.m3u8
+Dave and Ava,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV67.m3u8
+Tayo the Little Bus,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV68.m3u8
+Disney Junio,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV69.m3u8
+鏡新聞,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV70.m3u8
+大陸尋奇,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV71.m3u8
+CRUX,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV72.m3u8
+豬哥會社,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV73.m3u8
+TIMES NOW,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV74.m3u8
+GTV DRAMA 八大劇樂部,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV75.m3u8
+民視戲劇館,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV76.m3u8
+Lofi Girl,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV77.m3u8
+TaiwanPlus,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV78.m3u8
+earthTV,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV79.m3u8
+SBS Running Man,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV80.m3u8
+飢餓遊戲,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV81.m3u8
+TVBS NEWS,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV82.m3u8
+TVBS選新聞,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV83.m3u8
+Entertainment - Mediacorp,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV84.m3u8
+寰宇新聞財經台,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV85.m3u8
+LiveNOW from FOX,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV86.m3u8
+東森購物台CH34,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV87.m3u8
+InquizeX,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV88.m3u8
+8world,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV89.m3u8
+倪珍24小時播新聞,https://mirror.ghproxy.com/https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV90.m3u8
 埋堆堆,#genre#
 埋堆堆1,https://live.lalifeier.eu.org/huya/23749096
 埋堆堆2,https://live.lalifeier.eu.org/huya/23735126
