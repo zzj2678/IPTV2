@@ -29,9 +29,9 @@ jobs:
       - name: Get Currrent Date
         run: echo "DATE=$(date +'%Y-%m-%d %H:%M:%S %Z')" >> $GITHUB_ENV
 
-      - name: Run Update IPTV
+      - name: Run Update JiuDian IPTV
         run: |
-            python jiudian.py
+            python jiudian_iptv.py
 
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5

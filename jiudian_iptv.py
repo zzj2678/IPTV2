@@ -10,7 +10,7 @@ from pypinyin import lazy_pinyin
 import base64
 import shutil
 import aiohttp
-from fofa_hack import fofa
+# from fofa_hack import fofa
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
