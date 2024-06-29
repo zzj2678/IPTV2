@@ -27,7 +27,7 @@ jobs:
         with:
           commit_message: Auto Update EPG 
           branch: main
-          push_options: '--force'
+          # push_options: '--force'
 
       - name: Delete workflow runs
         uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
