@@ -24,10 +24,11 @@ class GZTV(BaseChannel):
     async def get_play_url(self, video_id: str) -> Optional[str]:
         logger.info(f"Processing request for video ID: {video_id}")
 
-        station_number = next((station_num for channel, station_num in CHANNEL_MAPPING.items() if channel == video_id), None)
-        if station_number is None:
-            logger.warning(f"Video ID {video_id} not found in mapping")
+        if video_id not in CHANNEL_MAPPING:
+            logger.error(f"Invalid Video ID: {video_id}")
             return None
+
+        station_number = CHANNEL_MAPPING[video_id]
 
         channel_data = await self.get_live_channel_list()
 

@@ -41,7 +41,7 @@ class SZTV(BaseChannel):
 
         pid = CHANNEL_MAPPING.get(video_id)
         if not pid:
-            logger.warning(f"Video ID {video_id} not found in mapping")
+            logger.error(f"Invalid Video ID: {pid}")
             return None
 
         key = await self.get_key(pid)
