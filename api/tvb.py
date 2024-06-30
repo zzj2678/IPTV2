@@ -20,7 +20,12 @@ class TVB(BaseChannel):
         # https://inews-api.tvb.com/news/live
         # url = f'https://inews-api.tvb.com/news/checkout/live/hd/ott_{channel_code}_h264?profile=chrome'
         url = f'https://inews-api.tvb.com/news/checkout/live/hd/ott_{channel_code}_h264?profile=safari'
-        return await get_json(url)
+
+        headers = {
+            'CLIENT-IP': '127.0.0.1',
+            'X-FORWARDED-FOR': '127.0.0.1'
+        }
+        return await get_json(url, headers=headers)
 
     async def get_play_url(self, video_id: str) -> Optional[str]:
         if video_id not in CHANNEL_MAPPING:
@@ -34,7 +39,12 @@ class TVB(BaseChannel):
         stream_url = data['content']['url']
 
         hd_url = stream_url['hd']
-        hd_url = re.sub(r'&p=(.*?)$', '', hd_url)
+
+
+        # if channel_id in ['nevt1', 'nevt2']:
+            # hd_url = re.sub(r'&p=(.*?)$', '', hd_url)
+
+        hd_url = re.sub(r'&p=(.*?)$', '&p=3000', hd_url)
 
         return hd_url
             
