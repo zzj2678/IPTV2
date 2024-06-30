@@ -79,7 +79,7 @@ async def proxy(request: Request, channel_id: str, video_id: str, path: str):
 
     parsed_url = urlparse(path)
 
-    logger.error(parsed_url)
+    # logger.error(parsed_url)
 
     base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
     path = parsed_url.path
