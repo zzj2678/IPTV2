@@ -76,7 +76,7 @@ async def proxy(request: Request, channel_id: str, video_id: str, path: str):
     if request.url.query:
         path += "?" + request.url.query
 
-    print(f"Proxying to URL: {base_url} - {path}")
+    logger.error(f"Proxying to URL: {base_url} ------- {path}")
 
     return await get_proxy(request, base_url, path, headers)
 
