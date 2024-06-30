@@ -5,7 +5,8 @@ from importlib import import_module
 import logging
 import time
 from utils.proxy import get_proxy
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
+
 
 logger = logging.getLogger(__name__)
 
@@ -69,6 +70,12 @@ async def proxy(request: Request, channel_id: str, video_id: str, path: str):
     }
 
     headers = type_to_headers[channel_id]
+
+    logger.error(path)
+
+    path = unquote(path)
+
+    logger.debug(f"Decoded path: {path}")
 
     parsed_url = urlparse(path)
     base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
