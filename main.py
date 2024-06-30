@@ -16,7 +16,7 @@ CHANNEL_MAPPINGS = {
 }
 
 @app.get("/")
-async def root():
+async def hello_world():
     return {"hello": "world"}
 
 @app.get("/{channel_id}/{video_id}")
