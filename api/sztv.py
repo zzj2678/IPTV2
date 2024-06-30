@@ -77,7 +77,7 @@ def modify_m3u8_content(base_url: str, pid: str, m3u8_content: str) -> str:
 
     for line in lines:
         if line.endswith(".ts"):
-            modified_lines.append(f"/data/{base_url}{pid}{determine_segment(pid)}{line}")
+            modified_lines.append(f"/data/{pid}{determine_segment(pid)}{line}")
         else:
             modified_lines.append(line)
 
