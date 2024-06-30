@@ -69,20 +69,14 @@ async def proxy(request: Request, channel_id: str, video_id: str, path: str):
         },
     }
 
+    type_to_base_url = {
+        'sztv':  'https://sztv-live.sztv.com.cn',
+    }
+
     headers = type_to_headers[channel_id]
 
-    logger.error(path)
+    base_url = type_to_base_url[channel_id]
 
-    path = unquote(path)
-
-    logger.error(f"Decoded path: {path}")
-
-    parsed_url = urlparse(path)
-
-    # logger.error(parsed_url)
-
-    base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
-    path = parsed_url.path
     if request.url.query:
         path += "?" + request.url.query
 
