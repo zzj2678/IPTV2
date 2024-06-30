@@ -15,6 +15,10 @@ CHANNEL_MAPPINGS = {
     # Define your channel mappings here if needed
 }
 
+@app.get("/")
+async def root():
+    return {"hello": "world"}
+
 @app.get("/{channel_id}/{video_id}")
 async def get_play_url(channel_id: str, video_id: str):
     logger.info(f"Received request for channel ID: {channel_id} and video ID: {video_id}")
