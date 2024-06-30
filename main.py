@@ -59,9 +59,9 @@ async def get_play_url(channel_id: str, video_id: str):
         logger.error(f"Module {channel} not found: {e}")
         raise HTTPException(status_code=404, detail="Channel not found")
 
-@app.get("/{channel_id}/{video_id}/data/{path:path}")
-async def proxy(request: Request, channel_id: str, video_id: str, path: str):
-    logger.info(f"Received proxy request for channel ID: {channel_id}, video ID: {video_id}, path: {path}")
+@app.get("/data/{channel_id}/{path:path}")
+async def proxy(request: Request, channel_id: str, path: str):
+    logger.info(f"Received proxy request for channel ID: {channel_id}, path: {path}")
     type_to_headers = {
         'sztv':  {
             'referer': 'https://www.sztv.com.cn/',
@@ -81,7 +81,7 @@ async def proxy(request: Request, channel_id: str, video_id: str, path: str):
     if request.url.query:
         path += "?" + request.url.query
 
-    logger.error(f"Proxying to URL: {base_url} ------- {path}")
+    logger.info(f"Proxying to URL: {base_url} ------- {path}")
 
     return await get_proxy(request, base_url, path, headers)
 
