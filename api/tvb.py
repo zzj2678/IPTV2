@@ -44,7 +44,7 @@ class TVB(BaseChannel):
         # if channel_id in ['nevt1', 'nevt2']:
             # hd_url = re.sub(r'&p=(.*?)$', '', hd_url)
 
-        hd_url = re.sub(r'&p=(.*?)$', '&p=3000', hd_url)
+        # hd_url = re.sub(r'&p=(.*?)$', '&p=3000', hd_url)
 
         return hd_url
             
