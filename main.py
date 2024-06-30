@@ -77,6 +77,7 @@ async def proxy(request: Request, channel_id: str, video_id: str, path: str):
 
     base_url = type_to_base_url[channel_id]
 
+    path = '/' + path
     if request.url.query:
         path += "?" + request.url.query
 
