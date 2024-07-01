@@ -3,12 +3,13 @@ from typing import Optional
 from .base import BaseChannel
 from utils.http import get_json, post_json, get_text
 from urllib.parse import urlparse
+import os
 
 logger = logging.getLogger(__name__)
 
 class AfreecaTv(BaseChannel):
     def __init__(self):
-        self.cookie = 'AbroadChk=OK; AbroadVod=OK; _au=f0b701c93182b6fe93430d2ac51c303f; _ausb=0x346c7023; VodNonLoginCkCnt=0; bjStationHistory=%0217041065; TempCook=.A32.7bbT56vyHM9fKZk.jruLK6BmiT4nvyXJbbkfAA; _ausa=0x708a7a2c; LIN=path_key%3Df0b701c93182b6fe93430d2ac51c303f_243400415_1667293877505%26path1%3Detc'
+        self.cookie = os.getenv('AFREECATV_COOKIE', 'AbroadChk=OK; AbroadVod=OK; _au=f0b701c93182b6fe93430d2ac51c303f; _ausb=0x346c7023; VodNonLoginCkCnt=0; bjStationHistory=%0217041065; TempCook=.A32.7bbT56vyHM9fKZk.jruLK6BmiT4nvyXJbbkfAA; _ausa=0x708a7a2c; LIN=path_key%3Df0b701c93182b6fe93430d2ac51c303f_243400415_1667293877505%26path1%3Detc')
 
         self.headers = {
             'Cookie': self.cookie,
