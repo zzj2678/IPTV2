@@ -51,8 +51,8 @@ async def get_play_url(channel_id: str, video_id: str):
         <body>
             <div id="player"></div>
             <script src="https://unpkg.com/artplayer/dist/artplayer.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-            <script src="https://cdn.jsdelivr.net/npm/flv.js@latest"></script>
+            <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/hls.js/8.0.0-beta.3/hls.min.js"></script>
+            <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/flv.js/1.6.2/flv.js"></script>
             <script>
                 const playUrl = '{play_url}';
                 const art = new Artplayer({{
