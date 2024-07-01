@@ -62,7 +62,12 @@ async def get_play_url(channel_id: str, video_id: str):
                 const playUrl = '{play_url}';
                 const art = new Artplayer({{
                     container: '#player',
-                    isLive: true
+                    autoplay: true,
+                    isLive: true,
+                    autoSize: true,
+                    setting: true,
+                    fullscreen: true,
+                    fullscreenWeb: true
                 }});
 
                 if (playUrl.endsWith('.m3u8')) {{

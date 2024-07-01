@@ -67,14 +67,27 @@ class AfreecaTv(BaseChannel):
 
         live_data = await self.get_live(video_id)
         print(live_data)
+        if 'CHANNEL' not in live_data or 'BNO' not in live_data['CHANNEL']:
+            logger.warning(f"BNO not found for video ID: {video_id}")
+            return None
+
         bno = live_data['CHANNEL']['BNO']
         logger.debug(f"Retrieved BNO: {bno}")
 
         aid_data = await self.get_aid(video_id, bno)
+        if 'CHANNEL' not in aid_data or 'AID' not in aid_data['CHANNEL']:
+            logger.warning(f"AID not found for video ID: {video_id} with BNO: {bno}")
+            return None
+
         aid = aid_data['CHANNEL']['AID']
         logger.debug(f"Retrieved AID: {aid}")
 
         stream_data = await self.get_stream(bno)
+        if 'view_url' not in stream_data:
+            logger.warning(f"Stream URL not found for BNO: {bno}")
+            return None
+
+
         play_url = stream_data['view_url'].replace('https://pc-web.stream.afreecatv.com', 'https://live-global-cdn-v02.afreecatv.com')
         play_url = f'{play_url}?aid={aid}'
         logger.debug(f"Play URL: {play_url}")
