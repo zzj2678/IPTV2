@@ -51,15 +51,14 @@ async def get_play_url(channel_id: str, video_id: str):
         <body>
             <div id="player"></div>
             <script src="https://unpkg.com/artplayer/dist/artplayer.js"></script>
-            <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/hls.js/8.0.0-beta.3/hls.min.js"></script>
-            <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/flv.js/1.6.2/flv.js"></script>
+            <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/hls.js/8.0.0-beta.3/hls.min.js" type="application/javascript"></script>
+            <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/flv.js/1.6.2/flv.min.js" type="application/javascript"></script>
+            <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/dashjs/4.3.0/dash.all.min.js" type="application/javascript"></script>
             <script>
                 const playUrl = '{play_url}';
                 const art = new Artplayer({{
                     container: '#player',
-                    isLive: true,
-                    fullscreen: true,
-                    fullscreenWeb: true,
+                    isLive: true
                 }});
 
                 if (playUrl.endsWith('.m3u8')) {{
@@ -79,6 +78,9 @@ async def get_play_url(channel_id: str, video_id: str):
                         flvPlayer.attachMediaElement(art.video);
                         flvPlayer.load();
                     }}
+                }} else if (playUrl.endsWith('.mpd')) {{
+                    const dashPlayer = dashjs.MediaPlayer().create();
+                    dashPlayer.initialize(art.video, playUrl, true);
                 }} else {{
                     art.video.src = playUrl;
                 }}
