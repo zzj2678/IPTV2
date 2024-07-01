@@ -138,10 +138,15 @@ async def proxy(request: Request, channel_id: str, path: str):
             'referer': 'https://www.sztv.com.cn/',
             "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36}",
         },
+        'afreecatv':  {
+            'referer': 'https://play.afreecatv.com/',
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36}",
+        },
     }
 
     type_to_base_url = {
         'sztv':  'https://sztv-live.sztv.com.cn',
+        'afreecatv': 'https://live-global-cdn-v02.afreecatv.com',
     }
 
     headers = type_to_headers[channel_id]
