@@ -77,6 +77,6 @@ class MyTvSuper(BaseChannel):
         m3u_content += f"#KODIPROP:inputstream.adaptive.license_key=https://h2j.860775.xyz/{license_key}\n"
         m3u_content += f"{play_url}\n"
 
-        return play_url
+        return m3u_content
 
 site = MyTvSuper()
