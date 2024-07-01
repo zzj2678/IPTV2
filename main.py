@@ -53,13 +53,34 @@ async def get_play_url(channel_id: str, video_id: str):
             <script src="https://cdn.jsdelivr.net/npm/hls.js@latest></script>
             <script src="https://cdn.jsdelivr.net/npm/flv.js@latest"></script>
             <script>
-                const art = new Artplayer({{
-                    container: '#player',
-                    url: '{play_url}',
-                    isLive: true,
-                    fullscreen: true,
-                    fullscreenWeb: true,
-                }});
+                    const playUrl = '{play_url}';
+                    const art = new Artplayer({
+                        container: '#player',
+                        isLive: true,
+                        fullscreen: true,
+                        fullscreenWeb: true,
+                    });
+
+                    if (playUrl.endsWith('.m3u8')) {
+                        if (Hls.isSupported()) {
+                            const hls = new Hls();
+                            hls.loadSource(playUrl);
+                            hls.attachMedia(art.video);
+                        } else if (art.video.canPlayType('application/vnd.apple.mpegurl')) {
+                            art.video.src = playUrl;
+                        }
+                    } else if (playUrl.endsWith('.flv')) {
+                        if (flvjs.isSupported()) {
+                            const flvPlayer = flvjs.createPlayer({
+                                type: 'flv',
+                                url: playUrl,
+                            });
+                            flvPlayer.attachMediaElement(art.video);
+                            flvPlayer.load();
+                        }
+                    } else {
+                        art.video.src = playUrl;
+                    }
             </script>
         </body>
         </html>
