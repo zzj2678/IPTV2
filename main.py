@@ -31,7 +31,7 @@ async def get_play_url(channel_id: str, video_id: str):
     if not extension:
         extension = 'm3u8'
         if channel_id in ['mytvsuper']:
-             extension = 'mmpd'
+             extension = 'mpd'
             
         play_url = f"/{channel_id}/{video_id}.{extension}"
             
