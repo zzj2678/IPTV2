@@ -24,8 +24,8 @@ async def hello_world():
 async def get_play_url(channel_id: str, video_id: str):
     logger.info(f"Received request for channel ID: {channel_id} and video ID: {video_id}")
 
-    is_m3u8 = video_id.endswith(".m3u8")
-    video_id = video_id[:-5] if is_m3u8 else video_id
+    # is_m3u8 = video_id.endswith(".m3u8")
+    # video_id = video_id[:-5] if is_m3u8 else video_id
 
     try:
         channel = CHANNEL_MAPPINGS.get(channel_id, channel_id)
