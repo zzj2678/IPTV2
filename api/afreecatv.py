@@ -2,26 +2,25 @@ import logging
 from typing import Optional
 from .base import BaseChannel
 from utils.http import get_json, post_json, get_text
+from urllib.parse import urlparse
 
 logger = logging.getLogger(__name__)
 
 class AfreecaTv(BaseChannel):
     def __init__(self):
-        self.cookie = ('AbroadChk=OK; AbroadVod=OK; _au=f0b701c93182b6fe93430d2ac51c303f; '
-                       '_ausb=0x346c7023; VodNonLoginCkCnt=0; bjStationHistory=%0217041065; '
-                       'TempCook=.A32.7bbT56vyHM9fKZk.jruLK6BmiT4nvyXJbbkfAA; _ausa=0x708a7a2c; '
-                       'LIN=path_key%3Df0b701c93182b6fe93430d2ac51c303f_243400415_1667293877505%26path1%3Detc')
+        self.cookie = 'AbroadChk=OK; AbroadVod=OK; _au=f0b701c93182b6fe93430d2ac51c303f; _ausb=0x346c7023; VodNonLoginCkCnt=0; bjStationHistory=%0217041065; TempCook=.A32.7bbT56vyHM9fKZk.jruLK6BmiT4nvyXJbbkfAA; _ausa=0x708a7a2c; LIN=path_key%3Df0b701c93182b6fe93430d2ac51c303f_243400415_1667293877505%26path1%3Detc'
 
         self.headers = {
             'Cookie': self.cookie,
             'Referer': 'https://play.afreecatv.com',
         }
 
-    async def get_play_live(self, bid: str, request_type: str):
+    async def get_play_live(self, bid: str, bno: str, type: str):
         url = f'https://live.afreecatv.com/afreeca/player_live_api.php?bjid={bid}'
         data = {
             'bid': bid,
-            'type': request_type,
+            'bno': bno,
+            'type': type,
             'pwd': '',
             'player_type': 'html5',
             'stream_type': 'common',
@@ -34,11 +33,11 @@ class AfreecaTv(BaseChannel):
 
     async def get_live(self, bid: str):
         logger.debug(f"Getting live stream for bid: {bid}")
-        return await self.get_play_live(bid, 'live')
+        return await self.get_play_live(bid, '', 'live')
 
     async def get_aid(self, bid: str, bno: str):
         logger.debug(f"Getting aid for bid: {bid} and bno: {bno}")
-        return await self.get_play_live(bid, 'aid')
+        return await self.get_play_live(bid, bno, 'aid')
 
     async def get_stream(self, broad_key: str):
         url = 'https://livestream-manager.afreecatv.com/broad_stream_assign.html'
@@ -46,16 +45,20 @@ class AfreecaTv(BaseChannel):
             'return_type': 'gcp_cdn',
             'use_cors': 'true',
             'cors_origin_url': 'play.afreecatv.com',
-            'broad_key': f'{broad_key}-common-hd-hls',
+            'broad_key': f'{broad_key}-common-original-hls',
             'time': ''
         }
         logger.debug(f"Requesting stream with params: {params}")
         return await get_json(url, params=params, headers=self.headers)
 
-    def modify_m3u8_content(self, m3u8_content: str) -> str:
+    def modify_m3u8_content(self, play_url: str, m3u8_content: str) -> str:
         logger.debug("Modifying m3u8 content")
+
+        parsed_url = urlparse(play_url)
+        path_to_prepend = "/".join(parsed_url.path.split('/')[:2])
+
         lines = m3u8_content.strip().splitlines()
-        modified_lines = [f"/data/afreecatv/{line}" if line.endswith(".TS") else line for line in lines]
+        modified_lines = [f"/data/afreecatv{path_to_prepend}/{line}" if line.endswith(".TS") else line for line in lines]
         logger.debug(f"Modified m3u8 content: {modified_lines}")
         return "\n".join(modified_lines)
 
@@ -63,6 +66,7 @@ class AfreecaTv(BaseChannel):
         logger.info(f"Processing request for video ID: {video_id}")
 
         live_data = await self.get_live(video_id)
+        print(live_data)
         bno = live_data['CHANNEL']['BNO']
         logger.debug(f"Retrieved BNO: {bno}")
 
@@ -82,7 +86,7 @@ class AfreecaTv(BaseChannel):
             logger.warning(f"No content retrieved from {play_url}")
             return None
 
-        modified_m3u8_content = self.modify_m3u8_content(m3u8_content)
+        modified_m3u8_content = self.modify_m3u8_content(play_url, m3u8_content)
         logger.debug(f"Modified m3u8 content: {modified_m3u8_content}")
 
         return modified_m3u8_content
