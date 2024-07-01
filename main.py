@@ -38,26 +38,26 @@ async def get_play_url(channel_id: str, video_id: str):
             raise HTTPException(status_code=404, detail="Play URL not found")
 
         # if is_m3u8:
-            if isinstance(play_url, str):
-                if play_url.startswith("#EXTM3U"):
-                    headers = {
-                        "Content-Type": "application/vnd.apple.mpegurl",
-                        "Content-Disposition": f'attachment; filename="{int(time.time())}.m3u8"'
-                    }
-                    return StreamingResponse(iter([play_url.encode()]), headers=headers)
-                else:
-                    logger.info(f"Redirecting to Play URL: {play_url}")
-                    return RedirectResponse(url=play_url, status_code=302)
-            elif isinstance(play_url, bytes):
+        if isinstance(play_url, str):
+            if play_url.startswith("#EXTM3U"):
                 headers = {
-                    "Content-Type": "video/MP2T",
-                    "Content-Disposition": f'attachment; filename="{int(time.time())}.ts"'
+                    "Content-Type": "application/vnd.apple.mpegurl",
+                    "Content-Disposition": f'attachment; filename="{int(time.time())}.m3u8"'
                 }
-                logger.info(f"Returning TS content for video ID: {video_id}")
-                return StreamingResponse(iter([play_url]), headers=headers)
+                return StreamingResponse(iter([play_url.encode()]), headers=headers)
             else:
-                logger.error(f"Unexpected response type for video ID: {video_id}")
-                raise HTTPException(status_code=500, detail="Unexpected response type")
+                logger.info(f"Redirecting to Play URL: {play_url}")
+                return RedirectResponse(url=play_url, status_code=302)
+        elif isinstance(play_url, bytes):
+            headers = {
+                "Content-Type": "video/MP2T",
+                "Content-Disposition": f'attachment; filename="{int(time.time())}.ts"'
+            }
+            logger.info(f"Returning TS content for video ID: {video_id}")
+            return StreamingResponse(iter([play_url]), headers=headers)
+        else:
+            logger.error(f"Unexpected response type for video ID: {video_id}")
+            raise HTTPException(status_code=500, detail="Unexpected response type")
 
         # else:
         #     if isinstance(play_url, str):
