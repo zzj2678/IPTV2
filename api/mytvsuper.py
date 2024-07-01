@@ -71,7 +71,9 @@ class MyTvSuper(BaseChannel):
 
         license_key = CHANNEL_MAPPING[video_id]
 
-        m3u_content = f"#EXTINF:-1\n"
+        
+        m3u_content = f"#EXTM3U\n"
+        m3u_content += f"#EXTINF:-1\n"
         m3u_content += "#KODIPROP:inputstream.adaptive.manifest_type=mpd\n"
         m3u_content += "#KODIPROP:inputstream.adaptive.license_type=clearkey\n"
         m3u_content += f"#KODIPROP:inputstream.adaptive.license_key=https://h2j.860775.xyz/{license_key}\n"
