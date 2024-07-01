@@ -62,7 +62,7 @@ async def get_play_url(channel_id: str, video_id: str):
         else:
             if isinstance(play_url, str):
                 if play_url.startswith("#EXTM3U"):
-                    play_url = '/{channel_id}/{video_id}.m3u8'
+                    play_url = f"/{channel_id}/{video_id}.m3u8"
                     
                 player_html = f"""
                 <!DOCTYPE html>
@@ -70,7 +70,6 @@ async def get_play_url(channel_id: str, video_id: str):
                 <head>
                     <meta charset="UTF-8">
                     <title>Video Player</title>
-                    <link rel="stylesheet" href="https://unpkg.com/artplayer/dist/artplayer.css">
                     <script src="https://unpkg.com/artplayer/dist/artplayer.js"></script>
                 </head>
                 <body>
