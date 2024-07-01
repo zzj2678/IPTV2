@@ -36,16 +36,29 @@ async def get_play_url(channel_id: str, video_id: str):
         <head>
             <meta charset="UTF-8">
             <title>Video Player</title>
-
+            <style>
+                html, body {
+                    height: 100%;
+                    margin: 0;
+                }
+                #player {
+                    width: 100%;
+                    height: 100%;
+                }
+            </style>
         </head>
         <body>
             <div id="player"></div>
             <script src="https://unpkg.com/artplayer/dist/artplayer.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest></script>
+            <script src="https://cdn.jsdelivr.net/npm/flv.js@latest"></script>
             <script>
                 const art = new Artplayer({{
                     container: '#player',
                     url: '{play_url}',
-                    isLive: true
+                    isLive: true,
+                    fullscreen: true,
+                    fullscreenWeb: true,
                 }});
             </script>
         </body>
