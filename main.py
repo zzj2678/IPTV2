@@ -24,12 +24,15 @@ async def hello_world():
 async def get_play_url(channel_id: str, video_id: str):
     logger.info(f"Received request for channel ID: {channel_id} and video ID: {video_id}")
 
-    is_m3u8 = video_id.endswith(".m3u8")
-    video_id = video_id[:-5] if is_m3u8 else video_id
+    # is_m3u8 = video_id.endswith(".m3u8")
+    # video_id = video_id[:-5] if is_m3u8 else video_id
 
+    extension = ''
+    if '.' in video_id:
+        video_id, extension = video_id.rsplit('.', 1)
 
-    if not is_m3u8:
-        play_url = f"/{channel_id}/{video_id}.m3u8"
+    if extension:
+        play_url = f"/{channel_id}/{video_id}.{extension}"
             
         player_html = f"""
         <!DOCTYPE html>
