@@ -27,6 +27,7 @@ async def get_play_url(channel_id: str, video_id: str):
     is_m3u8 = video_id.endswith(".m3u8")
     video_id = video_id[:-5] if is_m3u8 else video_id
 
+
     if not is_m3u8:
         play_url = f"/{channel_id}/{video_id}.m3u8"
             
@@ -37,55 +38,56 @@ async def get_play_url(channel_id: str, video_id: str):
             <meta charset="UTF-8">
             <title>Video Player</title>
             <style>
-                html, body {
+                html, body {{
                     height: 100%;
                     margin: 0;
-                }
-                #player {
+                }}
+                #player {{
                     width: 100%;
                     height: 100%;
-                }
+                }}
             </style>
         </head>
         <body>
             <div id="player"></div>
             <script src="https://unpkg.com/artplayer/dist/artplayer.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest></script>
+            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
             <script src="https://cdn.jsdelivr.net/npm/flv.js@latest"></script>
             <script>
-                    const playUrl = '{play_url}';
-                    const art = new Artplayer({
-                        container: '#player',
-                        isLive: true,
-                        fullscreen: true,
-                        fullscreenWeb: true,
-                    });
+                const playUrl = '{play_url}';
+                const art = new Artplayer({{
+                    container: '#player',
+                    isLive: true,
+                    fullscreen: true,
+                    fullscreenWeb: true,
+                }});
 
-                    if (playUrl.endsWith('.m3u8')) {
-                        if (Hls.isSupported()) {
-                            const hls = new Hls();
-                            hls.loadSource(playUrl);
-                            hls.attachMedia(art.video);
-                        } else if (art.video.canPlayType('application/vnd.apple.mpegurl')) {
-                            art.video.src = playUrl;
-                        }
-                    } else if (playUrl.endsWith('.flv')) {
-                        if (flvjs.isSupported()) {
-                            const flvPlayer = flvjs.createPlayer({
-                                type: 'flv',
-                                url: playUrl,
-                            });
-                            flvPlayer.attachMediaElement(art.video);
-                            flvPlayer.load();
-                        }
-                    } else {
+                if (playUrl.endsWith('.m3u8')) {{
+                    if (Hls.isSupported()) {{
+                        const hls = new Hls();
+                        hls.loadSource(playUrl);
+                        hls.attachMedia(art.video);
+                    }} else if (art.video.canPlayType('application/vnd.apple.mpegurl')) {{
                         art.video.src = playUrl;
-                    }
+                    }}
+                }} else if (playUrl.endsWith('.flv')) {{
+                    if (flvjs.isSupported()) {{
+                        const flvPlayer = flvjs.createPlayer({{
+                            type: 'flv',
+                            url: playUrl,
+                        }});
+                        flvPlayer.attachMediaElement(art.video);
+                        flvPlayer.load();
+                    }}
+                }} else {{
+                    art.video.src = playUrl;
+                }}
             </script>
         </body>
         </html>
         """
         return HTMLResponse(content=player_html)
+
 
     try:
         channel = CHANNEL_MAPPINGS.get(channel_id, channel_id)
