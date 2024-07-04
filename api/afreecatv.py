@@ -52,14 +52,24 @@ class AfreecaTv(BaseChannel):
         logger.debug(f"Requesting stream with params: {params}")
         return await get_json(url, params=params, headers=self.headers)
 
-    def modify_m3u8_content(self, play_url: str, m3u8_content: str) -> str:
+    def get_m3u8_content(self, play_url: str, m3u8_content: str) -> str:
         logger.debug("Modifying m3u8 content")
 
         parsed_url = urlparse(play_url)
-        path_to_prepend = "/".join(parsed_url.path.split('/')[:2])
+        port = parsed_url.port if parsed_url.port else (443 if parsed_url.scheme == 'https' else 80)
+        domain_port = f"{parsed_url.hostname}:{port}"
+        path = "/".join(parsed_url.path.split('/')[:-1])
 
         lines = m3u8_content.strip().splitlines()
-        modified_lines = [f"/data/afreecatv{path_to_prepend}/{line}" if line.endswith(".TS") else line for line in lines]
+        modified_lines = []
+
+        for line in lines:
+            if line and not line.startswith("#") and not urlparse(line).netloc:
+                modified_line = f"/data/{domain_port}{path}/{line}"
+                modified_lines.append(modified_line)
+            else:
+                modified_lines.append(line)
+
         logger.debug(f"Modified m3u8 content: {modified_lines}")
         return "\n".join(modified_lines)
 
@@ -100,9 +110,9 @@ class AfreecaTv(BaseChannel):
             logger.warning(f"No content retrieved from {play_url}")
             return None
 
-        modified_m3u8_content = self.modify_m3u8_content(play_url, m3u8_content)
-        logger.debug(f"Modified m3u8 content: {modified_m3u8_content}")
+        m3u8_content = self.get_m3u8_content(play_url, m3u8_content)
+        logger.debug(f"Modified m3u8 content: {m3u8_content}")
 
-        return modified_m3u8_content
+        return m3u8_content
 
 site = AfreecaTv()

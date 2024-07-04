@@ -135,32 +135,40 @@ async def get_play_url(channel_id: str, video_id: str):
         logger.error(f"Module {channel} not found: {e}")
         raise HTTPException(status_code=404, detail="Channel not found")
 
-@app.get("/data/{channel_id}/{path:path}")
-async def proxy(request: Request, channel_id: str, path: str):
-    logger.info(f"Received proxy request for channel ID: {channel_id}, path: {path}")
-    type_to_headers = {
-        'sztv':  {
-            'referer': 'https://www.sztv.com.cn/',
-            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36}",
-        },
-        'afreecatv':  {
-            'referer': 'https://play.afreecatv.com/',
-            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36}",
-        },
-    }
+    parts = domain.split('.')
+    if len(parts) > 2:
+        return '.'.join(parts[-2:])
+    return domain
 
-    type_to_base_url = {
-        'sztv':  'https://sztv-live.sztv.com.cn',
-        'afreecatv': 'https://live-global-cdn-v02.afreecatv.com',
-    }
+def get_top_level_domain(domain: str) -> str:
+    parts = domain.split('.')
+    if len(parts) > 2:
+        return '.'.join(parts[-2:])
+    return domain
 
-    headers = type_to_headers[channel_id]
+@app.get("/data/{domain_port}/{path:path}")
+async def proxy(request: Request, domain_port: str, path: str):
+    logger.info(f"Received proxy request for path: {path}")
 
-    base_url = type_to_base_url[channel_id]
+    domain, port = domain_port.split(":")
+    scheme = "https" if port == "443" else "http"
+    base_url = f"{scheme}://{domain}"
+
+    top_level_domain = get_top_level_domain(domain)
+    referer = f"{scheme}://{top_level_domain}/"
+
+    headers = {
+        # 'referer': referer,
+        'referer': 'https://www.sztv.com.cn/',
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36}",
+    },
 
     path = '/' + path
     if request.url.query:
         path += "?" + request.url.query
+
+    print(f"Proxying to URL: {base_url} ------- {path}")
+    print(headers)
 
     logger.info(f"Proxying to URL: {base_url} ------- {path}")
 
