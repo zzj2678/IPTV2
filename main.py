@@ -40,6 +40,8 @@ async def get_play_url(channel_id: str, video_id: str):
         <html>
         <head>
             <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="referrer" content="no-referrer">
             <title>Video Player</title>
             <style>
                 html, body {{
@@ -154,6 +156,9 @@ async def proxy(request: Request, domain_port: str, path: str):
 
     top_level_domain = get_top_level_domain(domain)
     referer = f"{scheme}://{top_level_domain}/"
+
+    if domain == "sztv-live.sztv.com.cn":
+        referer = 'https://www.sztv.com.cn/'
 
     headers = {
         'referer': referer,

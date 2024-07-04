@@ -18,7 +18,7 @@ CHANNEL_MAPPING = {
     'szyl': '1q4iPng',   # 深圳娱乐
     'szse': '1SIQj6s',   # 深圳少儿
     'szgg': '2q76Sw2',   # 深圳公共
-    'szcjsh': '3vlcoxP', # 深圳财*
+    'szcjsh': '3vlcoxP', # 深圳财经生活
     'szdsj': '4azbkoY',  # 深圳电视剧
     'yhgw': 'BJ5u5k2',   # 宜和购物
     'szds': 'ZwxzUXr',   # 深圳都市
