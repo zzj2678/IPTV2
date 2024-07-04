@@ -27,32 +27,28 @@ class Huya(BaseChannel):
         base_url = f"{sUrl}/{sStreamName}.{sUrlSuffix}?"
         params = dict(parse_qsl(unescape(sAntiCode)))
 
-        reSecret = not screenType and liveSourceType in (0, 8, 13)
-        if reSecret:
-            params.setdefault("t", "100")  # 102
-            ct = int(params["wsTime"], 16) + random.random()
-            lPresenterUid = vStreamInfo["lPresenterUid"]
-            if not sStreamName.startswith(str(lPresenterUid)):
-                uid = lPresenterUid
-            else:
-                uid = int(ct % 1e7 * 1e6 % 0xFFFFFFFF)
-            u1 = uid & 0xFFFFFFFF00000000
-            u2 = uid & 0xFFFFFFFF
-            u3 = uid & 0xFFFFFF
-            u = u1 | u2 >> 24 | u3 << 8
-            params.update(
-                {
-                    "u": str(u),
-                    "seqid": str(int(ct * 1000) + uid),
-                    "ver": "1",
-                    "uuid": int(ct % 1e7 * 1e6 % 0xFFFFFFFF),
-                }
-            )
-            fm = base64.b64decode(params["fm"]).decode().split("_", 1)[0]
-            ss = hash.md5("|".join([params["seqid"], params["ctype"], params["t"]]))
+        params.setdefault("t", "100")  # 102
+        ct = int((int(params['wsTime'], 16) + random.random()) * 1000)
+        lPresenterUid = vStreamInfo["lPresenterUid"]
+        if not sStreamName.startswith(str(lPresenterUid)):
+            uid = lPresenterUid
+        else:
+            uid = int(ct % 1e10 * 1e3 % 0xffffffff)
+        u1 = uid & 0xFFFFFFFF00000000
+        u2 = uid & 0xFFFFFFFF
+        u3 = uid & 0xFFFFFF
+        u = u1 | u2 >> 24 | u3 << 8
+        params.update({
+             'ctype': 'tars_mp', # !!!!
+             'u': str(u),
+             'seqid': str(ct + uid),
+             'ver': '1',
+             'uuid': int((ct % 1e10 + random.random()) * 1e3 % 0xffffffff),
+        })
+        fm = base64.b64decode(params["fm"]).decode().split("_", 1)[0]
+        ss = hashlib.md5('|'.join([params['seqid'], params['ctype'], params['t']]).encode('utf-8')).hexdigest()
+        params["wsSecret"] = hashlib.md5('_'.join([fm, params['u'], sStreamName, ss, params['wsTime']]).encode('utf-8')).hexdigest()
 
-        if reSecret:
-            params["wsSecret"] = hash.md5("_".join([fm, params["u"], sStreamName, ss, params["wsTime"]]))
 
         url = base_url + urlencode(params, safe="*")
 
@@ -87,6 +83,6 @@ class Huya(BaseChannel):
 
         # gameStreamInfo = next((stream for stream in gameStreamInfoList if stream["sCdnType"] == "HS"), None)
 
-        return self.get_url(gameStreamInfoList[0], vMultiStreamInfo, screenType, liveSourceType)
+        return self.get_url(gameStreamInfoList[-1], vMultiStreamInfo, screenType, liveSourceType)
 
 site = Huya()
