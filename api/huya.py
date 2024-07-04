@@ -56,6 +56,8 @@ class Huya(BaseChannel):
 
         url = base_url + urlencode(params, safe="*")
 
+        url = url.replace("http://", "https://")
+
         return url
 
     async def get_play_url(self, video_id):
@@ -80,6 +82,8 @@ class Huya(BaseChannel):
         screenType = gameLiveInfo["screenType"]
         liveSourceType = gameLiveInfo["liveSourceType"]
         gameStreamInfoList = data["gameStreamInfoList"]
+
+        print(gameStreamInfoList)
 
         # gameStreamInfo = next((stream for stream in gameStreamInfoList if stream["sCdnType"] == "HS"), None)
 
