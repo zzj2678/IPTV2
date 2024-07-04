@@ -32,7 +32,9 @@ async def get_play_url(channel_id: str, video_id: str):
         extension = 'm3u8'
         if channel_id in ['mytvsuper']:
              extension = 'mpd'
-            
+        if channel_id in ['huya']:
+             extension = 'flv'
+
         play_url = f"/{channel_id}/{video_id}.{extension}"
             
         player_html = f"""

@@ -30,8 +30,8 @@ class Huya(BaseChannel):
         params.setdefault("t", "100")  # 102
         ct = int((int(params['wsTime'], 16) + random.random()) * 1000)
         lPresenterUid = vStreamInfo["lPresenterUid"]
-        if not sStreamName.startswith(str(lPresenterUid)):
-            uid = lPresenterUid
+         if liveSourceType and not sStreamName.startswith(str(lPresenterUid)):
+            uid = int(lPresenterUid)
         else:
             uid = int(ct % 1e10 * 1e3 % 0xffffffff)
         u1 = uid & 0xFFFFFFFF00000000
