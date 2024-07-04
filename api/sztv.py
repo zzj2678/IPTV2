@@ -5,6 +5,8 @@ from typing import Optional
 from .base import BaseChannel
 from utils.http import get_text
 from urllib.parse import urlparse
+import os
+from utils.m3u8 import get_m3u8_content
 
 logger = logging.getLogger(__name__)
 
@@ -44,28 +46,6 @@ class SZTV(BaseChannel):
     def determine_segment(self, pid: str) -> str:
         return '/500/' if len(pid) >= 4 else '/64/'
 
-    def get_m3u8_content(self, play_url: str, m3u8_content: str) -> str:
-        logger.debug("Modifying m3u8 content")
-
-        parsed_url = urlparse(play_url)
-        port = parsed_url.port if parsed_url.port else (443 if parsed_url.scheme == 'https' else 80)
-        domain_port = f"{parsed_url.hostname}:{port}"
-        path = "/".join(parsed_url.path.split('/')[:-1])
-
-        lines = m3u8_content.strip().splitlines()
-        modified_lines = []
-
-        for line in lines:
-            if line and not line.startswith("#") and not urlparse(line).netloc:
-                modified_line = f"/data/{domain_port}{path}/{line}"
-                modified_lines.append(modified_line)
-            else:
-                modified_lines.append(line)
-
-
-        logger.debug(f"Modified m3u8 content: {modified_lines}")
-        return "\n".join(modified_lines)
-
     async def get_play_url(self, video_id: str) -> Optional[str]:
         logger.info(f"Processing request for video ID: {video_id}")
 
@@ -92,7 +72,7 @@ class SZTV(BaseChannel):
 
         print(m3u8_content)
 
-        modified_m3u8_content = self.get_m3u8_content(play_url, m3u8_content)
+        modified_m3u8_content = get_m3u8_content(play_url, m3u8_content)
 
         return modified_m3u8_content
 

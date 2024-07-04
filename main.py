@@ -6,7 +6,7 @@ import logging
 import time
 from utils.proxy import get_proxy
 from urllib.parse import urlparse, unquote
-
+import tldextract
 
 logger = logging.getLogger(__name__)
 
@@ -140,11 +140,9 @@ async def get_play_url(channel_id: str, video_id: str):
         return '.'.join(parts[-2:])
     return domain
 
-def get_top_level_domain(domain: str) -> str:
-    parts = domain.split('.')
-    if len(parts) > 2:
-        return '.'.join(parts[-2:])
-    return domain
+def get_top_level_domain(domain):
+    extracted = tldextract.extract(domain)
+    return f"{extracted.domain}.{extracted.suffix}"
 
 @app.get("/data/{domain_port}/{path:path}")
 async def proxy(request: Request, domain_port: str, path: str):
@@ -158,8 +156,7 @@ async def proxy(request: Request, domain_port: str, path: str):
     referer = f"{scheme}://{top_level_domain}/"
 
     headers = {
-        # 'referer': referer,
-        'referer': base_url,
+        'referer': referer,
         "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36}",
     }
 
