@@ -28,9 +28,14 @@ class Youtube(BaseChannel):
 
         streaming_data = data.get('streamingData', {})
 
-        hls_manifest_url = streaming_data.get('hlsManifestUrl')
+        print(streaming_data)
 
-        return hls_manifest_url
+        hls_manifest_url = streaming_data.get('hlsManifestUrl')
+        if hls_manifest_url:
+            resolution_url = await get_text(hls_manifest_url)
+            return resolution_url
+
+        return None
 
 site = Youtube()
 
