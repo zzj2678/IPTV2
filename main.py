@@ -154,7 +154,7 @@ async def proxy(request: Request, domain_port: str, path: str):
 
     domain, port = domain_port.split(":")
     scheme = "https" if port == "443" else "http"
-    base_url = f"{scheme}://{domain}"
+    base_url = f"{scheme}://{domain}:{port}"
 
     top_level_domain = get_top_level_domain(domain)
     referer = f"{scheme}://{top_level_domain}/"
@@ -165,6 +165,11 @@ async def proxy(request: Request, domain_port: str, path: str):
     headers = {
         'referer': referer,
         "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36}",
+    }
+
+    if (base_url == 'http://198.16.100.186:8278') {
+        headers['CLIENT-IP'] = '127.0.0.1'
+        headers['X-FORWARDED-FOR'] = '127.0.0.1'
     }
 
     path = '/' + path

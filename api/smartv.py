@@ -6,7 +6,7 @@ import time
 import json
 from urllib.parse import urlparse, parse_qs
 from utils.http import get_text
-from utils.m3u8 import get_m3u8_content
+from utils.m3u8 import update_m3u8_content
 
 logger = logging.getLogger(__name__)
 
@@ -24,10 +24,14 @@ class Smartv(BaseChannel):
 
     async def get_play_url(self, video_id: str) -> Optional[str]:
         url = await self._generate_url(video_id)
-        headers = {'CLIENT-IP': '127.0.0.1', 'X-FORWARDED-FOR': '127.0.0.1'}
+        headers = {
+            'CLIENT-IP': '127.0.0.1', 
+            'X-FORWARDED-FOR': '127.0.0.1', 
+            'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 12; 22101316C Build/SP1A.210812.016)'
+        }
 
         playlist = await get_text(url, headers=headers)
 
-        return get_m3u8_content(url, playlist)
+        return update_m3u8_content(url, playlist)
 
 site = Smartv()

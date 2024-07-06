@@ -6,7 +6,7 @@ from .base import BaseChannel
 from utils.http import get_text
 from urllib.parse import urlparse
 import os
-from utils.m3u8 import get_m3u8_content
+from utils.m3u8 import update_m3u8_content
 
 logger = logging.getLogger(__name__)
 
@@ -72,7 +72,7 @@ class SZTV(BaseChannel):
 
         print(m3u8_content)
 
-        modified_m3u8_content = get_m3u8_content(play_url, m3u8_content)
+        modified_m3u8_content = update_m3u8_content(play_url, m3u8_content, True)
 
         return modified_m3u8_content
 

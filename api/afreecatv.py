@@ -4,7 +4,7 @@ from .base import BaseChannel
 from utils.http import get_json, post_json, get_text
 from urllib.parse import urlparse
 import os
-from utils.m3u8 import get_m3u8_content
+from utils.m3u8 import update_m3u8_content
 
 logger = logging.getLogger(__name__)
 
@@ -90,7 +90,7 @@ class AfreecaTv(BaseChannel):
             logger.warning(f"No content retrieved from {play_url}")
             return None
 
-        m3u8_content = get_m3u8_content(play_url, m3u8_content)
+        m3u8_content = update_m3u8_content(play_url, m3u8_content, true)
         logger.debug(f"Modified m3u8 content: {m3u8_content}")
 
         return m3u8_content
