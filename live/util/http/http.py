@@ -3,7 +3,7 @@ from typing import Any, Dict
 from bs4 import BeautifulSoup
 from lxml import etree
 
-from utils.http.http_client import HTTPClient
+from util.http.http_client import HTTPClient
 
 
 async def get(url: str, *, params: dict[str, str] = {}, headers: dict[str, str] = {}, **kwargs: Any):

@@ -6,7 +6,7 @@ from urllib.parse import urljoin
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 import base64
-from utils.http import get_json, post_json
+from util.http import get_json, post_json
 
 logger = logging.getLogger(__name__)
 

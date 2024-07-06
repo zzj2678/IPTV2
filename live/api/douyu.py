@@ -4,12 +4,12 @@ import time
 import re
 from typing import Optional
 from .base import BaseChannel
-from utils.http import get_json, get_text, post_json
+from util.http import get_json, get_text, post_json
 from urllib.parse import urlparse
 import os
-from utils.m3u8 import update_m3u8_content
-from utils.crypto import md5
-from utils.match import match1
+from util.m3u8 import update_m3u8_content
+from util.crypto import md5
+from util.match import match1
 
 logger = logging.getLogger(__name__)
 

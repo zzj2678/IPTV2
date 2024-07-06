@@ -5,8 +5,8 @@ import hashlib
 import time
 import json
 from urllib.parse import urlparse, parse_qs
-from utils.http import get_text
-from utils.m3u8 import update_m3u8_content
+from util.http import get_text
+from util.m3u8 import update_m3u8_content
 
 logger = logging.getLogger(__name__)
 

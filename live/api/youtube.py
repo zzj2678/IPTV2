@@ -4,8 +4,8 @@ from .base import BaseChannel
 import json
 from urllib.parse import urljoin
 import re
-from utils.http import get_json, post_json, get_text
-from utils.m3u8 import update_m3u8_content
+from util.http import get_json, post_json, get_text
+from util.m3u8 import update_m3u8_content
 import requests
 
 logger = logging.getLogger(__name__)

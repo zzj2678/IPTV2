@@ -6,8 +6,8 @@ from typing import Any, Optional, Type
 # import orjson
 from aiohttp import ClientSession, ClientTimeout, TCPConnector
 
-from utils.cipers import sslgen
-from utils.http.trace_config import get_trace_config
+from util.cipers import sslgen
+from util.http.trace_config import get_trace_config
 
 # from bs4 import BeautifulSoup
 
@@ -21,8 +21,8 @@ fake_headers = {
     "Accept-Encoding": "gzip,deflate,sdch",
     "Accept-Language": "en-US,en;q=0.8",
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36",
-    "X-FORWARDED-FOR": "118.120.251.92",
-    "CLIENT-IP": "118.120.251.92",
+    # "X-FORWARDED-FOR": "118.120.251.92",
+    # "CLIENT-IP": "118.120.251.92",
 }
 
 

@@ -1,7 +1,7 @@
 import logging
 from typing import Optional
 from .base import BaseChannel
-from utils.http import get_json
+from util.http import get_json
 import re
 
 logger = logging.getLogger(__name__)

@@ -3,10 +3,10 @@ import hashlib
 import time
 from typing import Optional
 from .base import BaseChannel
-from utils.http import get_text
+from util.http import get_text
 from urllib.parse import urlparse
 import os
-from utils.m3u8 import update_m3u8_content
+from util.m3u8 import update_m3u8_content
 
 logger = logging.getLogger(__name__)
 

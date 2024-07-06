@@ -1,7 +1,7 @@
 import logging
 from typing import Optional
 from .base import BaseChannel
-from utils.http import get_json, post_json, get_text
+from util.http import get_json, post_json, get_text
 import json
 import base64
 import hashlib
@@ -10,7 +10,7 @@ import re
 import time
 from html import unescape
 from urllib.parse import urljoin, urlencode, parse_qsl
-from utils.match import match1
+from util.match import match1
 
 class Huya(BaseChannel):
 

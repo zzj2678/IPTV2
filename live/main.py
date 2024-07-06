@@ -4,7 +4,7 @@ from starlette.requests import Request
 from importlib import import_module
 import logging
 import time
-from utils.proxy import get_proxy
+from util.proxy import get_proxy
 from urllib.parse import urlparse, unquote
 import tldextract
 
@@ -172,7 +172,6 @@ async def proxy(request: Request, domain_port: str, path: str):
             'CLIENT-IP': '127.0.0.1',
             'X-FORWARDED-FOR': '127.0.0.1'
         })
-    
 
     path = '/' + path
     if request.url.query:
