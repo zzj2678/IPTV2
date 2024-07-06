@@ -90,7 +90,7 @@ class AfreecaTv(BaseChannel):
             logger.warning(f"No content retrieved from {play_url}")
             return None
 
-        m3u8_content = update_m3u8_content(play_url, m3u8_content, true)
+        m3u8_content = update_m3u8_content(play_url, m3u8_content, True)
         logger.debug(f"Modified m3u8 content: {m3u8_content}")
 
         return m3u8_content
