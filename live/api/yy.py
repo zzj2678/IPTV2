@@ -18,15 +18,6 @@ class YY(BaseChannel):
         }
 
     async def get_play_url(self, video_id: str) -> Optional[str]:
-        headers = {
-            "Referer": "https://wap.yy.com",
-            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Mobile/15E148 Safari/604.1"
-        }
-
-        html = await get_text(f"https://wap.yy.com/mobileweb/{video_id}", headers=headers)
-
-        rid  = match1(html, r"md5Hash[\s\S]*?sid.*'(.*)'.*?getQuery")
-
         tm = int(time.time() * 1000)
 
         data = {
@@ -34,8 +25,8 @@ class YY(BaseChannel):
                 "seq": tm,
                 "appidstr": "0",
                 "bidstr": "0",
-                "cidstr": rid,
-                "sidstr": rid,
+                "cidstr": video_id,
+                "sidstr": video_id,
                 "uid64": 0,
                 "client_type": 108,
                 "client_ver": "5.14.13",
@@ -75,7 +66,7 @@ class YY(BaseChannel):
             }
         }
 
-        url = f"https://stream-manager.yy.com/v3/channel/streams?uid=0&cid={rid}&sid={rid}&appid=0&sequence={tm}&encode=json"
+        url = f"https://stream-manager.yy.com/v3/channel/streams?uid=0&cid={video_id}&sid={video_id}&appid=0&sequence={tm}&encode=json"
 
         data = await post_json(url, headers=self.headers, data=json.dumps(data))
 
