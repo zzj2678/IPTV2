@@ -3,7 +3,7 @@ from typing import Optional
 from .base import BaseChannel
 import json
 from urllib.parse import urljoin
-from utils.http import get_json, post_json
+from utils.http import get_json, post_json, get_text
 
 logger = logging.getLogger(__name__)
 
@@ -94,6 +94,8 @@ class GITV(BaseChannel):
 
         play_info = json_data.get('data', {}).get('playinfo', {})
         play_url = play_info.get('playurl', '')
+
+        # m3u8_content = await get_text(play_url)
 
         return play_url
 
