@@ -3,6 +3,8 @@ name = "live"
 version = "0.1.0"
 description = ""
 authors = ["lalifeier <lalifeier@gmail.com>"]
+readme = "README.md"
+packages = [{include = "live"}]
 
 [tool.poetry.group.dev]
 optional = true
@@ -28,44 +30,40 @@ pytest-asyncio = "0.20.3"
 python = "^3.11"
 
 fastapi = "^0.89.1"
-# fastapi-cache2 = {extras = ["redis"], version = "^0.1.9"}
 uvicorn = {extras = ["standard"], version = "^0.20.0"}
 aiohttp = {extras = ["speedups"], version = "^3.8.3"}
-node-vm2 = "^0.4.4"
-pycryptodome = "^3.16.0"
 gunicorn = "^20.1.0"
-loguru = "^0.6.0"
-python-dotenv = "^0.21.0"
 orjson = "^3.8.4"
-pyexecjs2 = "^1.6.1"
 lxml = "^4.9.2"
 beautifulsoup4 = "^4.11.1"
-# pywasm = "^1.0.7"
 xmltodict = "^0.13.0"
+pycryptodome = "^3.16.0"
 # playwright = "^1.29.1"
+node-vm2 = "^0.4.4"
+pyexecjs2 = "^1.6.1"
+# pywasm = "^1.0.7"
+tldextract = "^5.1.2"
 
 [build-system]
-requires = ["poetry-core>=1.2.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [[tool.poetry.source]]
 name = "baidu"
 url = "https://mirror.baidu.com/pypi/simple"
-default = true
-secondary = false
+priority = "primary"
 
 [[tool.poetry.source]]
 name = "tsinghua"
 url = "https://pypi.tuna.tsinghua.edu.cn/simple"
-default = false
-secondary = true
+priority = 'supplemental'
 
 [tool.isort]
 profile = 'black'
 
 [tool.black]
 line-length = 120
-target-version = ['py39']
+target-version = ['py311]
 
 [tool.poe.tasks]
 prepare = "pre-commit install"
