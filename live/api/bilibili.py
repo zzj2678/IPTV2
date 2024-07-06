@@ -1,4 +1,6 @@
+import json
 import logging
+import random
 from typing import Optional
 from .base import BaseChannel
 from live.util.http import get_json
@@ -12,13 +14,13 @@ class BiliBili(BaseChannel):
         if json_data["msg"] == "直播间不存在":
             return None
         
-        data = json_data.get("data", {})
+        data = json_data.get("data")
         live_status = data.get("live_status")
         if live_status != 1:
             return None
         
-        video_id = str(int(data["room_id"]))
-        
+        video_id = data["room_id"]
+
         params = {
             "room_id": video_id,
             "protocol": "0,1",
@@ -26,23 +28,19 @@ class BiliBili(BaseChannel):
             "codec": "0,1",
             "qn": "10000",
             "platform": "web",
-            "ptype": "8"
+            "ptype": "8",
+            'dolby': 5
         }
         json_data = await get_json("https://api.live.bilibili.com/xlive/web-room/v2/index/getRoomPlayInfo", params=params)
 
         streams = json_data.get("data", {}).get("playurl_info", {}).get("playurl", {}).get("stream", [])
+
         for stream in streams:
-            formats = stream.get("format", [])
-            for fmt in formats:
-                if fmt.get("format_name") == "ts":
-                    last_fmt = fmt["codec"][-1]
-                    base_url = last_fmt["base_url"]
-                    url_info = last_fmt["url_info"]
-                    for idx, info in enumerate(url_info):
-                        if idx == 0:
-                            host = info["host"]
-                            extra = info["extra"]
-                            return f"{host}{base_url}{extra}"
+           for format in stream['format']:
+            if format.get("format_name") == "ts":
+                for codec in format['codec']:
+                    url_info = random.choice(codec['url_info'])
+                    return f"{url_info['host']}{codec['base_url']}{url_info['extra']}"
         return None
 
 site = BiliBili()

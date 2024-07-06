@@ -1,43 +1,95 @@
 import logging
-import hashlib
 import time
 import re
 from typing import Optional
 from .base import BaseChannel
 from live.util.http import get_json, get_text, post_json
-from urllib.parse import urlparse
-import os
-from live.util.m3u8 import update_m3u8_content
 from live.util.crypto import md5
 from live.util.match import match1
 
 logger = logging.getLogger(__name__)
 
+# def get_sign(rid, did, tt, js_enc):
+#     v = match1(js_enc, r'var vdwdae325w_64we = "(\d+)"')
+#     rb = md5(str(rid) + str(did) + str(tt) + v)
+
+#     from node_vm2 import VM
+
+#     js_enc = re.sub(r"eval\(strc\).*?;", "strc;", js_enc)
+#     with VM() as vm:
+#         js_enc = vm.run(js_enc + "ub98484234()")
+
+#     js_enc = re.sub(r"\(function \(", "function ub98484234(", js_enc)
+#     js_enc = re.sub(r"var rb=.*?;", f"var rb='{rb}';", js_enc)
+#     js_enc = re.sub(r"return rt;}[\s\S]*", "return rt;};", js_enc)
+#     with VM() as vm:
+#         data = vm.run(js_enc + f"ub98484234({rid}, {did}, {tt})")
+
+#     return {
+#         # 'v': match1(data, 'v=(\d+)'),
+#         "v": v,
+#         "did": did,
+#         "tt": tt,
+#         "sign": match1(data, "sign=(\w{32})"),
+#     }
+
+# def get_sign(rid, did, tt, js_enc):
+#     from py_mini_racer import py_mini_racer
+
+#     js_context = py_mini_racer.MiniRacer()
+
+#     v = match1(js_enc, r'var vdwdae325w_64we = "(\d+)"')
+#     rb = md5(str(rid) + str(did) + str(tt) + v)
+
+#     js_enc = re.sub(r"eval\(strc\).*?;", "strc;", js_enc)
+
+#     js_enc = js_context.execute(js_enc)
+#     js_enc = js_context.execute("ub98484234()")
+
+#     js_enc = re.sub(r"\(function \(", "function ub98484234(", js_enc)
+#     js_enc = re.sub(r"var rb=.*?;", f"var rb='{rb}';", js_enc)
+#     js_enc = re.sub(r"return rt;}[\s\S]*", "return rt;};", js_enc)
+
+#     js_context = py_mini_racer.MiniRacer()
+
+#     js_enc = js_context.execute(js_enc)
+#     data = js_context.execute(f"ub98484234({rid}, {did}, {tt})")
+
+#     return {
+#         # 'v': match1(data, 'v=(\d+)'),
+#         "v": v,
+#         "did": did,
+#         "tt": tt,
+#         "sign": match1(data, "sign=(\w{32})"),
+#     }
+
 
 def get_sign(rid, did, tt, js_enc):
+    import dukpy
+
     v = match1(js_enc, r'var vdwdae325w_64we = "(\d+)"')
     rb = md5(str(rid) + str(did) + str(tt) + v)
 
-    from node_vm2 import VM
-
+    # 使用正则表达式替换 JavaScript 代码中的某些部分
     js_enc = re.sub(r"eval\(strc\).*?;", "strc;", js_enc)
-    with VM() as vm:
-        js_enc = vm.run(js_enc + "ub98484234()")
+    
+    js_enc = dukpy.evaljs(js_enc + "ub98484234()")
 
     js_enc = re.sub(r"\(function \(", "function ub98484234(", js_enc)
     js_enc = re.sub(r"var rb=.*?;", f"var rb='{rb}';", js_enc)
     js_enc = re.sub(r"return rt;}[\s\S]*", "return rt;};", js_enc)
-    with VM() as vm:
-        data = vm.run(js_enc + f"ub98484234({rid}, {did}, {tt})")
+    
+    # 使用 dukpy 运行 JavaScript 代码
+    data = dukpy.evaljs(js_enc + f"ub98484234({rid}, {did}, {tt});")
+
+    print(data)
 
     return {
-        # 'v': match1(data, 'v=(\d+)'),
         "v": v,
         "did": did,
         "tt": tt,
-        "sign": match1(data, "sign=(\w{32})"),
+        "sign": match1(data, "sign=(\\w{32})"),
     }
-
 
 async def get_h5enc(html, vid):
     js_enc = match1(html, "(var vdwdae325w_64we =[\s\S]+?)\s*</script>")
@@ -45,7 +97,7 @@ async def get_h5enc(html, vid):
         data = await get_json("https://www.douyu.com/swf_api/homeH5Enc", params={"rids": vid})
 
         if data["error"] != 0:
-            raise InternalException(message=data["msg"])
+            return None
         js_enc = data["data"]["room" + vid]
 
     return js_enc
@@ -54,7 +106,6 @@ async def get_h5enc(html, vid):
 async def get_sign_params(html, vid, did="10000000000000000000000000001501"):
     tt = str(int(time.time()))
     js_enc = await get_h5enc(html, vid)
-
     return get_sign(vid, did, tt, js_enc)
 
 
@@ -64,9 +115,18 @@ class DouYu(BaseChannel):
     did = "10000000000000000000000000001501"
 
     async def get_play_url(self, video_id: str) -> Optional[str]:
-        html = await get_text(f"https://www.douyu.com/{video_id}", headers=self.headers)
+        html = await get_text(f"https://www.douyu.com/{video_id}")
+        rid = match1(
+            html,
+            "\$ROOM\.room_id\s*=\s*(\d+)",
+            "room_id\s*=\s*(\d+)",
+            '"room_id.?":(\d+)',
+            "data-onlineid=(\d+)",
+        )
 
-        params = await get_sign_params(html, video_id, self.did)
+        html = await get_text(f"https://www.douyu.com/{rid}", headers=self.headers)
+
+        params = await get_sign_params(html, rid, self.did)
         params.update(
             {
                 "cdn": "",
@@ -79,10 +139,14 @@ class DouYu(BaseChannel):
             }
         )
 
+        print(params)
+
         json_data = await post_json(
-            f"https://www.douyu.com/lapi/live/getH5Play/{video_id}",
+            f"https://www.douyu.com/lapi/live/getH5Play/{rid}",
             data=params,
         )
+
+        print(json_data)
 
         if json_data["error"]:
             print(json_data)
