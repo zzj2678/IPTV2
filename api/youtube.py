@@ -6,6 +6,7 @@ from urllib.parse import urljoin
 import re
 from utils.http import get_json, post_json, get_text
 from utils.m3u8 import update_m3u8_content
+import requests
 
 logger = logging.getLogger(__name__)
 
@@ -60,18 +61,22 @@ class Youtube(BaseChannel):
 
         url = await self.get_max_resolution_url(hls_manifest_url)
 
-        # headers = {"Referer": 'https://www.youtube.com/'}
+        # headers = {
+        #     #  'X-Forwarded-For': '210.6.4.148',  # 香港原生IP  210.6.4.148
+        #     # 'CLIENT-IP': '127.0.0.1', 
+        #     # "Referer": 'https://www.youtube.com/', 
+        #     # 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
+        # }
         # m3u8_content = await get_text(url)
 
-        # m3u8_content = update_m3u8_content(url, m3u8_content, True)
+        response = requests.get(url)
+        m3u8_content = response.text
 
-        # print(m3u8_content)
+        print(m3u8_content)
 
-        return url
+        m3u8_content = update_m3u8_content(url, m3u8_content, True)
 
-     
-
-  
+        return m3u8_content
 
 site = Youtube()
 

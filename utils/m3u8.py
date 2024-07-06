@@ -13,9 +13,12 @@ def update_m3u8_content(play_url: str, m3u8_content: str, is_proxy: bool = False
     PROXY_URL = os.getenv('PROXY_URL', '') if is_proxy else ''
 
     for line in lines:
-        if line and not line.startswith("#") and not urlparse(line).netloc:
-            
-            modified_line = f"{PROXY_URL}/data/{domain_port}{path}/{line}"
+        if line and not line.startswith("#"):
+            parsed_line_url = urlparse(line)
+            if not parsed_line_url.netloc: 
+                modified_line = f"{PROXY_URL}/data/{domain_port}{path}/{line}"
+            else:
+                modified_line = f"{PROXY_URL}/data/{parsed_line_url.hostname}:{parsed_line_url.port or (443 if parsed_line_url.scheme == 'https' else 80)}{parsed_line_url.path}{line[line.find('/', line.find('//') + 2)]}"
             modified_lines.append(modified_line)
         else:
             modified_lines.append(line)
