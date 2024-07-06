@@ -167,10 +167,12 @@ async def proxy(request: Request, domain_port: str, path: str):
         "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36}",
     }
 
-    if (base_url == 'http://198.16.100.186:8278') {
-        headers['CLIENT-IP'] = '127.0.0.1'
-        headers['X-FORWARDED-FOR'] = '127.0.0.1'
-    }
+    if base_url == 'http://198.16.100.186:8278':
+        headers.update({
+            'CLIENT-IP': '127.0.0.1',
+            'X-FORWARDED-FOR': '127.0.0.1'
+        })
+    
 
     path = '/' + path
     if request.url.query:
