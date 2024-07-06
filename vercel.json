@@ -2,7 +2,7 @@
 	"devCommand": "uvicorn main:app --host 0.0.0.0 --port 8080",
 	"builds": [
 	  {
-		"src": "main.py",
+		"src": "live/main.py",
 		"use": "@vercel/python"
 	  }
 	],
