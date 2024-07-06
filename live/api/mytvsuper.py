@@ -3,7 +3,7 @@ import json
 import urllib.parse
 from typing import Optional
 from .base import BaseChannel
-from util.http import get_json
+from live.util.http import get_json
 import cloudscraper
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad

@@ -1,10 +1,10 @@
 import logging
 from typing import Optional
 from .base import BaseChannel
-from util.http import get_json, post_json, get_text
+from live.util.http import get_json, post_json, get_text
 from urllib.parse import urlparse
 import os
-from util.m3u8 import update_m3u8_content
+from live.util.m3u8 import update_m3u8_content
 
 logger = logging.getLogger(__name__)
 

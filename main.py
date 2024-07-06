@@ -4,7 +4,7 @@ from starlette.requests import Request
 from importlib import import_module
 import logging
 import time
-from util.proxy import get_proxy
+from live.util.proxy import get_proxy
 from urllib.parse import urlparse, unquote
 import tldextract
 
@@ -107,7 +107,7 @@ async def get_play_url(channel_id: str, video_id: str):
 
     try:
         channel = CHANNEL_MAPPINGS.get(channel_id, channel_id)
-        channel_module = import_module(".".join(["api", channel]))
+        channel_module = import_module(".".join(["live", "api", channel]))
 
         play_url = await channel_module.site.get_play_url(video_id)
 

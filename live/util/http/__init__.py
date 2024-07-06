@@ -1,4 +1,4 @@
-from util.http.http import (  # noqa
+from live.util.http.http import (  # noqa
     get_cookies,
     get_dom,
     get_json,
@@ -11,4 +11,4 @@ from util.http.http import (  # noqa
     post,
     post_json,
 )
-from util.http.http_client import HTTPClient, fake_headers  # noqa
+from live.util.http.http_client import HTTPClient, fake_headers  # noqa

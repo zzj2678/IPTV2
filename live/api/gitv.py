@@ -3,7 +3,7 @@ from typing import Optional
 from .base import BaseChannel
 import json
 from urllib.parse import urljoin
-from util.http import get_json, post_json, get_text
+from live.util.http import get_json, post_json, get_text
 
 logger = logging.getLogger(__name__)
 
