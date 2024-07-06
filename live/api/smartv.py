@@ -10,10 +10,10 @@ from util.m3u8 import update_m3u8_content
 
 logger = logging.getLogger(__name__)
 
+
 class Smartv(BaseChannel):
     def __init__(self):
         pass
-
 
     async def _generate_url(self, video_id: str) -> str:
         base_url = f"http://198.16.100.186:8278/{video_id}/playlist.m3u8"
@@ -25,13 +25,14 @@ class Smartv(BaseChannel):
     async def get_play_url(self, video_id: str) -> Optional[str]:
         url = await self._generate_url(video_id)
         headers = {
-            'CLIENT-IP': '127.0.0.1', 
-            'X-FORWARDED-FOR': '127.0.0.1', 
-            'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 12; 22101316C Build/SP1A.210812.016)'
+            "CLIENT-IP": "127.0.0.1",
+            "X-FORWARDED-FOR": "127.0.0.1",
+            "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 12; 22101316C Build/SP1A.210812.016)",
         }
 
         playlist = await get_text(url, headers=headers)
 
         return update_m3u8_content(url, playlist)
+
 
 site = Smartv()

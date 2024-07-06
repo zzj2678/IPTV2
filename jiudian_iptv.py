@@ -2,7 +2,7 @@ import asyncio
 import logging
 import re
 import os
-from pyppeteer import launch
+from playwright.async_api import async_playwright
 import requests
 import json
 import concurrent.futures
@@ -10,27 +10,55 @@ from pypinyin import lazy_pinyin
 import base64
 import shutil
 import aiohttp
+
 # from fofa_hack import fofa
-from random import randint 
+from random import randint
 
 # 配置日志
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
 }
 
 regions = [
-    '北京', '天津', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江',
-    '上海', '江苏', '浙江', '安徽', '福建', '江西', '山东',
-    '河南', '湖北', '湖南', '广东', '广西', '海南', '重庆',
-    '四川', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆'
+    "北京",
+    "天津",
+    "河北",
+    "山西",
+    "内蒙古",
+    "辽宁",
+    "吉林",
+    "黑龙江",
+    "上海",
+    "江苏",
+    "浙江",
+    "安徽",
+    "福建",
+    "江西",
+    "山东",
+    "河南",
+    "湖北",
+    "湖南",
+    "广东",
+    "广西",
+    "海南",
+    "重庆",
+    "四川",
+    "贵州",
+    "云南",
+    "西藏",
+    "陕西",
+    "甘肃",
+    "青海",
+    "宁夏",
+    "新疆",
 ]
 
 # regions = [
 #     '北京',
-#     # '上海', 
-#     # '江苏', 
+#     # '上海',
+#     # '江苏',
 #     # '浙江',
 #     '广东'
 # ]
@@ -41,23 +69,42 @@ isp_dict = {
     # "中国移动": "China Mobile Communications Corporation"
 }
 
-OUTPUT_DIR = 'txt/jiudian'
+OUTPUT_DIR = "txt/jiudian"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+
 
 async def fetch_page_content(url, region):
     try:
         logging.info(f"Fetching content from {url} for region {region}")
-        browser = await launch(headless=True, args=['--no-sandbox', '--disable-setuid-sandbox'])
-        page = await browser.newPage()
-        await page.evaluateOnNewDocument('() =>{ Object.defineProperties(navigator,' '{ webdriver:{ get: () => false } }) }')   
-        await page.goto(url, waitUntil="domcontentloaded")
-        content = await page.content()
-        await browser.close()
-        logging.info(f"Finished fetching content from {url} for region {region}")
-        return region, content  # Return both region and content as a tuple
+
+        async with async_playwright() as p:
+            browser = await p.webkit.launch(headless=True)
+            context = await browser.new_context()
+            context.add_init_script("Object.defineProperties(navigator, {webdriver:{get:()=>false}});")
+            page = await context.new_page()
+
+            # await page.route("**/*.{png,jpg,jpeg}", lambda route: route.abort())
+            async def handle(route, request):
+                if route.request.resource_type in ["stylesheet", "image", "media", "font"]:
+                    await route.abort()
+                else:
+                    await route.continue_()
+
+            await page.route("**/*", handle)
+
+            await page.goto(url)
+
+            # await page.wait_for_load_state('networkidle')
+
+            content = await page.content()
+            await browser.close()
+            logging.info(f"Finished fetching content from {url} for region {region}")
+
+            return region, content  # Return both region and content as a tuple
     except Exception as e:
         logging.error(f"Error fetching page content for {region}: {str(e)}")
         return region, None  # Return None for content in case of error
+
 
 # async def fetch_page_content(url, region):
 #     try:
@@ -71,6 +118,7 @@ async def fetch_page_content(url, region):
 #         logging.error(f"Error fetching page content for {region}: {str(e)}")
 #         return region, None  # Return None for content in case of error
 
+
 def process_url(ip_port, results):
     url = f"http://{ip_port}/iptv/live/1000.json?key=txiptv"
     try:
@@ -78,11 +126,11 @@ def process_url(ip_port, results):
         response.raise_for_status()  # 检查请求是否成功
         json_data = response.json()
 
-        for item in json_data.get('data', []):
+        for item in json_data.get("data", []):
             if isinstance(item, dict):
-                name = item.get('name', '')
-                chid = str(item.get('chid')).zfill(4)
-                srcid = item.get('srcid')
+                name = item.get("name", "")
+                chid = str(item.get("chid")).zfill(4)
+                srcid = item.get("srcid")
                 if name and chid and srcid:
                     name = clean_name(name)
                     url = f"http://{ip_port}/tsfile/live/{chid}_{srcid}.m3u8"
@@ -95,6 +143,7 @@ def process_url(ip_port, results):
     except Exception as e:
         logging.error(f"Unexpected error occurred for URL {url}. Error: {str(e)}")
 
+
 def process_urls(page_content, region_name):
     logging.info(f"Processing URLs from page content for {region_name}")
     pattern = r"http://\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d+"  # 匹配的格式
@@ -102,8 +151,8 @@ def process_urls(page_content, region_name):
 
     ip_ports = set()
     for url in urls_all:
-        ip_port = url.replace('http://', '')
-        ip_address, port = ip_port.split(':')
+        ip_port = url.replace("http://", "")
+        ip_address, port = ip_port.split(":")
         for i in range(1, 256):  # 第四位从1到255
             ip_ports.add(f"{ip_address.rsplit('.', 1)[0]}.{i}:{port}")
 
@@ -119,6 +168,7 @@ def process_urls(page_content, region_name):
 
     logging.info(f"Finished processing URLs for region {region_name}. Total results: {len(results) - 1}")
     return results
+
 
 def clean_name(name):
     # 清洗名称的函数，根据需要自行添加清洗规则
@@ -208,15 +258,47 @@ def clean_name(name):
     name = name.replace("影视剧", "影视")
     return name
 
+
 def is_province(region):
-    provinces = ['北京', '天津', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江',
-                 '上海', '江苏', '浙江', '安徽', '福建', '江西', '山东',
-                 '河南', '湖北', '湖南', '广东', '广西', '海南', '重庆',
-                 '四川', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
+    provinces = [
+        "北京",
+        "天津",
+        "河北",
+        "山西",
+        "内蒙古",
+        "辽宁",
+        "吉林",
+        "黑龙江",
+        "上海",
+        "江苏",
+        "浙江",
+        "安徽",
+        "福建",
+        "江西",
+        "山东",
+        "河南",
+        "湖北",
+        "湖南",
+        "广东",
+        "广西",
+        "海南",
+        "重庆",
+        "四川",
+        "贵州",
+        "云南",
+        "西藏",
+        "陕西",
+        "甘肃",
+        "青海",
+        "宁夏",
+        "新疆",
+    ]
     return region in provinces
+
 
 def is_city(region):
     return not is_province(region)
+
 
 def generate_search_url(region, isp_name, org_name):
     pinyin_name = "".join(lazy_pinyin(region, errors=lambda x: x))
@@ -226,10 +308,11 @@ def generate_search_url(region, isp_name, org_name):
         search_txt = f'"iptv/live/zh_cn.js" && country="CN" && city="{pinyin_name}" && org="{org_name}"'
     else:
         return None
-    
-    bytes_string = search_txt.encode('utf-8')
-    encoded_search_txt = base64.b64encode(bytes_string).decode('utf-8')
-    return f'https://fofa.info/result?qbase64={encoded_search_txt}'
+
+    bytes_string = search_txt.encode("utf-8")
+    encoded_search_txt = base64.b64encode(bytes_string).decode("utf-8")
+    return f"https://fofa.info/result?qbase64={encoded_search_txt}"
+
 
 def generate_region_urls(regions, isp_dict):
     url_dict = {}
@@ -237,24 +320,27 @@ def generate_region_urls(regions, isp_dict):
         for isp_name, org_name in isp_dict.items():
             url = generate_search_url(region, isp_name, org_name)
             if url:
-                key = f'{region}-{isp_name}'
+                key = f"{region}-{isp_name}"
                 url_dict[key] = url
     return url_dict
 
+
 def get_province_name(region):
-    return region.split('-')[0]
+    return region.split("-")[0]
+
 
 def merge_files(output_dir, merged_file_path):
     try:
-        with open(merged_file_path, 'w', encoding='utf-8') as outfile:
+        with open(merged_file_path, "w", encoding="utf-8") as outfile:
             for filename in os.listdir(output_dir):
                 file_path = os.path.join(output_dir, filename)
                 if os.path.isfile(file_path):
-                    with open(file_path, 'r', encoding='utf-8') as infile:
-                        outfile.write(infile.read() + '\n')  # 读取并写入文件内容，添加换行符分隔
+                    with open(file_path, "r", encoding="utf-8") as infile:
+                        outfile.write(infile.read() + "\n")  # 读取并写入文件内容，添加换行符分隔
         print(f"All files merged into {merged_file_path}")
     except Exception as e:
         print(f"Error merging files: {e}")
+
 
 async def main():
     if os.path.exists(OUTPUT_DIR):
@@ -272,9 +358,9 @@ async def main():
             logging.error(f"Error fetching page content for {region}: {str(e)}")
             content = None
 
-        # await asyncio.sleep(randint(1, 3))  
+        # await asyncio.sleep(randint(1, 3))
 
-        if not content: 
+        if not content:
             logging.warning(f"Empty content for region {region}. Skipping...")
             continue
 
@@ -282,9 +368,9 @@ async def main():
         results = process_urls(content, region)
         file_path = os.path.join(OUTPUT_DIR, f"{region_name}.txt")
 
-        with open(file_path, 'a', encoding='utf-8') as f:
+        with open(file_path, "a", encoding="utf-8") as f:
             for result in results:
-                f.write(result + '\n')
+                f.write(result + "\n")
 
         logging.info(f"Results for {region_name} written to {file_path}")
 

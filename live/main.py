@@ -16,27 +16,29 @@ CHANNEL_MAPPINGS = {
     # Define your channel mappings here if needed
 }
 
+
 @app.get("/")
 async def hello_world():
     return {"hello": "world"}
+
 
 @app.get("/{channel_id}/{video_id}")
 async def get_play_url(channel_id: str, video_id: str):
     logger.info(f"Received request for channel ID: {channel_id} and video ID: {video_id}")
 
-    extension = ''
-    if '.' in video_id:
-        video_id, extension = video_id.rsplit('.', 1)
+    extension = ""
+    if "." in video_id:
+        video_id, extension = video_id.rsplit(".", 1)
 
     if not extension:
-        extension = 'm3u8'
-        if channel_id in ['mytvsuper']:
-             extension = 'mpd'
-        if channel_id in ['huya']:
-             extension = 'flv'
+        extension = "m3u8"
+        if channel_id in ["mytvsuper"]:
+            extension = "mpd"
+        if channel_id in ["huya"]:
+            extension = "flv"
 
         play_url = f"/{channel_id}/{video_id}.{extension}"
-            
+
         player_html = f"""
         <!DOCTYPE html>
         <html>
@@ -103,13 +105,12 @@ async def get_play_url(channel_id: str, video_id: str):
         """
         return HTMLResponse(content=player_html)
 
-
     try:
         channel = CHANNEL_MAPPINGS.get(channel_id, channel_id)
         channel_module = import_module(".".join(["api", channel]))
 
         play_url = await channel_module.site.get_play_url(video_id)
-        
+
         if play_url is None:
             logger.warning(f"Play URL not found for video ID: {video_id}")
             raise HTTPException(status_code=404, detail="Play URL not found")
@@ -118,7 +119,7 @@ async def get_play_url(channel_id: str, video_id: str):
             if play_url.startswith("#EXTM3U"):
                 headers = {
                     "Content-Type": "application/vnd.apple.mpegurl",
-                    "Content-Disposition": f'attachment; filename="{int(time.time())}.m3u8"'
+                    "Content-Disposition": f'attachment; filename="{int(time.time())}.m3u8"',
                 }
                 return StreamingResponse(iter([play_url.encode()]), headers=headers)
             else:
@@ -127,7 +128,7 @@ async def get_play_url(channel_id: str, video_id: str):
         elif isinstance(play_url, bytes):
             headers = {
                 "Content-Type": "video/MP2T",
-                "Content-Disposition": f'attachment; filename="{int(time.time())}.ts"'
+                "Content-Disposition": f'attachment; filename="{int(time.time())}.ts"',
             }
             logger.info(f"Returning TS content for video ID: {video_id}")
             return StreamingResponse(iter([play_url]), headers=headers)
@@ -139,14 +140,16 @@ async def get_play_url(channel_id: str, video_id: str):
         logger.error(f"Module {channel} not found: {e}")
         raise HTTPException(status_code=404, detail="Channel not found")
 
-    parts = domain.split('.')
+    parts = domain.split(".")
     if len(parts) > 2:
-        return '.'.join(parts[-2:])
+        return ".".join(parts[-2:])
     return domain
+
 
 def get_top_level_domain(domain):
     extracted = tldextract.extract(domain)
     return f"{extracted.domain}.{extracted.suffix}"
+
 
 @app.get("/data/{domain_port}/{path:path}")
 async def proxy(request: Request, domain_port: str, path: str):
@@ -160,20 +163,17 @@ async def proxy(request: Request, domain_port: str, path: str):
     referer = f"{scheme}://{top_level_domain}/"
 
     if domain == "sztv-live.sztv.com.cn":
-        referer = 'https://www.sztv.com.cn/'
+        referer = "https://www.sztv.com.cn/"
 
     headers = {
-        'referer': referer,
+        "referer": referer,
         "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36}",
     }
 
-    if base_url == 'http://198.16.100.186:8278':
-        headers.update({
-            'CLIENT-IP': '127.0.0.1',
-            'X-FORWARDED-FOR': '127.0.0.1'
-        })
+    if base_url == "http://198.16.100.186:8278":
+        headers.update({"CLIENT-IP": "127.0.0.1", "X-FORWARDED-FOR": "127.0.0.1"})
 
-    path = '/' + path
+    path = "/" + path
     if request.url.query:
         path += "?" + request.url.query
 
@@ -184,7 +184,9 @@ async def proxy(request: Request, domain_port: str, path: str):
 
     return await get_proxy(request, base_url, path, headers)
 
+
 if __name__ == "__main__":
     import uvicorn
+
     logger.info("Starting server...")
     uvicorn.run(app, host="0.0.0.0", port=8080)

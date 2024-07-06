@@ -20,6 +20,7 @@ CHANNEL_MAPPING = {
     "fsss": 8,  # 佛山三水
 }
 
+
 class FSTV(BaseChannel):
     def __init__(self):
         self.key = b"ptfcaxhmslc4Kyrnj$lWwmkcvdze2cub"
@@ -36,22 +37,22 @@ class FSTV(BaseChannel):
             return None
 
         headers = {
-            'APPKEY': 'xinmem3.0',
-            'VERSION': '4.0.9',
-            'PLATFORM': 'ANDROID',
-            'SIGN': 'b2350fe63e26fbf872b424dece22bd1b',
+            "APPKEY": "xinmem3.0",
+            "VERSION": "4.0.9",
+            "PLATFORM": "ANDROID",
+            "SIGN": "b2350fe63e26fbf872b424dece22bd1b",
         }
 
-        json_data = await post_json('https://xmapi.fstv.com.cn/appapi/tv/indexaes', headers=headers)
+        json_data = await post_json("https://xmapi.fstv.com.cn/appapi/tv/indexaes", headers=headers)
 
-        for channel in json_data['data']['channel']:
+        for channel in json_data["data"]["channel"]:
             print(channel)
-            if CHANNEL_MAPPING[video_id] == int(channel['id']):
-                encrypted_stream = channel['stream']
+            if CHANNEL_MAPPING[video_id] == int(channel["id"]):
+                encrypted_stream = channel["stream"]
                 play_url = self.decrypt_data(encrypted_stream)
                 return play_url
 
         return None
 
-site = FSTV()
 
+site = FSTV()

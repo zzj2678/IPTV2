@@ -13,6 +13,7 @@ from util.match import match1
 
 logger = logging.getLogger(__name__)
 
+
 def get_sign(rid, did, tt, js_enc):
     v = match1(js_enc, r'var vdwdae325w_64we = "(\d+)"')
     rb = md5(str(rid) + str(did) + str(tt) + v)
@@ -41,9 +42,7 @@ def get_sign(rid, did, tt, js_enc):
 async def get_h5enc(html, vid):
     js_enc = match1(html, "(var vdwdae325w_64we =[\s\S]+?)\s*</script>")
     if js_enc is None or "ub98484234(" not in js_enc:
-        data = await get_json(
-            "https://www.douyu.com/swf_api/homeH5Enc", params={"rids": vid}
-        )
+        data = await get_json("https://www.douyu.com/swf_api/homeH5Enc", params={"rids": vid})
 
         if data["error"] != 0:
             raise InternalException(message=data["msg"])
@@ -58,13 +57,14 @@ async def get_sign_params(html, vid, did="10000000000000000000000000001501"):
 
     return get_sign(vid, did, tt, js_enc)
 
+
 class DouYu(BaseChannel):
     headers = {"Referer": "https://www.douyu.com"}
 
     did = "10000000000000000000000000001501"
 
     async def get_play_url(self, video_id: str) -> Optional[str]:
-        html = await get_text(f'https://www.douyu.com/{video_id}', headers=self.headers)
+        html = await get_text(f"https://www.douyu.com/{video_id}", headers=self.headers)
 
         params = await get_sign_params(html, video_id, self.did)
         params.update(
@@ -96,5 +96,6 @@ class DouYu(BaseChannel):
         url = "/".join([rtmp_url, rtmp_live])
 
         return url
+
 
 site = DouYu()

@@ -63,7 +63,7 @@ profile = 'black'
 
 [tool.black]
 line-length = 120
-target-version = ['py311]
+target-version = ['py311']
 
 [tool.poe.tasks]
 prepare = "pre-commit install"

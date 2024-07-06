@@ -57,9 +57,7 @@ async def on_dns_cache_miss(session, trace_config_ctx, params):
 async def on_request_redirect(session, trace_config_ctx, params):
     loop = asyncio.get_event_loop()
     elapsed = int((loop.time() - trace_config_ctx.start) * 1000)
-    logger.debug(
-        "Request redirect: %s %s %dms", params.url, params.response.url, elapsed
-    )
+    logger.debug("Request redirect: %s %s %dms", params.url, params.response.url, elapsed)
 
 
 def get_trace_config():

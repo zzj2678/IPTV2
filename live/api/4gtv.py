@@ -11,6 +11,7 @@ import base64
 
 logger = logging.getLogger(__name__)
 
+
 class G4TV(BaseChannel):
     def __init__(self):
         self.key = b"ilyB29ZdruuQjC45JhBBR7o2Z8WJ26Vg"
@@ -19,16 +20,16 @@ class G4TV(BaseChannel):
 
     async def get_channel(self, channel_id):
         logger.info(f"Fetching channel data for channel ID: {channel_id}")
-        response = self.scraper.get(f'https://api2.4gtv.tv/Channel/GetChannel/{channel_id}')
+        response = self.scraper.get(f"https://api2.4gtv.tv/Channel/GetChannel/{channel_id}")
         channel_data = json.loads(response.text)["Data"]
         logger.debug(f"Received channel data: {channel_data}")
         return channel_data
 
     async def get_channel_url(self, data):
         logger.info("Fetching channel URL with encrypted data")
-        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
         try:
-            response = self.scraper.post('https://api2.4gtv.tv/Channel/GetChannelUrl3', data=data, headers=headers)
+            response = self.scraper.post("https://api2.4gtv.tv/Channel/GetChannelUrl3", data=data, headers=headers)
             response.raise_for_status()  # Raise an exception for HTTP errors (status codes 4xx or 5xx)
             channel_url_data = json.loads(response.text)["Data"]
             logger.debug(f"Received channel URL data: {channel_url_data}")
@@ -37,10 +38,9 @@ class G4TV(BaseChannel):
             logger.error(f"Error fetching channel URL: {e}")
             return None
 
-
     async def get_play_url(self, video_id: str) -> Optional[str]:
         logger.info(f"Processing request for video ID: {video_id}")
-        
+
         channel_data = await self.get_channel(video_id)
         if not channel_data:
             logger.warning(f"Failed to fetch channel data for video ID: {video_id}")
@@ -53,7 +53,7 @@ class G4TV(BaseChannel):
             "fnCHANNEL_ID": cno,
             "fsASSET_ID": cid,
             "fsDEVICE_TYPE": "mobile",
-            "clsIDENTITY_VALIDATE_ARUS": {"fsVALUE": ""}
+            "clsIDENTITY_VALIDATE_ARUS": {"fsVALUE": ""},
         }
         abc = json.dumps(jarray)
 
@@ -79,5 +79,6 @@ class G4TV(BaseChannel):
         decipher = AES.new(self.key, AES.MODE_CBC, self.iv)
         decrypted_data = unpad(decipher.decrypt(base64.b64decode(encrypted_data)), AES.block_size)
         return decrypted_data.decode()
+
 
 site = G4TV()
