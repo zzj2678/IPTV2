@@ -17,37 +17,6 @@ class YY(BaseChannel):
             "Referer": "https://www.yy.com/"
         }
 
-    async def get_player(self, video_id: str) -> Optional[str]:
-        url = "https://www.youtube.com/youtubei/v1/player"
-        data = {
-            "context": {"client": {"hl": "zh", "clientVersion": "2.20201021.03.00", "clientName": "WEB"}},
-            "videoId": video_id,
-        }
-
-        return await post_json(url, json=data)
-
-    async def get_max_resolution_url(self, url):
-        text = await get_text(url)
-
-        lines = text.splitlines()
-
-        max_resolution = 0
-        max_resolution_url = None
-
-        for i, line in enumerate(lines):
-            if line.startswith("#") and "RESOLUTION=" in line:
-                resolution_match = re.search(r"RESOLUTION=(\d+)x(\d+)", line)
-                if resolution_match:
-                    width = int(resolution_match.group(1))
-                    height = int(resolution_match.group(2))
-                    resolution = width * height
-
-                    if resolution > max_resolution:
-                        max_resolution = resolution
-                        max_resolution_url = lines[i + 1]
-
-        return max_resolution_url
-
     async def get_play_url(self, video_id: str) -> Optional[str]:
         headers = {
             "Referer": "https://wap.yy.com",
@@ -100,7 +69,7 @@ class YY(BaseChannel):
                 "imsi": 0,
                 "send_time": int(time.time()),
                 "line_seq": -1,
-                "gear": '',
+                "gear": 4,
                 "ssl": 1,
                 "stream_format": 0
             }
@@ -110,14 +79,11 @@ class YY(BaseChannel):
 
         data = await post_json(url, headers=self.headers, data=json.dumps(data))
 
-        print(data)
-
         if "avp_info_res" in data and "stream_line_addr" in data["avp_info_res"]:
             stream_line_addr = data["avp_info_res"]["stream_line_addr"]
             if stream_line_addr:
                 return list(stream_line_addr.values())[0]["cdn_info"]["url"]
             
         return None
-
 
 site = YY()
