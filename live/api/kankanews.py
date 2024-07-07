@@ -8,7 +8,7 @@ from live.util.http import get_json, post_json, get_text
 import base64
 import hashlib
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
 
@@ -65,7 +65,7 @@ class KankanNews(BaseChannel):
 
     async def get_programs(self, channel_id):
         tm = str(time.time())
-        date =  datetime.now().strftime('%Y-%m-%d')
+        date =  date = (datetime.utcnow() + timedelta(hours=8)).strftime('%Y-%m-%d')
         nonce = get_nonce(8)
         params = {
             'Api-Version': 'v1',
