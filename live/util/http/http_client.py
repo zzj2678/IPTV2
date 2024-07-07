@@ -21,8 +21,8 @@ fake_headers = {
     "Accept-Encoding": "gzip,deflate,sdch",
     "Accept-Language": "en-US,en;q=0.8",
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36",
-    # "X-FORWARDED-FOR": "118.120.251.92",
-    # "CLIENT-IP": "118.120.251.92",
+    "X-FORWARDED-FOR": "118.120.251.92",
+    "CLIENT-IP": "118.120.251.92",
 }
 
 
