@@ -153,8 +153,7 @@ class DouYu(BaseChannel):
             return None
 
         data = json_data["data"]
-
-        rate = data["rate"]
+        
         rtmp_url = data["rtmp_url"]
         rtmp_live = data["rtmp_live"]
         url = "/".join([rtmp_url, rtmp_live])

@@ -1,6 +1,6 @@
-<h2 align="center">IPTV 直播源</h2>
+![IPTV](https://socialify.git.ci/lalifeier/IPTV/image?description=1&descriptionEditable=IPTV%20%E7%9B%B4%E6%92%AD%E6%BA%90&forks=1&language=1&name=1&owner=1&pattern=Circuit%20Board&stargazers=1&theme=Light)
 
-### ⚠️ 警告
+## ⚠️ 警告
 
 - **本项目出于个人兴趣，仅供学习使用，禁止用于商业化活动。**
 - **直播源均来自网络，仅供学习交流使用，未经版权方同意不得商用。因私自商用引发的问题，本人概不负责，感谢理解！**
@@ -9,7 +9,7 @@
 
 ---
 
-### 🔗 订阅链接
+## 🔗 订阅链接
 
 - **TXT 订阅链接**
   - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/IPTV.txt`
@@ -18,9 +18,9 @@
 
 ---
 
-### 📚 使用教程
+## 📚 使用教程
 
-#### 1️⃣ 基于安卓系统的智能电视/电视盒子
+### 1️⃣ 基于安卓系统的智能电视/电视盒子
 
 1. 在智能电视/电视盒子上安装 DIPY 直播 APP：[点我下载](http://x-x-xxx.github.io/diyp/DIYP%E5%BD%B1%E9%9F%B3%E7%BB%8F%E5%85%B8%E7%89%88.apk)
 2. 添加 `TXT` 订阅链接（若不方便输入可以考虑使用外接键盘或者一些手机遥控软件）
@@ -36,18 +36,18 @@
 
 3. 最后设置开机自启动即可（可选）
 
-#### 2️⃣ Apple TV 和 APTV
+### 2️⃣ Apple TV 和 APTV
 
 1. 在 App Store 下载 [**Apple TV**](https://apps.apple.com/us/app/apple-tv/id1174078549) 或 [**APTV**](https://apps.apple.com/us/app/aptv/id1630403500) 软件
 2. 添加 `M3U` 订阅链接
 
 
-#### 3️⃣ Jellyfin、Emby、Plex 等流媒体管理软件
+### 3️⃣ Jellyfin、Emby、Plex 等流媒体管理软件
 
 1. 添加 `M3U` 订阅链接
 2. 添加指南数据源：选择 `XmlTV`，添加此网址：`https://raw.githubusercontent.com/lalifeier/IPTV/main/e.xml`
 
-#### 4️⃣ Windows
+### 4️⃣ Windows
 
 1. 使用 Potplayer 播放器播放 `M3U` 文件即可
 2. M3U 文件：[点击下载](https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/IPTV.m3u)
@@ -55,7 +55,7 @@
 
 ---
 
-### ❇️ 参考资料
+## ❇️ 参考资料
 
 - 直播源
   - <https://epg.pw/test_channel_page.html>
