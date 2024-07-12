@@ -6,7 +6,7 @@ def update_m3u8_content(play_url: str, m3u8_content: str, is_proxy: bool = False
     parsed_url = urlparse(play_url)
     port = parsed_url.port or (443 if parsed_url.scheme == "https" else 80)
     domain_port = f"{parsed_url.hostname}:{port}"
-    base_path = '/' + "/".join(parsed_url.path.split("/")[:-1])
+    base_path = "/".join(parsed_url.path.split("/")[:-1])
 
     lines = m3u8_content.strip().splitlines()
     modified_lines = []
