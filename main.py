@@ -1,12 +1,13 @@
-from fastapi import FastAPI, HTTPException, Depends
-from fastapi.responses import RedirectResponse, StreamingResponse, HTMLResponse
-from starlette.requests import Request
-from importlib import import_module
 import logging
 import time
-from live.util.proxy import get_proxy
-from urllib.parse import urlparse, unquote
+from importlib import import_module
+
 import tldextract
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
+from starlette.requests import Request
+
+from live.util.proxy import get_proxy
 
 logger = logging.getLogger(__name__)
 
@@ -164,6 +165,12 @@ async def proxy(request: Request, domain_port: str, path: str):
 
     if domain == "sztv-live.sztv.com.cn":
         referer = "https://www.sztv.com.cn/"
+
+    if "ahtv.cn" in domain:
+        referer = "https://www.ahtv.cn/"
+
+    if domain == "live-hls.jstv.com":
+        referer = "https://live.jstv.com/"
 
     headers = {
         "referer": referer,

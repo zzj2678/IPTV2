@@ -2,14 +2,11 @@ import logging
 import time
 from typing import Optional
 
-import requests
-
 from live.util.crypto import md5
+from live.util.http import get_text
 from live.util.m3u8 import update_m3u8_content
+
 from .base import BaseChannel
-import json
-from urllib.parse import urljoin
-from live.util.http import get_json, post_json, get_text
 
 logger = logging.getLogger(__name__)
 
@@ -30,9 +27,10 @@ CHANNEL_MAPPING = {
 class JSTV(BaseChannel):
     headers = {
         "Referer": 'https://live.jstv.com/',
-        'Origin': 'https://live.jstv.com',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
+        # 'Origin': 'https://live.jstv.com',
+        # 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
     }
+
     async def get_play_url(self, video_id: str) -> Optional[str]:
         if video_id not in CHANNEL_MAPPING:
             logger.error(f"Invalid Video ID: {video_id}")
