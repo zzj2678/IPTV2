@@ -1,16 +1,12 @@
-import logging
 import hashlib
 import time
 from typing import Optional
-from .base import BaseChannel
+
 from live.util.http import get_text
-from urllib.parse import urlparse
-import os
 from live.util.m3u8 import update_m3u8_content
 
-logger = logging.getLogger(__name__)
+from .base import BaseChannel
 
-# 公共基础 URL
 BASE_URL = "https://sztv-live.sztv.com.cn/"
 
 CHANNEL_MAPPING = {
@@ -37,7 +33,7 @@ class SZTV(BaseChannel):
     async def get_key(self, pid: str) -> str:
         t = int(time.time())
         token = hashlib.md5(f"{t}{pid}cutvLiveStream|Dream2017".encode()).hexdigest()
-        url = f"http://cls2.cutv.com/getCutvHlsLiveKey?t={t}&token={token}&id={pid}"
+        url = f"https://cls2.cutv.com/getCutvHlsLiveKey?t={t}&token={token}&id={pid}"
         return await get_text(url)
 
     def generate_play_url(self, base_url: str, pid: str, key: str) -> str:

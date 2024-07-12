@@ -29,7 +29,7 @@ class SXTV(BaseChannel):
 
     json_data = await get_json(
         'http://dyhhplus.sxrtv.com/apiv3.8/m3u8_notoken.php',
-        params=params,
+        params=params
     )
 
     stream_url = json_data["address"]
