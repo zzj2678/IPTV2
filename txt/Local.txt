@@ -1,167 +1,208 @@
 上海,#genre#
+上海新闻,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000005/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000005&IASHttpSessionId=OTT19019320240419154124000281
+上海都市,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000012/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000012&IASHttpSessionId=OTT19019320240419154124000281
+上海外语,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000001/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000001&IASHttpSessionId=OTT19019320240419154124000281
+七彩戏剧,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000010/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000010&IASHttpSessionId=OTT19019320240419154124000281
+五星体育,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000007/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000007&IASHttpSessionId=OTT19019320240419154124000281
+东方影视,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000013/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000013&IASHttpSessionId=OTT19019320240419154124000281
+东方财经,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000090/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000090&IASHttpSessionId=OTT19019320240419154124000281
+法治天地,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000014/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000014&IASHttpSessionId=OTT19019320240419154124000281
+第一财经,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000004/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000004&IASHttpSessionId=OTT19019320240419154124000281
+
 东方卫视,https://iptv.lalifeier.eu.org/kankanews/dfws.m3u8
 上海新闻综合,https://iptv.lalifeier.eu.org/kankanews/shxwzh.m3u8
-上海ics,https://iptv.lalifeier.eu.org/kankanews/shics.m3u8
+上海外语,https://iptv.lalifeier.eu.org/kankanews/shics.m3u8
 上海都市,https://iptv.lalifeier.eu.org/kankanews/shds.m3u8
-第1财经,https://iptv.lalifeier.eu.org/kankanews/dycj.m3u8
+第一财经,https://iptv.lalifeier.eu.org/kankanews/dycj.m3u8
 上海纪实人文,https://iptv.lalifeier.eu.org/kankanews/jsrw.m3u8
 哈哈炫动,https://iptv.lalifeier.eu.org/kankanews/hhxd.m3u8
 
 广东,#genre#
-广州综合,https://iptv.lalifeier.eu.org/gztv/zhonghe.m3u8
-广州新闻,https://iptv.lalifeier.eu.org/gztv/xinwen.m3u8
-广州竞赛,https://iptv.lalifeier.eu.org/gztv/jingsai.m3u8
-广州影视,https://iptv.lalifeier.eu.org/gztv/yingshi.m3u8
-广州法治,https://iptv.lalifeier.eu.org/gztv/fazhi.m3u8
-广州南国都市,https://iptv.lalifeier.eu.org/gztv/shenghuo.m3u8
+广东 | 卫视,http://[2409:8087:1a01:df::7005]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226248/index.m3u8
+广东 | 广州综合,https://iptv.lalifeier.eu.org/gztv/zhonghe.m3u8
+广东 | 广州新闻,https://iptv.lalifeier.eu.org/gztv/xinwen.m3u8
+广东 | 广州竞赛,https://iptv.lalifeier.eu.org/gztv/jingsai.m3u8
+广东 | 广州影视,https://iptv.lalifeier.eu.org/gztv/yingshi.m3u8
+广东 | 广州法治,https://iptv.lalifeier.eu.org/gztv/fazhi.m3u8
+广东 | 广州南国都市,https://iptv.lalifeier.eu.org/gztv/shenghuo.m3u8
 
-佛山综合,https://iptv.lalifeier.eu.org/fstv/fszh.m3u8
-佛山影视,https://iptv.lalifeier.eu.org/fstv/fsys.m3u8
-佛山公共,https://iptv.lalifeier.eu.org/fstv/fsgg.m3u8
-佛山南海,https://iptv.lalifeier.eu.org/fstv/fsnh.m3u8
-佛山顺德,https://iptv.lalifeier.eu.org/fstv/fssd.m3u8
-佛山高明,https://iptv.lalifeier.eu.org/fstv/fsgm.m3u8
-佛山三水,https://iptv.lalifeier.eu.org/fstv/fsss.m3u8
+广东 | 佛山综合,https://iptv.lalifeier.eu.org/fstv/fszh.m3u8
+广东 | 佛山影视,https://iptv.lalifeier.eu.org/fstv/fsys.m3u8
+广东 | 佛山公共,https://iptv.lalifeier.eu.org/fstv/fsgg.m3u8
+广东 | 佛山南海,https://iptv.lalifeier.eu.org/fstv/fsnh.m3u8
+广东 | 佛山顺德,https://iptv.lalifeier.eu.org/fstv/fssd.m3u8
+广东 | 佛山高明,https://iptv.lalifeier.eu.org/fstv/fsgm.m3u8
+广东 | 佛山三水,https://iptv.lalifeier.eu.org/fstv/fsss.m3u8
 
-深圳卫视,https://iptv.lalifeier.eu.org/sztv/szws.m3u8
-深圳娱乐,https://iptv.lalifeier.eu.org/sztv/szyl.m3u8
-深圳少儿,https://iptv.lalifeier.eu.org/sztv/szse.m3u8
-深圳公共,https://iptv.lalifeier.eu.org/sztv/szgg.m3u8
-深圳财经生活,https://iptv.lalifeier.eu.org/sztv/szcjsh.m3u8
-深圳电视剧,https://iptv.lalifeier.eu.org/sztv/szdsj.m3u8
-宜和购物,https://iptv.lalifeier.eu.org/sztv/yhgw.m3u8
-深圳都市,https://iptv.lalifeier.eu.org/sztv/szds.m3u8
-深圳国际,https://iptv.lalifeier.eu.org/sztv/szgj.m3u8
-深圳移动,https://iptv.lalifeier.eu.org/sztv/szyd.m3u8
+广东 | 深圳卫视,https://iptv.lalifeier.eu.org/sztv/szws.m3u8
+广东 | 深圳娱乐,https://iptv.lalifeier.eu.org/sztv/szyl.m3u8
+广东 | 深圳少儿,https://iptv.lalifeier.eu.org/sztv/szse.m3u8
+广东 | 深圳公共,https://iptv.lalifeier.eu.org/sztv/szgg.m3u8
+广东 | 深圳财经生活,https://iptv.lalifeier.eu.org/sztv/szcjsh.m3u8
+广东 | 深圳电视剧,https://iptv.lalifeier.eu.org/sztv/szdsj.m3u8
+广东 | 宜和购物,https://iptv.lalifeier.eu.org/sztv/yhgw.m3u8
+广东 | 深圳都市,https://iptv.lalifeier.eu.org/sztv/szds.m3u8
+广东 | 深圳国际,https://iptv.lalifeier.eu.org/sztv/szgj.m3u8
+广东 | 深圳移动,https://iptv.lalifeier.eu.org/sztv/szyd.m3u8
 
 浙江,#genre#
-浙江卫视,http://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8
-浙江钱江都市,http://ali-m-l.cztv.com/channels/lantian/channel002/1080p.m3u8
-浙江经济生活,http://ali-m-l.cztv.com/channels/lantian/channel003/1080p.m3u8
-浙江教科影院,http://ali-m-l.cztv.com/channels/lantian/channel004/1080p.m3u8
-浙江民生休闲,http://ali-m-l.cztv.com/channels/lantian/channel006/1080p.m3u8
-浙江新闻,http://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8
-浙江少儿,http://ali-m-l.cztv.com/channels/lantian/channel008/1080p.m3u8
-中国蓝新闻,http://ali-m-l.cztv.com/channels/lantian/channel009/1080p.m3u8
-浙江国际,http://ali-m-l.cztv.com/channels/lantian/channel010/1080p.m3u8
-浙江好易购,http://ali-m-l.cztv.com/channels/lantian/channel011/1080p.m3u8
-浙江数码时代,http://ali-m-l.cztv.com/channels/lantian/channel012/1080p.m3u8
-浙江之声,http://ali-m-l.cztv.com/channels/lantian/fm88/128k.m3u8
-浙江新闻广播,http://ali-m-l.cztv.com/channels/lantian/fm988/128k.m3u8
-浙江广播经济,http://ali-m-l.cztv.com/channels/lantian/fm95/128k.m3u8
-浙江民生资讯,http://ali-m-l.cztv.com/channels/lantian/fm996/128k.m3u8
-浙江音乐调频,http://ali-m-l.cztv.com/channels/lantian/fm968/128k.m3u8
-浙江交通之声,http://ali-m-l.cztv.com/channels/lantian/fm93/128k.m3u8
-浙江旅游之声,http://ali-m-l.cztv.com/channels/lantian/fm1045/128k.m3u8
-浙江城市之声,http://ali-m-l.cztv.com/channels/lantian/fm107/128k.m3u8
-杭州综合,http://www.372583307.top:4022/udp/233.50.201.173:5140
-杭州明珠,http://www.372583307.top:4022/udp/233.50.201.174:5140
-杭州生活,http://www.372583307.top:4022/udp/233.50.201.175:5140
-杭州影视,http://www.372583307.top:4022/udp/233.50.201.176:5140
-杭州青少,http://www.372583307.top:4022/udp/233.50.201.177:5140
-宁波TV1,http://www.372583307.top:4022/udp/233.50.201.168:5140
-宁波TV2,http://www.372583307.top:4022/udp/233.50.201.178:5140
-宁波TV3,http://www.372583307.top:4022/udp/233.50.201.179:5140
-宁波TV4,http://www.372583307.top:4022/udp/233.50.201.180:5140
-宁波TV5,http://www.372583307.top:4022/udp/233.50.201.181:5140
-温州新闻,http://www.372583307.top:4022/udp/233.50.201.87:5140
-衢州新闻,http://www.372583307.top:4022/udp/233.50.201.155:5140
-绍兴新闻,http://www.372583307.top:4022/udp/233.50.201.156:5140
-台州-1,http://www.372583307.top:4022/udp/233.50.201.157:5140
-湖州公共,http://www.372583307.top:4022/udp/233.50.201.158:5140
-余杭新闻,http://www.372583307.top:4022/udp/233.50.201.159:5140
-金华新闻,http://www.372583307.top:4022/udp/233.50.201.161:5140
-丽水新闻,http://www.372583307.top:4022/udp/233.50.201.162:5140
-嘉兴新闻,http://www.372583307.top:4022/udp/233.50.201.163:5140
-桐乡新闻,http://www.372583307.top:4022/udp/233.50.201.169:5140
-杭州导视,http://www.372583307.top:4022/udp/233.50.201.182:5140
-绍兴新闻综合,http://live.shaoxing.com.cn/video/s10001-sxhb/index.m3u8
-绍兴公共频道,http://live.shaoxing.com.cn/video/s10001-sxtv2/index.m3u8
-绍兴文化影视,http://live.shaoxing.com.cn/video/s10001-sxtv3/index.m3u8
-金华新闻综合,http://live.plus.jinhua.com.cn/xwzh/playlist.m3u8
-金华教育科技,http://live.plus.jinhua.com.cn/jykj/playlist.m3u8
-金华公共频道,http://live.plus.jinhua.com.cn/jjsh/playlist.m3u8
-金华都市农村,http://live2.plus.jinhua.com.cn/dsnc/playlist.m3u8
-舟山新闻综合,http://live1.plus.wifizs.cn/xwzh/sd/live.m3u8
-舟山公共生活,http://stream.wifizs.cn/ggsh/sd/live.m3u8
-舟山群岛旅游,http://stream.wifizs.cn/qdly/sd/live.m3u8
-湖州新闻综合,http://live.plus.hugd.com/xwzhpd/sd/live.m3u8
-湖州公共民生,http://live1.plus.hugd.com/ggpd1/sd/live.m3u8
-湖州文化娱乐,http://live.plus.hugd.com/whylpd/sd/live.m3u8
-磐安新闻综合,http://hlsv2.quklive.com/live/1626400915947070/index.m3u8
-磐安文化生活,http://hlsv2.quklive.com/live/1626401163709056/index.m3u8
-武义新闻综合,http://l.cztvcloud.com/channels/lantian/SXwuyi1/720p.m3u8
-永康新闻综合,http://hlsv2.quklive.com/live/1625061424267104/index.m3u8
-永康华溪频道,http://hlsv2.quklive.com/live/1625062755227231/index.m3u8
-平湖新闻综合,http://l.cztvcloud.com/channels/lantian/SXpinghu1/720p.m3u8
-平湖民生休闲,http://l.cztvcloud.com/channels/lantian/SXpinghu2/720p.m3u8
-萧山新闻综合,http://l.cztvcloud.com/channels/lantian/SXxiaoshan1/720p.m3u8
-萧山生活频道,http://l.cztvcloud.com/channels/lantian/SXxiaoshan2/720p.m3u8
-桐庐综合频道,http://livetongl.chinamcache.com/live/tlzb01.m3u8?txSecret=2ee28a051ebfb1b0771869a7d652d4a9&txTime=639a8391
-余杭综合频道,http://l.cztvcloud.com/channels/lantian/SXyuhang1/720p.m3u8
-余杭未来E频道,http://l.cztvcloud.com/channels/lantian/SXyuhang3/720p.m3u8
-临平新闻频道,http://l.cztvcloud.com/channels/lantian/SXyuhang2/720p.m3u8
-余姚新闻综合,http://l.cztvcloud.com/channels/lantian/SXyuyao1/720p.m3u8
-余姚姚江文化,http://l.cztvcloud.com/channels/lantian/SXyuyao3/720p.m3u8
-嵊州新闻综合,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8
-嵊泗新闻综合,http://l.cztvcloud.com/channels/lantian/SXshengsi1/720p.m3u8
-诸暨新闻综合,http://l.cztvcloud.com/channels/lantian/SXzhuji3/720p.m3u8
-上虞新闻综合,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8
-上虞文化影视,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8
-上虞新商都,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8
-海宁新闻综合,http://live.hndachao.cn/xwzh/sd/live.m3u8
-海宁生活服务,http://live.hndachao.cn/shfw/sd/live.m3u8
-兰溪新闻综合,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8
-德清新闻综合,http://live.yingxi.tv/channel1/sd/live.m3u8
-德清文化生活,http://live.yingxi.tv/channel2/sd/live.m3u8
-苍南新闻综合,http://l.cztvcloud.com/channels/lantian/SXcangnan1/720p.m3u8
-洞头综合频道,http://l.cztvcloud.com/channels/lantian/SXdongtou1/720p.m3u8
-瑞安新闻综合,http://stream.rabtv.cn/xwzh/sd/live.m3u8
-瑞安文化经济,http://stream.rabtv.cn/jjwh/sd/live.m3u8
-泰顺新闻综合,http://pili-live-hls.jrts.tianma3600.com/jrts/dspd.m3u8
-文成综合频道,http://l.cztvcloud.com/channels/lantian/SXwencheng1/720p.m3u8
-文成二套,http://l.cztvcloud.com/channels/lantian/SXwencheng2/720p.m3u8
-永嘉新闻综合,http://l.cztvcloud.com/channels/lantian/SXyongjia1/720p.m3u8
-长兴新闻综合,http://hls-camera-w11.quklive.com/live/1637563485927004/playlist.m3u8
-南浔综合频道,http://pili-live-hls.nanxunfb.com/nanxun/live3002833-0.m3u8
-象山新闻综合,http://l.cztvcloud.com/channels/lantian/SXxiangshan1/720p.m3u8
-建德综合频道,http://livejdrmt.chinamcache.com/live/jdzb02.m3u8
-普陀新闻综合,http://l.cztvcloud.com/channels/lantian/SXputuo1/720p.m3u8
-奉化新闻综合,http://live1.fhtv.net.cn/zhzb/sd/live.m3u8
-奉化生活娱乐,http://live1.fhtv.net.cn/shys/sd/live.m3u8
-镇海综合频道,http://pluslive.zhxww.net/channel1/sd/live.m3u8
-镇海先锋影视,http://pluslive.zhxww.net/channel2/sd/live.m3u8
-嘉善新闻综合,http://118.31.110.219:1935/jsgdxwzh/myStream/playlist.m3u8
-嘉善善文化,http://118.31.110.219:1935/jsgdswh/myStream/playlist.m3u8
-海盐新闻频道,http://haiyan.liveyun.hoge.cn/xwpd/sd/live.m3u8
-桐乡新闻综合,http://live.txcmapp.com/tszh1/sd/live.m3u8
-鄞州一套,http://pili-publish.yzxw.newaircloud.com/newaircloud-yzxw/yzxw_20190925090843.m3u8
-鄞州二套,http://pili-publish.yzxw.newaircloud.com/newaircloud-yzxw/yzxw_20190925090936.m3u8
-天台和合频道,http://hlsv2.quklive.com/live/1617072208961931/index.m3u8
-常山新闻综合,https://hlsv2.quklive.com/live/1621306190044902/index.m3u8
-江山电视台,http://play-sh.quklive.com/live/1623117710666335.m3u8
-开化新闻综合,http://l.cztvcloud.com/channels/lantian/SXkaihua1/720p.m3u8
-开化国家公园,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
-龙游新闻综合,http://l.cztvcloud.com/channels/lantian/SXlongyou1/720p.m3u8
-龙游生活娱乐,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8
-衢江新闻综合,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8
-景宁新闻综合,http://hlsv2.quklive.com/live/1622691799302368/index.m3u8
-景宁文化旅游,http://hlsv2.quklive.com/live/1626961770231388/index.m3u8
-缙云综合频道,http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8
-龙泉新闻综合,http://l.cztvcloud.com/channels/lantian/SXlongquan1/720p.m3u8
-庆元综合频道,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8
-遂昌综合频道,http://l.cztvcloud.com/channels/lantian/SXsuichang1/720p.m3u8
-松阳综合频道,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8
-云和新闻综合,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8
-北仑电视台,http://play-sh.quklive.com/live/1626327731714170.m3u8
-青田电视台,http://l.cztvcloud.com/channels/lantian/SXqingtian1/720p.m3u8
+浙江 | 卫视,http://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8
+浙江 | 钱江都市,http://ali-m-l.cztv.com/channels/lantian/channel002/1080p.m3u8
+浙江 | 经济生活,http://ali-m-l.cztv.com/channels/lantian/channel003/1080p.m3u8
+浙江 | 教科影院,http://ali-m-l.cztv.com/channels/lantian/channel004/1080p.m3u8
+浙江 | 民生休闲,http://ali-m-l.cztv.com/channels/lantian/channel006/1080p.m3u8
+浙江 | 公共新闻,http://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8
+浙江 | 少儿频道,http://ali-m-l.cztv.com/channels/lantian/channel008/1080p.m3u8
+浙江 | 中国蓝新闻,http://ali-m-l.cztv.com/channels/lantian/channel009/1080p.m3u8
+浙江 | 国际频道,http://ali-m-l.cztv.com/channels/lantian/channel010/1080p.m3u8
+浙江 | 好易购,http://ali-m-l.cztv.com/channels/lantian/channel011/1080p.m3u8
+浙江 | 数码时代,http://ali-m-l.cztv.com/channels/lantian/channel012/1080p.m3u8
+浙江 | 浙江之声,http://ali-m-l.cztv.com/channels/lantian/fm88/128k.m3u8
+浙江 | 新闻广播,http://ali-m-l.cztv.com/channels/lantian/fm988/128k.m3u8
+浙江 | 广播经济,http://ali-m-l.cztv.com/channels/lantian/fm95/128k.m3u8
+浙江 | 民生资讯,http://ali-m-l.cztv.com/channels/lantian/fm996/128k.m3u8
+浙江 | 音乐调频,http://ali-m-l.cztv.com/channels/lantian/fm968/128k.m3u8
+浙江 | 交通之声,http://ali-m-l.cztv.com/channels/lantian/fm93/128k.m3u8
+浙江 | 旅游之声,http://ali-m-l.cztv.com/channels/lantian/fm1045/128k.m3u8
+浙江 | 城市之声,http://ali-m-l.cztv.com/channels/lantian/fm107/128k.m3u8
+
+浙江 | 杭州余杭平安,http://l.cztvcloud.com/channels/lantian/SXyuhang2/720p.m3u8
+浙江 | 杭州余杭未来,http://l.cztvcloud.com/channels/lantian/SXyuhang3/720p.m3u8
+浙江 | 杭州余杭综合,http://l.cztvcloud.com/channels/lantian/SXyuhang1/720p.m3u8
+浙江 | 宁波象山综合,http://l.cztvcloud.com/channels/lantian/SXxiangshan1/720p.m3u8
+浙江 | 宁波余姚综合,http://l.cztvcloud.com/channels/lantian/SXyuyao1/720p.m3u8
+浙江 | 上虞新闻综合,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8
+浙江 | 上虞文化影院,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8
+浙江 | 上虞新商都,http://l.cztvcloud.com/channels/lantian/SXshangyu3/720p.m3u8
+浙江 | 丽水云和综合,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8
+浙江 | 丽水庆元综合,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8
+浙江 | 丽水松阳综合,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8
+浙江 | 丽水缙云综合,http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8
+浙江 | 丽水遂昌综合,http://l.cztvcloud.com/channels/lantian/SXsuichang1/720p.m3u8
+浙江 | 丽水青田综合,http://l.cztvcloud.com/channels/lantian/SXqingtian1/720p.m3u8
+浙江 | 丽水龙泉综合,http://l.cztvcloud.com/channels/lantian/SXlongquan1/720p.m3u8
+浙江 | 云和新闻综合,http://l.cztvcloud.com/channels/lantian/SXyunhe1/720p.m3u8
+浙江 | 兰溪新闻综合,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8
+浙江 | 宁波余姚生活,http://l.cztvcloud.com/channels/lantian/SXyuyao2/720p.m3u8
+浙江 | 宁波余姚综合,http://l.cztvcloud.com/channels/lantian/SXyuyao1/720p.m3u8
+浙江 | 宁波象山综合,http://l.cztvcloud.com/channels/lantian/SXxiangshan1/720p.m3u8
+浙江 | 嵊州公共新闻综合,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8
+浙江 | 平湖公共新闻综合,http://l.cztvcloud.com/channels/lantian/SXpinghu1/720p.m3u8
+浙江 | 平湖新闻综合,http://l.cztvcloud.com/channels/lantian/SXpinghu1/720p.m3u8
+浙江 | 平湖民生休闲,http://l.cztvcloud.com/channels/lantian/SXpinghu2/720p.m3u8
+浙江 | 庆元综合频道,http://l.cztvcloud.com/channels/lantian/SXqingyuan1/720p.m3u8
+浙江 | 开化新闻综合,http://l.cztvcloud.com/channels/lantian/SXkaihua1/720p.m3u8
+浙江 | 开化国家公园,http://l.cztvcloud.com/channels/lantian/SXkaihua2/720p.m3u8
+浙江 | 文成二套,http://l.cztvcloud.com/channels/lantian/SXwencheng2/720p.m3u8
+浙江 | 文成综合频道,http://l.cztvcloud.com/channels/lantian/SXwencheng1/720p.m3u8
+浙江 | 文成综合频道,http://l.cztvcloud.com/channels/lantian/SXwencheng1/720p.m3u8
+浙江 | 普陀新闻综合,http://l.cztvcloud.com/channels/lantian/SXputuo1/720p.m3u8
+浙江 | 松阳综合频道,http://l.cztvcloud.com/channels/lantian/SXsongyang1/720p.m3u8
+浙江 | 永嘉新闻综合,http://l.cztvcloud.com/channels/lantian/SXyongjia1/720p.m3u8
+浙江 | 温州永嘉综合,http://l.cztvcloud.com/channels/lantian/SXyongjia1/720p.m3u8
+浙江 | 绍兴上虞影视,http://l.cztvcloud.com/channels/lantian/SXshangyu2/720p.m3u8
+浙江 | 绍兴上虞综合,http://l.cztvcloud.com/channels/lantian/SXshangyu1/720p.m3u8
+浙江 | 绍兴公共频道,http://live.shaoxing.com.cn/video/s10001-sxtv2/index.m3u8
+浙江 | 绍兴新闻综合,http://live.shaoxing.com.cn/video/s10001-sxhb/index.m3u8
+浙江 | 绍兴公共频道,http://live.shaoxing.com.cn/video/s10001-sxtv2/index.m3u8
+浙江 | 绍兴嵊州综合,http://l.cztvcloud.com/channels/lantian/SXshengzhou1/720p.m3u8
+浙江 | 绍兴文化影视,http://live.shaoxing.com.cn/video/s10001-sxtv3/index.m3u8
+浙江 | 绍兴新闻综合,http://live.shaoxing.com.cn/video/s10001-sxhb/index.m3u8
+浙江 | 缙云综合频道,http://l.cztvcloud.com/channels/lantian/SXjinyun1/720p.m3u8
+浙江 | 舟山新闻综合,http://live1.plus.wifizs.cn/xwzh/sd/live.m3u8
+浙江 | 舟山公共生活,http://live1.plus.wifizs.cn/ggsh/sd/live.m3u8
+浙江 | 苍南新闻综合,http://l.cztvcloud.com/channels/lantian/SXcangnan1/720p.m3u8
+浙江 | 萧山新闻综合,http://l.cztvcloud.com/channels/lantian/SXxiaoshan1/720p.m3u8
+浙江 | 萧山生活频道,http://l.cztvcloud.com/channels/lantian/SXxiaoshan2/720p.m3u8
+浙江 | 衢州开化综合,http://l.cztvcloud.com/channels/lantian/SXkaihua1/720p.m3u8
+浙江 | 衢州衢江综合,http://l.cztvcloud.com/channels/lantian/SXqujiang1/720p.m3u8
+浙江 | 衢州龙游生活,https://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8
+浙江 | 衢州龙游综合,https://l.cztvcloud.com/channels/lantian/SXlongyou1/720p.m3u8
+浙江 | 诸暨新闻综合,http://l.cztvcloud.com/channels/lantian/SXzhuji3/720p.m3u8
+浙江 | 遂昌综合频道,http://l.cztvcloud.com/channels/lantian/SXsuichang1/720p.m3u8
+浙江 | 金华东阳综合,http://l.cztvcloud.com/channels/lantian/SXdongyang1/720p.m3u8
+浙江 | 金华兰溪综合,http://l.cztvcloud.com/channels/lantian/SXlanxi1/720p.m3u8
+浙江 | 青田电视台,http://l.cztvcloud.com/channels/lantian/SXqingtian1/720p.m3u8
+浙江 | 龙泉公共新闻综合,http://l.cztvcloud.com/channels/lantian/SXlongquan1/720p.m3u8
+浙江 | 龙游新闻综合,http://l.cztvcloud.com/channels/lantian/SXlongyou1/720p.m3u8
+浙江 | 龙游生活娱乐,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8
 
 江西,#genre#
-江西都市,https://iptv.lalifeier.eu.org/gitv/jxds.m3u8
-江西经济生活,https://iptv.lalifeier.eu.org/gitv/jxjs.m3u8
-江西影视旅游,https://iptv.lalifeier.eu.org/gitv/jxys.m3u8
-江西公共农业频道,https://iptv.lalifeier.eu.org/gitv/jxgg.m3u8
-江西少儿,https://iptv.lalifeier.eu.org/gitv/jxse.m3u8
-江西新闻,https://iptv.lalifeier.eu.org/gitv/jxxw.m3u8
-风尚购物,https://iptv.lalifeier.eu.org/gitv/fsgw.m3u8
-江西教育,https://iptv.lalifeier.eu.org/gitv/jxjy.m3u8
+江西 | 江西都市,https://iptv.lalifeier.eu.org/gitv/jxds.m3u8
+江西 | 经济生活,https://iptv.lalifeier.eu.org/gitv/jxjs.m3u8
+江西 | 影视旅游,https://iptv.lalifeier.eu.org/gitv/jxys.m3u8
+江西 | 公共农业,https://iptv.lalifeier.eu.org/gitv/jxgg.m3u8
+江西 | 少儿,https://iptv.lalifeier.eu.org/gitv/jxse.m3u8
+江西 | 新闻,https://iptv.lalifeier.eu.org/gitv/jxxw.m3u8
+江西 | 风尚购物,https://iptv.lalifeier.eu.org/gitv/fsgw.m3u8
+江西 | 江西教育,https://iptv.lalifeier.eu.org/gitv/jxjy.m3u8
+江西 | 赣州新闻,http://wb.jxgztv.com/live/gztv1.flv
+江西 | 赣州公共,http://wb.jxgztv.com/live/gztv2.flv
+江西 | 赣州教育,http://wb.jxgztv.com/live/gztv3.flv
+
+山西,#genre#
+山西 | 卫视,http://liveflash.sxrtv.com/live/sxwshd.m3u8?sub_m3u8=true&edge_slice=true
+山西 | 经济,http://liveflash.sxrtv.com/live/sxfinance.m3u8?sub_m3u8=true&edge_slice=true
+山西 | 社会与法治,http://liveflash.sxrtv.com/live/sxedu.m3u8?sub_m3u8=true&edge_slice=true
+山西 | 文体生活,http://liveflash.sxrtv.com/live/sxpublic.m3u8?sub_m3u8=true&edge_slice=true
+山西 | 影视,http://liveflash.sxrtv.com/live/sxfilm.m3u8?sub_m3u8=true&edge_slice=true
+山西 | 黄河,http://liveflash.sxrtv.com/live/huanghe.m3u8?sub_m3u8=true&edge_slice=true
+
+甘肃,#genre#
+甘肃 | 卫视,https://hls.gstv.com.cn/49048r/6e1sy2.m3u8
+甘肃 | 经济频道,https://hls.gstv.com.cn/49048r/10iv1j.m3u8
+甘肃 | 文化影视 ,https://hls.gstv.com.cn/49048r/w1l6d5.m3u8
+甘肃 | 公共应急,https://hls.gstv.com.cn/49048r/3t5xyc.m3u8
+甘肃 | 少儿频道,https://hls.gstv.com.cn/49048r/922k96.m3u8
+甘肃 | 都市频道,https://hls.gstv.com.cn/49048r/l54391.m3u8
+甘肃 | 移动电视,https://hls.gstv.com.cn/49048r/y72q36.m3u8
+
+宁夏,#genre#
+宁夏 | 卫视,https://hls.ningxiahuangheyun.com/live/nxws1M.flv
+宁夏 | 公共,https://hls.ningxiahuangheyun.com/live/nxgg1M.flv
+宁夏 | 经济,https://hls.ningxiahuangheyun.com/live/nxjj1M.flv
+宁夏 | 文旅,https://hls.ningxiahuangheyun.com/live/nxwl1M.flv
+宁夏 | 少儿,https://hls.ningxiahuangheyun.com/live/nxse1M.flv
+
+宁夏 | 石嘴山综合,http://live.kanwz.net/ggpd/playlist.m3u8
+宁夏 | 石嘴山公共,http://live.kanwz.net/zhpd/playlist.m3u8
+宁夏 | 吴忠综合,http://live.kanwz.net/zhpd/sd/live.m3u8
+宁夏 | 吴忠公共,http://live.kanwz.net/ggpd/sd/live.m3u8
+
+黑龙江,#genre#
+黑龙江 | 卫视,http://[2409:8087:1a01:df::4077]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226327/index.m3u8
+黑龙江 | 都市,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221226301/index.m3u8
+黑龙江 | 少儿,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221226304/index.m3u8
+黑龙江 | 文体,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221226239/index.m3u8
+黑龙江 | 科教,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221226242/index.m3u8
+黑龙江 | 法治,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221226330/index.m3u8
+黑龙江 | 影视,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221226298/index.m3u8
+
+黑龙江 | 鹤岗新闻综合,http://[2409:8087:1a01:df::4060]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226534/index.m3u8
+黑龙江 | 佳木斯新闻综合,http://[2409:8087:1a01:df::7005]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226451/index.m3u8
+黑龙江 | 齐齐哈尔新闻综合,http://[2409:8087:1a01:df::7005]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226437/index.m3u8
+黑龙江 | 齐齐哈尔经济法制,http://[2409:8087:1a01:df::7005]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226555/index.m3u8
+黑龙江 | 双鸭山综合,http://[2409:8087:1a01:df::7005]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226529/index.m3u8
+黑龙江 | 七台河新闻综合,http://live.qthnews.org.cn:1935/live/live1/800k/tzwj_video.m3u8
+黑龙江 | 七台河民生社教,http://live.qthnews.org.cn:1935/live/live2/800k/tzwj_video.m3u8
+
+黑龙江 | 哈尔滨新闻综合,http://stream.hrbtv.net/xwzh/sd/live.m3u8
+黑龙江 | 哈尔滨生活,http://stream.hrbtv.net/shpd/sd/live.m3u8
+黑龙江 | 哈尔滨娱乐,http://stream.hrbtv.net/ylpd/sd/live.m3u8
+黑龙江 | 哈尔滨影视,http://stream.hrbtv.net/yspd/sd/live.m3u8
+
+内蒙古,#genre#
+内蒙古 | 卫视,https://livestream-bt.nmtv.cn/nmtv/2314general.m3u8?txSecret=dc348a27bd36fe1bd63562af5e7269ea&txTime=771EF880
+内蒙古 | 蒙古语卫视,https://livestream-bt.nmtv.cn/nmtv/2315general.m3u8?txSecret=e2b255285dd119a92c8aa5cdf00f8b84&txTime=771EF880
+内蒙古 | 新闻综合,https://livestream-bt.nmtv.cn/nmtv/2316general.m3u8?txSecret=173f71025a2de64458989cfb281a0a37&txTime=771E8800
+内蒙古 | 经济生活,https://livestream-bt.nmtv.cn/nmtv/2317general.m3u8?txSecret=8e4b7cf6a2c8a75f74aef1a8a07cef43&txTime=771E8800
+内蒙古 | 少儿频道,https://livestream-bt.nmtv.cn/nmtv/2318general.m3u8?txSecret=ff5a1fd70ea228ee35b0d29895f37c56&txTime=771E8800
+内蒙古 | 文体娱乐,https://livestream-bt.nmtv.cn/nmtv/2319general.m3u8?txSecret=82ed51a2a4cbf85b62fec8ef2bfe4529&txTime=771E8800
+内蒙古 | 农牧频道,https://livestream-bt.nmtv.cn/nmtv/2320general.m3u8?txSecret=b5e44fcd9473993661f17746112ad1b7&txTime=771E8800
+内蒙古 | 蒙语文化,https://livestream-bt.nmtv.cn/nmtv/2321general.m3u8?txSecret=2250268a1d326dbbc4cbf0ba32649ca5&txTime=771E8800
+
+新疆地区,#genre#
+新疆 | 石河子新闻,http://124.88.144.73:1935/live/xwzh/playlist.m3u8
+新疆 | 石河子经济,http://124.88.144.73:1935/live/dywt/playlist.m3u8
+新疆 | 石河子影视,http://124.88.144.73:1935/live/jjsh/playlist.m3u8
+新疆 | 石河子教育,http://124.88.144.73:1935/live/jiaoyu/playlist.m3u8

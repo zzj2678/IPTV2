@@ -1,16 +1,16 @@
+import base64
+import hashlib
 import logging
+import time
+from datetime import datetime, timedelta
 from typing import Optional
 
+from Crypto.PublicKey import RSA
+
+from live.util.http import get_json, get_text
 from live.util.m3u8 import update_m3u8_content
 
 from .base import BaseChannel
-from live.util.http import get_json, post_json, get_text
-import base64
-import hashlib
-import time
-from datetime import datetime, timedelta
-from Crypto.Cipher import PKCS1_v1_5
-from Crypto.PublicKey import RSA
 
 logger = logging.getLogger(__name__)
 
@@ -34,9 +34,9 @@ def rsa_decrypt(encrypted_data: str, public_key_pem: str) -> str:
 CHANNEL_MAPPING = {
     'dfws': 1,  # 东方卫视
     'shxwzh': 2,  # 上海新闻综合
-    'shics': 3,  # 上海ics
+    'shics': 3,  # 上海外语
     'shds': 4,  # 上海都市
-    'dycj': 5,  # 第1财经
+    'dycj': 5,  # 第一财经
     'jsrw': 6,  # 上海纪实人文
     'hhxd': 9,  # 哈哈炫动
 }
@@ -99,7 +99,7 @@ class KankanNews(BaseChannel):
         for program in programs:
             if program['start_time'] < current_time < program['end_time']:
                 return program['id']
-            
+
         return None
 
     async def get_program_detail(self, channel_id, channel_program_id):
