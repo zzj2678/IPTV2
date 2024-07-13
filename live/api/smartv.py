@@ -1,12 +1,14 @@
-import logging
-from typing import Optional
-from .base import BaseChannel
 import hashlib
+import logging
 import time
-import json
-from urllib.parse import urlparse, parse_qs
+from typing import Optional
+
 from live.util.http import get_text
 from live.util.m3u8 import update_m3u8_content
+
+from .base import BaseChannel
+
+from .base import BaseChannel
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +34,7 @@ class Smartv(BaseChannel):
 
         playlist = await get_text(url, headers=headers)
 
-        return update_m3u8_content(url, playlist)
+        return update_m3u8_content(url, playlist, True)
 
 
 site = Smartv()
