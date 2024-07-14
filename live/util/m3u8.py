@@ -35,7 +35,7 @@ def update_m3u8_content(play_url: str, m3u8_content: str, is_proxy: bool = False
                 parsed_line_url = urlparse(line)
                 line_port = parsed_line_url.port or (443 if parsed_line_url.scheme == 'https' else 80)
                 line_domain_port = f"{parsed_line_url.hostname}:{line_port}"
-                modified_line = urljoin(f"{PROXY_URL}/data/{line_domain_port}", parsed_line_url.path)
+                modified_line = f"{PROXY_URL}/data/{line_domain_port}" + parsed_line_url.path
                 if parsed_line_url.query:
                     modified_line += f"?{parsed_line_url.query}"
             else:
