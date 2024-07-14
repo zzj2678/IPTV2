@@ -16,6 +16,9 @@ def update_m3u8_content(play_url: str, m3u8_content: str, is_proxy: bool = False
     PROXY_URL = os.getenv("PROXY_URL", "") if is_proxy else ""
 
     for line in lines:
+        if not line:
+            continue
+
         if line.startswith("#"):
             modified_lines.append(line)
             continue

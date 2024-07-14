@@ -1,11 +1,13 @@
 import hashlib
+import logging
 import time
 from typing import Optional
 
+from live.api.base import BaseChannel
 from live.util.http import get_text
 from live.util.m3u8 import update_m3u8_content
 
-from .base import BaseChannel
+logger = logging.getLogger(__name__)
 
 BASE_URL = "https://sztv-live.sztv.com.cn/"
 
