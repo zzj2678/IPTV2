@@ -172,6 +172,9 @@ async def proxy(request: Request, domain_port: str, path: str):
     if domain == "live-hls.jstv.com":
         referer = "https://live.jstv.com/"
 
+    if domain == "tvlive.yntv.cn":
+        referer = "https://www.yntv.cn/"
+
     headers = {
         "referer": referer,
         "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36}",
