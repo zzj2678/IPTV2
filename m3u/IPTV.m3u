@@ -587,6 +587,40 @@ http://wb.jxgztv.com/live/gztv1.flv
 http://wb.jxgztv.com/live/gztv2.flv
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/赣州教育.png" group-title="江西",赣州教育
 http://wb.jxgztv.com/live/gztv3.flv
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河南卫视.png" group-title="河南",河南卫视
+https://iptv.lalifeier.eu.org/hebtv/hnws.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河南都市.png" group-title="河南",河南都市
+https://iptv.lalifeier.eu.org/hebtv/hnds.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河南民生.png" group-title="河南",河南民生
+https://iptv.lalifeier.eu.org/hebtv/hnms.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河南法治.png" group-title="河南",河南法治
+https://iptv.lalifeier.eu.org/hebtv/hmfz.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河南电视剧.png" group-title="河南",河南电视剧
+https://iptv.lalifeier.eu.org/hebtv/hndsj.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河南新闻.png" group-title="河南",河南新闻
+https://iptv.lalifeier.eu.org/hebtv/hnxw.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/欢腾购物.png" group-title="河南",欢腾购物
+https://iptv.lalifeier.eu.org/hebtv/htgw.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河南公共.png" group-title="河南",河南公共
+https://iptv.lalifeier.eu.org/hebtv/hngg.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河南乡村.png" group-title="河南",河南乡村
+https://iptv.lalifeier.eu.org/hebtv/hnxc.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河南国际.png" group-title="河南",河南国际
+https://iptv.lalifeier.eu.org/hebtv/hngj.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河南梨园.png" group-title="河南",河南梨园
+https://iptv.lalifeier.eu.org/hebtv/hnly.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/文物宝库.png" group-title="河南",文物宝库
+https://iptv.lalifeier.eu.org/hebtv/wwbk.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/武术世界.png" group-title="河南",武术世界
+https://iptv.lalifeier.eu.org/hebtv/wspd.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/睛彩中原.png" group-title="河南",睛彩中原
+https://iptv.lalifeier.eu.org/hebtv/jczy.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/移动戏曲.png" group-title="河南",移动戏曲
+https://iptv.lalifeier.eu.org/hebtv/ydxj.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/象视界.png" group-title="河南",象视界
+https://iptv.lalifeier.eu.org/hebtv/xsj.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/国学频道.png" group-title="河南",国学频道
+https://iptv.lalifeier.eu.org/hebtv/gxpd.m3u8
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北卫视.png" group-title="河北",河北卫视
 https://tv.pull.hebtv.com/jishi/weishipindao.m3u8?t=1963555056&k=a2a2ee6412906c8b2d9a6fd19116c6d9
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北经济.png" group-title="河北",河北经济
@@ -595,12 +629,28 @@ https://tv.pull.hebtv.com/jishi/jingjishenghuo.m3u8?t=1963555098&k=188078e4cff94
 https://tv.pull.hebtv.com/jishi/nongminpindao.m3u8?t=1963555153&k=322fe32502d1e3695b0bdef5e698635e
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北都市.png" group-title="河北",河北都市
 http://tv.pull.hebtv.com/jishi/dushipindao.m3u8?t=2510710360&k=4380da13735a230c080ce8ff404033af
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北影视剧.png" group-title="河北",河北影视剧
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北影视.png" group-title="河北",河北影视
 https://tv.pull.hebtv.com/zhibo/yingshijupindao.m3u8?t=1963555862&k=c1c7d65caa03f1cbd6c9585b5d840534
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北少儿.png" group-title="河北",河北少儿
 https://tv.pull.hebtv.com/jishi/shaoerkejiao.m3u8?t=1963555882&k=3b5e2390e33ef21bf9697e4d1811e261
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北公共.png" group-title="河北",河北公共
 https://tv.pull.hebtv.com/jishi/gonggongpindao.m3u8?t=1963555917&k=fc9fcfabd123ab877e24ee9a0ef0c862
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北卫视.png" group-title="河北",河北卫视
+https://iptv.lalifeier.eu.org/hebtv/hbws.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北经济.png" group-title="河北",河北经济
+https://iptv.lalifeier.eu.org/hebtv/hbjj.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北农民.png" group-title="河北",河北农民
+https://iptv.lalifeier.eu.org/hebtv/hbnm.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北都市.png" group-title="河北",河北都市
+https://iptv.lalifeier.eu.org/hebtv/hbds.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北影视.png" group-title="河北",河北影视
+https://iptv.lalifeier.eu.org/hebtv/hbys.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/少儿科教.png" group-title="河北",少儿科教
+https://iptv.lalifeier.eu.org/hebtv/hbsekj.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/河北公共.png" group-title="河北",河北公共
+https://iptv.lalifeier.eu.org/hebtv/hbgg.m3u8
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/三佳购物.png" group-title="河北",三佳购物
+https://iptv.lalifeier.eu.org/hebtv/hbsjgw.m3u8
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/云南卫视.png" group-title="云南",云南卫视
 https://iptv.lalifeier.eu.org/yntv/ynws.m3u8
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/云南都市.png" group-title="云南",云南都市
@@ -6761,4 +6811,4 @@ https://newcntv.qcloudcdn.com/asp/hls/1200/0303000a/3/default/f93cb9edd30544b787
 https://newcntv.qcloudcdn.com/asp/hls/1200/0303000a/3/default/7fc7a246576744e1b032622846c1fd43/1200.m3u8
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/熊熊乐园52.png" group-title="熊熊乐园",熊熊乐园52
 https://newcntv.qcloudcdn.com/asp/hls/1200/0303000a/3/default/23d304c091184090b3b6ceef8822a273/1200.m3u8
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/2024-07-14 19:52:48.png" group-title="更新时间",2024-07-14 19:52:48
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/2024-07-14 21:06:17.png" group-title="更新时间",2024-07-14 21:06:17
