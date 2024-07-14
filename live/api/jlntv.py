@@ -4,7 +4,7 @@ import logging
 import struct
 from typing import Optional
 
-from live.util.http.http import get_text
+from live.util.http.http import get_json, get_text
 
 from .base import BaseChannel
 
@@ -20,6 +20,42 @@ CHANNEL_MAPPING = {
     "jlzywh": 1538,  # 吉林综艺文化
     "dbxq": 1539,  # 东北戏曲
 }
+
+
+CHANNEL_MAPPING_1 = {
+    'jlws': 351,  # 吉林卫视
+    'jlds': 317,  # 吉林都市
+    'jlsh': 354,  # 吉林生活
+    'jlys': 352,  # 吉林影视
+    'jlxc': 356,  # 吉林乡村
+    'jlggxw': 358,  # 吉林公共新闻
+    'jlzywh': 362,  # 吉林综艺文化
+    'dbxq': 319,  # 吉林东北戏曲
+}
+
+CHANNEL_MAPPING_2 = {
+    'ccnazh': ['nongan', 94],  # 长春 农安综合
+    'bcxwzh': ['baicheng', 31],  # 白城新闻综合
+    'syzh': ['songyuan', 76],  # 松原综合
+    'sygg': ['songyuan', 168],  # 松原公共
+    'syqgzh': ['qianguo', 90],  # 松原 前郭综合
+    'spzh': ['siping', 75],  # 四平综合
+    'lyxwzh': ['liaoyuan', 27],  # 辽源新闻综合
+    'bszh': ['baishan', 200],  # 白山综合
+    'bscbxwzh': ['baishan', 112],  # 白山 长白新闻综合
+    'thxwzh': ['tonghua', 28],  # 通化新闻综合
+    'thjazh': ['jian', 84],  # 通化 集安综合
+    'thmhkzh': ['meihekou', 108],  # 通化 梅河口综合
+}
+
+CHANNEL_MAPPING_3 = {
+    'cctv1': 349,  # CCTV1高清
+    'cctv1b': 364,  # CCTV1高清2
+    'cc1': 24,  # 长春综合
+    'jls1': 25,  # 吉林市新闻综合
+    'yb1': 32,  # 延边新闻综合
+}
+
 
 def str2long(s, w):
     n = len(s)
@@ -101,6 +137,28 @@ class JLNTV(BaseChannel):
             "Client-Type": "web",
             "Referer": "https://www.jlntv.cn/",
     }
+
+    async def get_play_url_2(self, video_id: str) -> Optional[str]:
+        if video_id in CHANNEL_MAPPING_1:
+          json_data = await get_json('http://mapi.plus.jlntv.cn/api/open/jlrm/channel_tv.php')
+          for item in json_data:
+              if CHANNEL_MAPPING_1[video_id] == item['id']:
+                  stream_url = item['m3u8']
+                  break
+
+        if video_id in CHANNEL_MAPPING_2:
+            region, local_channel_id = CHANNEL_MAPPING_2[video_id]
+            if video_id == 'thxwzh':
+                url = f"http://mapi.plus.jlntv.cn/api/open/{region}/channel_tv.php?channel_id={local_channel_id}"
+            else:
+                url = f"http://mapi.plus.jlntv.cn/api/open/{region}/channel.php?channel_id={local_channel_id}"
+            json_data = await get_json(url)
+            stream_url = json_data[0]['m3u8']
+
+        if video_id in CHANNEL_MAPPING_3:
+            json_data = await get_json(f"http://v.jlntv.cn/m2o/channel/channel_info.php?id={CHANNEL_MAPPING_3[video_id]}")
+            stream_url = json_data[0]['m3u8']
+        return stream_url
 
     async def get_play_url(self, video_id: str) -> Optional[str]:
         if video_id not in CHANNEL_MAPPING:
