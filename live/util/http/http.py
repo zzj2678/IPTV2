@@ -1,3 +1,5 @@
+import os
+import random
 from typing import Any, Dict
 
 from bs4 import BeautifulSoup
@@ -6,16 +8,35 @@ from lxml import etree
 from live.util.http.http_client import HTTPClient
 
 
+async def get_proxy():
+    CN_PROXY = os.getenv('CN_PROXY')
+    if CN_PROXY:
+        return CN_PROXY
+
+    proxies = await get_text("https://mirror.ghproxy.com/https://github.com/lalifeier/proxy-scraper/raw/main/proxies/http.txt")
+    proxy_list = proxies.strip().split()
+
+    if not proxy_list:
+        return None
+
+    random_proxy = random.choice(proxy_list)
+
+    return "http://" + random_proxy
+
 async def get(url: str, *, params: dict[str, str] = {}, headers: dict[str, str] = {}, **kwargs: Any):
     async with HTTPClient() as http:
         resp = await http.get(url, params=params, headers=headers, **kwargs)
         return resp
 
 
-async def get_json(url: str, *, params: dict[str, str] = {}, headers: dict[str, str] = {}, **kwargs: Any):
+async def get_json(url: str, *, params: dict[str, str] = {}, headers: dict[str, str] = {}, use_proxy: bool = False, **kwargs: Any):
     async with HTTPClient() as http:
-        resp = await http.get(url, params=params, headers=headers, **kwargs)
-        print(resp.request_info.headers)
+        if use_proxy:
+            proxy = await get_proxy()
+            resp = await http.get(url, params=params, headers=headers, proxy=proxy, **kwargs)
+        else:
+            resp = await http.get(url, params=params, headers=headers, **kwargs)
+
         return await resp.json(content_type=None)
 
 
@@ -31,9 +52,14 @@ async def post_json(url: str, *, data: Any = None, headers: dict[str, str] = {},
         return await resp.json(content_type=None)
 
 
-async def get_text(url: str, *, params: dict[str, str] = {}, headers: dict[str, str] = {}, **kwargs: Any):
+async def get_text(url: str, *, params: dict[str, str] = {}, headers: dict[str, str] = {}, use_proxy: bool = False, **kwargs: Any):
     async with HTTPClient() as http:
-        resp = await http.get(url, params=params, headers=headers, **kwargs)
+        if use_proxy:
+            proxy = await get_proxy()
+            resp = await http.get(url, params=params, headers=headers, proxy=proxy, **kwargs)
+        else:
+            resp = await http.get(url, params=params, headers=headers, **kwargs)
+
         return await resp.text()
 
 

@@ -36,7 +36,7 @@ class AHTV(BaseChannel):
 
         headers = {"Referer": "https://www.ahtv.cn/"}
 
-        json_data = await get_json("https://mapi.ahtv.cn/api/open/ahtv/channel.php", params=params, headers=headers)
+        json_data = await get_json("https://mapi.ahtv.cn/api/open/ahtv/channel.php", params=params, headers=headers, use_proxy=True)
 
         for item in json_data:
             if item["id"] == int( CHANNEL_MAPPING[video_id]):
@@ -51,7 +51,7 @@ class AHTV(BaseChannel):
                   if not line.startswith("#") and "m3u8" in line:
                     url = f'{base_url}{line}'
 
-                    m3u8_content = await get_text(url, headers=headers)
+                    m3u8_content = await get_text(url, headers=headers, use_proxy=True)
 
                     modified_m3u8_content = update_m3u8_content(url, m3u8_content, True)
 

@@ -35,12 +35,13 @@ class YNTV(BaseChannel):
     json_data = await get_json(
         'https://api.yntv.ynradio.com/index/jmd/getRq',
         params=params,
-        headers=self.headers
+        headers=self.headers,
+        use_proxy=True,
     )
 
     url = f"https://tvlive.yntv.cn{json_data['url']}?wsSecret={json_data['string']}&wsTime={json_data['time']}"
 
-    m3u8_content = await get_text(url, headers=self.headers)
+    m3u8_content = await get_text(url, headers=self.headers, use_proxy=True)
 
     modified_m3u8_content = update_m3u8_content(url, m3u8_content, True)
 
