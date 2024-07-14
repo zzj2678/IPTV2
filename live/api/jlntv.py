@@ -17,7 +17,7 @@ CHANNEL_MAPPING = {
     "jlys": 1535,  # 吉林影视
     "jlxc": 1536,  # 吉林乡村
     "jlggxw": 1537,  # 吉林公共新闻
-    "jlzywh": 1538,  # 吉视综艺文化
+    "jlzywh": 1538,  # 吉林综艺文化
     "dbxq": 1539,  # 东北戏曲
 }
 
@@ -97,6 +97,11 @@ class JLNTV(BaseChannel):
     KEY = "5b28bae827e651b3"
     DELTA = 0x9E3779B9
 
+    headers = {
+            "Client-Type": "web",
+            "Referer": "https://www.jlntv.cn/",
+    }
+
     async def get_play_url(self, video_id: str) -> Optional[str]:
         if video_id not in CHANNEL_MAPPING:
             logger.error(f"Invalid Video ID: {video_id}")
@@ -104,18 +109,9 @@ class JLNTV(BaseChannel):
 
         params = {"page": 1, "size": 1000, "type": 1}
 
-        headers = {
-            "Client-Type": "web",
-            "DNT": "1",
-            "Host": "clientapi.jlntv.cn",
-            "Origin": "https://www.jlntv.cn",
-            "Referer": "https://www.jlntv.cn/",
-        }
-
-        text = await get_text("https://clientapi.jlntv.cn/broadcast/list", params=params, headers=headers)
+        text = await get_text("https://clientapi.jlntv.cn/broadcast/list", params=params, headers=self.headers)
 
         text = text.replace('"', "")
-
 
         decrypt_data = xxtea_decrypt(text, self.KEY, self.DELTA)
 
