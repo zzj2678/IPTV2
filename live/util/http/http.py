@@ -1,3 +1,4 @@
+import asyncio
 import os
 import random
 from typing import Any, Dict
@@ -9,12 +10,21 @@ from live.util.http.http_client import HTTPClient
 
 
 async def get_proxy():
+    if not os.getenv('USE_CN_PROXY'):
+        return None
+
     CN_PROXY = os.getenv('CN_PROXY')
     if CN_PROXY:
         return CN_PROXY
 
-    proxies = await get_text("https://mirror.ghproxy.com/https://github.com/lalifeier/proxy-scraper/raw/main/proxies/http.txt")
-    proxy_list = proxies.strip().split()
+    urls = [
+        "https://raw.githubusercontent.com/lalifeier/proxy-scraper/main/proxies/http.txt",
+        "https://raw.githubusercontent.com/lalifeier/proxy-scraper/main/proxies/https.txt"
+    ]
+
+    proxies = await asyncio.gather(*(get_text(url) for url in urls))
+    proxy_list = [proxy.strip().split() for proxy in proxies]
+    proxy_list = [item for sublist in proxy_list for item in sublist]
 
     if not proxy_list:
         return None
