@@ -41,7 +41,7 @@ class JSTV(BaseChannel):
         upt = md5(f"8f6f55fb8ffbfd555aa29a9a1426a&{tm}&/livezhuzhan/{video_id}.m3u8")[12:20] + str(tm)
         url = f"https://live-hls.jstv.com/livezhuzhan/{video_id}.m3u8?upt={upt}"
 
-        m3u8_content = await get_text(url, headers=self.headers)
+        m3u8_content = await get_text(url, headers=self.headers,  proxy='http://58.52.216.91:3128')
 
         modified_m3u8_content = update_m3u8_content(url, m3u8_content)
 
