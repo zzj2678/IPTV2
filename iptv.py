@@ -47,6 +47,10 @@ def extract_ids(url: str):
 
 
 def get_sign_url(url):
+    PROXY_URL = os.getenv("PROXY_URL", "")
+    if PROXY_URL:
+        url = url.replace('iptv.lalifeier.eu.org', PROXY_URL)
+
     channel_id, video_id = extract_ids(url)
     if not channel_id or not video_id:
         print(url)
