@@ -59,7 +59,7 @@ def get_sign_url(url):
     SALT = os.getenv("SALT", "")
     t = str(int(time.time()))
 
-    print(f"{channel_id}{video_id}{t}{SALT}")
+    # print(f"{channel_id}{video_id}{t}{SALT}")
     key = md5(f"{channel_id}{video_id}{t}{SALT}".encode('utf-8')).hexdigest()
 
     parsed_url = urlparse(url)
