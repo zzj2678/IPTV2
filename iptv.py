@@ -1,6 +1,11 @@
 import os
-import requests
+import re
+import time
 from datetime import datetime
+from hashlib import md5
+from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
+
+import requests
 
 IPTV_URL = "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
 M3U_DIR = "m3u"
@@ -33,6 +38,36 @@ def write_m3u_to_file(file_path, content):
         f.write(content.strip())
 
 
+def extract_ids(url: str):
+    pattern = r'/([^/]+)/([^/]+)\.[^/]+$'
+    match = re.search(pattern, url)
+    if match:
+        return match.group(1), match.group(2)
+    return None, None
+
+
+def get_sign_url(url):
+    channel_id, video_id = extract_ids(url)
+    if not channel_id or not video_id:
+        print(url)
+        raise ValueError("Invalid URL format")
+
+    SALT = os.getenv("SALT", "")
+    t = str(int(time.time()))
+
+    print(f"{channel_id}{video_id}{t}{SALT}")
+    key = md5(f"{channel_id}{video_id}{t}{SALT}".encode('utf-8')).hexdigest()
+
+    parsed_url = urlparse(url)
+    query = dict(parse_qsl(parsed_url.query))
+    query.update({'t': t, 'key': key})
+
+    new_query = urlencode(query)
+    new_url = parsed_url._replace(query=new_query)
+
+    return urlunparse(new_url)
+
+
 def txt_to_m3u(content):
     # result = '#EXTM3U x-tvg-url="https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/e.xml"\n'
     result = ""
@@ -47,6 +82,9 @@ def txt_to_m3u(content):
         if channel_url == "#genre#":
             genre = channel_name
         else:
+            if 'lalifeier.eu.org' in channel_url:
+                channel_url = get_sign_url(channel_url)
+
             result += f'#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/{channel_name}.png" group-title="{genre}",{channel_name}\n'
             result += f"{channel_url}\n"
 

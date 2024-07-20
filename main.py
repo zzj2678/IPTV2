@@ -1,4 +1,5 @@
 import logging
+import os
 import time
 from importlib import import_module
 
@@ -7,6 +8,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
 from starlette.requests import Request
 
+from live.util.crypto import md5
 from live.util.proxy import get_proxy
 
 logger = logging.getLogger(__name__)
@@ -24,8 +26,12 @@ async def hello_world():
 
 
 @app.get("/{channel_id}/{video_id}")
-async def get_play_url(channel_id: str, video_id: str):
+async def get_play_url(channel_id: str, video_id: str, request: Request):
     logger.info(f"Received request for channel ID: {channel_id} and video ID: {video_id}")
+
+    SALT = os.getenv("SALT", "")
+    t = request.query_params.get('t')
+    key = request.query_params.get('key')
 
     extension = ""
     if "." in video_id:
@@ -38,7 +44,9 @@ async def get_play_url(channel_id: str, video_id: str):
         if channel_id in ["huya", "douyu", "yy", "douyin"]:
             extension = "flv"
 
-        play_url = f"/{channel_id}/{video_id}.{extension}"
+        t = int(time.time())
+        key = md5(f"{channel_id}{video_id}{t}{SALT}")
+        play_url = f"/{channel_id}/{video_id}.{extension}?t={t}&key={key}"
 
         player_html = f"""
         <!DOCTYPE html>
@@ -61,8 +69,8 @@ async def get_play_url(channel_id: str, video_id: str):
         </head>
         <body>
             <div id="player"></div>
-            <script src="https://unpkg.com/artplayer/dist/artplayer.js"></script>
-            <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/hls.js/8.0.0-beta.3/hls.min.js" type="application/javascript"></script>
+            <script src="https://registry.npmmirror.com/artplayer/5.1.6/files/dist/artplayer.js"></script>
+            <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/hls.js/8.0.0-beta.3/hls.min.js" type="application/javascript"></script>
             <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/flv.js/1.6.2/flv.min.js" type="application/javascript"></script>
             <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/dashjs/4.3.0/dash.all.min.js" type="application/javascript"></script>
             <script>
@@ -77,7 +85,7 @@ async def get_play_url(channel_id: str, video_id: str):
                     fullscreenWeb: true
                 }});
 
-                if (playUrl.endsWith('.m3u8')) {{
+                if (playUrl.includes('.m3u8')) {{
                     if (Hls.isSupported()) {{
                         const hls = new Hls();
                         hls.loadSource(playUrl);
@@ -85,7 +93,7 @@ async def get_play_url(channel_id: str, video_id: str):
                     }} else if (art.video.canPlayType('application/vnd.apple.mpegurl')) {{
                         art.video.src = playUrl;
                     }}
-                }} else if (playUrl.endsWith('.flv')) {{
+                }} else if (playUrl.includes('.flv')) {{
                     if (flvjs.isSupported()) {{
                         const flvPlayer = flvjs.createPlayer({{
                             type: 'flv',
@@ -94,7 +102,7 @@ async def get_play_url(channel_id: str, video_id: str):
                         flvPlayer.attachMediaElement(art.video);
                         flvPlayer.load();
                     }}
-                }} else if (playUrl.endsWith('.mpd')) {{
+                }} else if (playUrl.includes('.mpd')) {{
                     const dashPlayer = dashjs.MediaPlayer().create();
                     dashPlayer.initialize(art.video, playUrl, true);
                 }} else {{
@@ -105,6 +113,15 @@ async def get_play_url(channel_id: str, video_id: str):
         </html>
         """
         return HTMLResponse(content=player_html)
+
+    if not all([t, key]):
+        raise HTTPException(status_code=400, detail="Missing query parameters")
+
+    if int(time.time()) - int(t) > 2 * 60 * 60:
+        raise HTTPException(status_code=401, detail="Token expired")
+
+    if md5(f"{channel_id}{video_id}{t}{SALT}") != key:
+        raise HTTPException(status_code=401, detail="Invalid key")
 
     try:
         channel = CHANNEL_MAPPINGS.get(channel_id, channel_id)
@@ -140,12 +157,6 @@ async def get_play_url(channel_id: str, video_id: str):
     except ModuleNotFoundError as e:
         logger.error(f"Module {channel} not found: {e}")
         raise HTTPException(status_code=404, detail="Channel not found")
-
-    parts = domain.split(".")
-    if len(parts) > 2:
-        return ".".join(parts[-2:])
-    return domain
-
 
 def get_top_level_domain(domain):
     extracted = tldextract.extract(domain)
