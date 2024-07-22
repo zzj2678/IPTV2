@@ -1,18 +1,17 @@
 import asyncio
-import logging
-import re
-import os
-from playwright.async_api import async_playwright
-import requests
-import json
-import concurrent.futures
-from pypinyin import lazy_pinyin
 import base64
+import concurrent.futures
+import json
+import logging
+import os
+import re
 import shutil
-import aiohttp
+
+import requests
+from playwright.async_api import async_playwright
+from pypinyin import lazy_pinyin
 
 # from fofa_hack import fofa
-from random import randint
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
@@ -23,36 +22,36 @@ headers = {
 
 regions = [
     "北京",
-    "天津",
-    "河北",
-    "山西",
-    "内蒙古",
-    "辽宁",
-    "吉林",
-    "黑龙江",
-    "上海",
-    "江苏",
-    "浙江",
-    "安徽",
-    "福建",
-    "江西",
-    "山东",
-    "河南",
-    "湖北",
-    "湖南",
-    "广东",
-    "广西",
-    "海南",
-    "重庆",
-    "四川",
-    "贵州",
-    "云南",
-    "西藏",
-    "陕西",
-    "甘肃",
-    "青海",
-    "宁夏",
-    "新疆",
+    # "天津",
+    # "河北",
+    # "山西",
+    # "内蒙古",
+    # "辽宁",
+    # "吉林",
+    # "黑龙江",
+    # "上海",
+    # "江苏",
+    # "浙江",
+    # "安徽",
+    # "福建",
+    # "江西",
+    # "山东",
+    # "河南",
+    # "湖北",
+    # "湖南",
+    # "广东",
+    # "广西",
+    # "海南",
+    # "重庆",
+    # "四川",
+    # "贵州",
+    # "云南",
+    # "西藏",
+    # "陕西",
+    # "甘肃",
+    # "青海",
+    # "宁夏",
+    # "新疆",
 ]
 
 # regions = [
@@ -72,35 +71,50 @@ isp_dict = {
 OUTPUT_DIR = "txt/jiudian"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+from playwright.async_api import Playwright
+
+playwright: Playwright = None
+
+
+async def get_playwright():
+    global playwright
+    if playwright is None:
+        try:
+            playwright = await async_playwright().start()
+        except Exception as e:
+            raise e
+
+    return playwright
+
 
 async def fetch_page_content(url, region):
     try:
         logging.info(f"Fetching content from {url} for region {region}")
 
-        async with async_playwright() as p:
-            browser = await p.webkit.launch(headless=True)
-            context = await browser.new_context()
-            context.add_init_script("Object.defineProperties(navigator, {webdriver:{get:()=>false}});")
-            page = await context.new_page()
+        playwright = await get_playwright()
+        browser = await playwright.chromium.launch(headless=False)
+        context = await browser.new_context()
+        await context.add_init_script("Object.defineProperties(navigator, {webdriver:{get:()=>false}});")
+        page = await context.new_page()
 
-            # await page.route("**/*.{png,jpg,jpeg}", lambda route: route.abort())
-            async def handle(route, request):
-                if route.request.resource_type in ["stylesheet", "image", "media", "font"]:
-                    await route.abort()
-                else:
-                    await route.continue_()
+        # await page.route("**/*.{png,jpg,jpeg}", lambda route: route.abort())
+        # async def handle(route, request):
+        #     if route.request.resource_type in ["stylesheet", "image", "media", "font"]:
+        #         await route.abort()
+        #     else:
+        #         await route.continue_()
 
-            await page.route("**/*", handle)
+        # await page.route("**/*", handle)
 
-            await page.goto(url)
+        await page.goto(url)
 
-            # await page.wait_for_load_state('networkidle')
+        await page.wait_for_load_state('networkidle')
 
-            content = await page.content()
-            await browser.close()
-            logging.info(f"Finished fetching content from {url} for region {region}")
+        content = await page.content()
+        await browser.close()
+        logging.info(f"Finished fetching content from {url} for region {region}")
 
-            return region, content  # Return both region and content as a tuple
+        return region, content  # Return both region and content as a tuple
     except Exception as e:
         logging.error(f"Error fetching page content for {region}: {str(e)}")
         return region, None  # Return None for content in case of error
