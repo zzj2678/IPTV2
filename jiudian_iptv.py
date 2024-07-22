@@ -80,7 +80,7 @@ async def fetch_page_content(url, region):
         async with async_playwright() as p:
             browser = await p.webkit.launch(headless=True)
             context = await browser.new_context()
-            context.add_init_script("Object.defineProperties(navigator, {webdriver:{get:()=>false}});")
+            await context.add_init_script("Object.defineProperties(navigator, {webdriver:{get:()=>false}});")
             page = await context.new_page()
 
             # await page.route("**/*.{png,jpg,jpeg}", lambda route: route.abort())
