@@ -9,42 +9,42 @@
 法治天地,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000014/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000014&IASHttpSessionId=OTT19019320240419154124000281
 第一财经,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000004/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000004&IASHttpSessionId=OTT19019320240419154124000281
 
-东方卫视,https://iptv.lalifeier.eu.org/kankanews/dfws.m3u8
-上海新闻综合,https://iptv.lalifeier.eu.org/kankanews/shxwzh.m3u8
-上海外语,https://iptv.lalifeier.eu.org/kankanews/shics.m3u8
-上海都市,https://iptv.lalifeier.eu.org/kankanews/shds.m3u8
-第一财经,https://iptv.lalifeier.eu.org/kankanews/dycj.m3u8
-上海纪实人文,https://iptv.lalifeier.eu.org/kankanews/jsrw.m3u8
-哈哈炫动,https://iptv.lalifeier.eu.org/kankanews/hhxd.m3u8
+东方卫视,https://127.0.0.1:8080/kankanews/dfws.m3u8
+上海新闻综合,https://127.0.0.1:8080/kankanews/shxwzh.m3u8
+上海外语,https://127.0.0.1:8080/kankanews/shics.m3u8
+上海都市,https://127.0.0.1:8080/kankanews/shds.m3u8
+第一财经,https://127.0.0.1:8080/kankanews/dycj.m3u8
+上海纪实人文,https://127.0.0.1:8080/kankanews/jsrw.m3u8
+哈哈炫动,https://127.0.0.1:8080/kankanews/hhxd.m3u8
 
 广东,#genre#
 广东卫视,http://[2409:8087:1a01:df::7005]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226248/index.m3u8
 
-广州综合,https://iptv.lalifeier.eu.org/gztv/zhonghe.m3u8
-广州新闻,https://iptv.lalifeier.eu.org/gztv/xinwen.m3u8
-广州竞赛,https://iptv.lalifeier.eu.org/gztv/jingsai.m3u8
-广州影视,https://iptv.lalifeier.eu.org/gztv/yingshi.m3u8
-广州法治,https://iptv.lalifeier.eu.org/gztv/fazhi.m3u8
-广州南国都市,https://iptv.lalifeier.eu.org/gztv/shenghuo.m3u8
+广州综合,https://127.0.0.1:8080/gztv/zhonghe.m3u8
+广州新闻,https://127.0.0.1:8080/gztv/xinwen.m3u8
+广州竞赛,https://127.0.0.1:8080/gztv/jingsai.m3u8
+广州影视,https://127.0.0.1:8080/gztv/yingshi.m3u8
+广州法治,https://127.0.0.1:8080/gztv/fazhi.m3u8
+广州南国都市,https://127.0.0.1:8080/gztv/shenghuo.m3u8
 
-佛山综合,https://iptv.lalifeier.eu.org/fstv/fszh.m3u8
-佛山影视,https://iptv.lalifeier.eu.org/fstv/fsys.m3u8
-佛山公共,https://iptv.lalifeier.eu.org/fstv/fsgg.m3u8
-佛山南海,https://iptv.lalifeier.eu.org/fstv/fsnh.m3u8
-佛山顺德,https://iptv.lalifeier.eu.org/fstv/fssd.m3u8
-佛山高明,https://iptv.lalifeier.eu.org/fstv/fsgm.m3u8
-佛山三水,https://iptv.lalifeier.eu.org/fstv/fsss.m3u8
+佛山综合,https://127.0.0.1:8080/fstv/fszh.m3u8
+佛山影视,https://127.0.0.1:8080/fstv/fsys.m3u8
+佛山公共,https://127.0.0.1:8080/fstv/fsgg.m3u8
+佛山南海,https://127.0.0.1:8080/fstv/fsnh.m3u8
+佛山顺德,https://127.0.0.1:8080/fstv/fssd.m3u8
+佛山高明,https://127.0.0.1:8080/fstv/fsgm.m3u8
+佛山三水,https://127.0.0.1:8080/fstv/fsss.m3u8
 
-深圳卫视,https://iptv.lalifeier.eu.org/sztv/szws.m3u8
-深圳娱乐,https://iptv.lalifeier.eu.org/sztv/szyl.m3u8
-深圳少儿,https://iptv.lalifeier.eu.org/sztv/szse.m3u8
-深圳公共,https://iptv.lalifeier.eu.org/sztv/szgg.m3u8
-深圳财经生活,https://iptv.lalifeier.eu.org/sztv/szcjsh.m3u8
-深圳电视剧,https://iptv.lalifeier.eu.org/sztv/szdsj.m3u8
-宜和购物,https://iptv.lalifeier.eu.org/sztv/yhgw.m3u8
-深圳都市,https://iptv.lalifeier.eu.org/sztv/szds.m3u8
-深圳国际,https://iptv.lalifeier.eu.org/sztv/szgj.m3u8
-深圳移动,https://iptv.lalifeier.eu.org/sztv/szyd.m3u8
+深圳卫视,https://127.0.0.1:8080/sztv/szws.m3u8
+深圳娱乐,https://127.0.0.1:8080/sztv/szyl.m3u8
+深圳少儿,https://127.0.0.1:8080/sztv/szse.m3u8
+深圳公共,https://127.0.0.1:8080/sztv/szgg.m3u8
+深圳财经生活,https://127.0.0.1:8080/sztv/szcjsh.m3u8
+深圳电视剧,https://127.0.0.1:8080/sztv/szdsj.m3u8
+宜和购物,https://127.0.0.1:8080/sztv/yhgw.m3u8
+深圳都市,https://127.0.0.1:8080/sztv/szds.m3u8
+深圳国际,https://127.0.0.1:8080/sztv/szgj.m3u8
+深圳移动,https://127.0.0.1:8080/sztv/szyd.m3u8
 
 浙江,#genre#
 浙江卫视,http://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8
@@ -129,16 +129,16 @@
 龙游生活娱乐,http://l.cztvcloud.com/channels/lantian/SXlongyou2/720p.m3u8
 
 江苏,#genre#
-江苏卫视,https://iptv.lalifeier.eu.org/jstv/jsws.m3u8
-江苏城市,https://iptv.lalifeier.eu.org/jstv/jscs.m3u8
-江苏新闻,https://iptv.lalifeier.eu.org/jstv/jsgg.m3u8
-江苏综艺,https://iptv.lalifeier.eu.org/jstv/jszy.m3u8
-江苏影视,https://iptv.lalifeier.eu.org/jstv/jsys.m3u8
-江苏体育,https://iptv.lalifeier.eu.org/jstv/jsty.m3u8
-江苏教育,https://iptv.lalifeier.eu.org/jstv/jsjy.m3u8
-江苏国际,https://iptv.lalifeier.eu.org/jstv/jsgj.m3u8
-好享购物,https://iptv.lalifeier.eu.org/jstv/hxgw.m3u8
-优漫卡通,https://iptv.lalifeier.eu.org/jstv/ymkt.m3u8
+江苏卫视,https://127.0.0.1:8080/jstv/jsws.m3u8
+江苏城市,https://127.0.0.1:8080/jstv/jscs.m3u8
+江苏新闻,https://127.0.0.1:8080/jstv/jsgg.m3u8
+江苏综艺,https://127.0.0.1:8080/jstv/jszy.m3u8
+江苏影视,https://127.0.0.1:8080/jstv/jsys.m3u8
+江苏体育,https://127.0.0.1:8080/jstv/jsty.m3u8
+江苏教育,https://127.0.0.1:8080/jstv/jsjy.m3u8
+江苏国际,https://127.0.0.1:8080/jstv/jsgj.m3u8
+好享购物,https://127.0.0.1:8080/jstv/hxgw.m3u8
+优漫卡通,https://127.0.0.1:8080/jstv/ymkt.m3u8
 
 南京新闻,http://live.nbs.cn/channels/njtv/xwzh/nbs06.m3u8
 南京教科,http://live.nbs.cn/channels/njtv/jkpd/nbs06.m3u8
@@ -202,14 +202,14 @@
 湘潭公共频道,http://live.hnxttv.com:9601/live/dspd/800K/tzwj_video.m3u8
 
 安徽,#genre#
-安徽卫视,https://iptv.lalifeier.eu.org/ahtv/ahws.m3u8
-安徽经济生活,https://iptv.lalifeier.eu.org/ahtv/ahjjsh.m3u8
-安徽综艺体育,https://iptv.lalifeier.eu.org/ahtv/ahzyty.m3u8
-安徽影视,https://iptv.lalifeier.eu.org/ahtv/ahys.m3u8
-安徽公共,https://iptv.lalifeier.eu.org/ahtv/ahgg.m3u8
-安徽农业科教,https://iptv.lalifeier.eu.org/ahtv/ahnykj.m3u8
-安徽国际,https://iptv.lalifeier.eu.org/ahtv/ahgj.m3u8
-安徽移动,https://iptv.lalifeier.eu.org/ahtv/ahyd.m3u8
+安徽卫视,https://127.0.0.1:8080/ahtv/ahws.m3u8
+安徽经济生活,https://127.0.0.1:8080/ahtv/ahjjsh.m3u8
+安徽综艺体育,https://127.0.0.1:8080/ahtv/ahzyty.m3u8
+安徽影视,https://127.0.0.1:8080/ahtv/ahys.m3u8
+安徽公共,https://127.0.0.1:8080/ahtv/ahgg.m3u8
+安徽农业科教,https://127.0.0.1:8080/ahtv/ahnykj.m3u8
+安徽国际,https://127.0.0.1:8080/ahtv/ahgj.m3u8
+安徽移动,https://127.0.0.1:8080/ahtv/ahyd.m3u8
 
 湖北,#genre#
 武汉新闻综合,http://stream.appwuhan.com/1tzb/sd/live.m3u8
@@ -228,14 +228,14 @@
 潜江乡村,http://hbqjdb.chinashadt.com:2035/live/4.stream/playlist.m3u8
 
 江西,#genre#
-江西都市,https://iptv.lalifeier.eu.org/gitv/jxds.m3u8
-江西经济生活,https://iptv.lalifeier.eu.org/gitv/jxjs.m3u8
-江西影视旅游,https://iptv.lalifeier.eu.org/gitv/jxys.m3u8
-江西公共农业,https://iptv.lalifeier.eu.org/gitv/jxgg.m3u8
-江西少儿,https://iptv.lalifeier.eu.org/gitv/jxse.m3u8
-江西新闻,https://iptv.lalifeier.eu.org/gitv/jxxw.m3u8
-风尚购物,https://iptv.lalifeier.eu.org/gitv/fsgw.m3u8
-江西教育,https://iptv.lalifeier.eu.org/gitv/jxjy.m3u8
+江西都市,https://127.0.0.1:8080/gitv/jxds.m3u8
+江西经济生活,https://127.0.0.1:8080/gitv/jxjs.m3u8
+江西影视旅游,https://127.0.0.1:8080/gitv/jxys.m3u8
+江西公共农业,https://127.0.0.1:8080/gitv/jxgg.m3u8
+江西少儿,https://127.0.0.1:8080/gitv/jxse.m3u8
+江西新闻,https://127.0.0.1:8080/gitv/jxxw.m3u8
+风尚购物,https://127.0.0.1:8080/gitv/fsgw.m3u8
+江西教育,https://127.0.0.1:8080/gitv/jxjy.m3u8
 赣州新闻,http://wb.jxgztv.com/live/gztv1.flv
 赣州公共,http://wb.jxgztv.com/live/gztv2.flv
 赣州教育,http://wb.jxgztv.com/live/gztv3.flv
@@ -282,23 +282,23 @@
 井冈山1套,http://live02.jxtvcn.com.cn/live-jxtvcn/ganyun_jgs.m3u8
 
 河南,#genre#
-河南卫视,https://iptv.lalifeier.eu.org/hntv/hnws.m3u8
-河南都市,https://iptv.lalifeier.eu.org/hntv/hnds.m3u8
-河南民生,https://iptv.lalifeier.eu.org/hntv/hnms.m3u8
-河南法治,https://iptv.lalifeier.eu.org/hntv/hmfz.m3u8
-河南电视剧,https://iptv.lalifeier.eu.org/hntv/hndsj.m3u8
-河南新闻,https://iptv.lalifeier.eu.org/hntv/hnxw.m3u8
-欢腾购物,https://iptv.lalifeier.eu.org/hntv/htgw.m3u8
-河南公共,https://iptv.lalifeier.eu.org/hntv/hngg.m3u8
-河南乡村,https://iptv.lalifeier.eu.org/hntv/hnxc.m3u8
-河南国际,https://iptv.lalifeier.eu.org/hntv/hngj.m3u8
-河南梨园,https://iptv.lalifeier.eu.org/hntv/hnly.m3u8
-文物宝库,https://iptv.lalifeier.eu.org/hntv/wwbk.m3u8
-武术世界,https://iptv.lalifeier.eu.org/hntv/wspd.m3u8
-睛彩中原,https://iptv.lalifeier.eu.org/hntv/jczy.m3u8
-移动戏曲,https://iptv.lalifeier.eu.org/hntv/ydxj.m3u8
-象视界,https://iptv.lalifeier.eu.org/hntv/xsj.m3u8
-国学频道,https://iptv.lalifeier.eu.org/hntv/gxpd.m3u8
+河南卫视,https://127.0.0.1:8080/hntv/hnws.m3u8
+河南都市,https://127.0.0.1:8080/hntv/hnds.m3u8
+河南民生,https://127.0.0.1:8080/hntv/hnms.m3u8
+河南法治,https://127.0.0.1:8080/hntv/hmfz.m3u8
+河南电视剧,https://127.0.0.1:8080/hntv/hndsj.m3u8
+河南新闻,https://127.0.0.1:8080/hntv/hnxw.m3u8
+欢腾购物,https://127.0.0.1:8080/hntv/htgw.m3u8
+河南公共,https://127.0.0.1:8080/hntv/hngg.m3u8
+河南乡村,https://127.0.0.1:8080/hntv/hnxc.m3u8
+河南国际,https://127.0.0.1:8080/hntv/hngj.m3u8
+河南梨园,https://127.0.0.1:8080/hntv/hnly.m3u8
+文物宝库,https://127.0.0.1:8080/hntv/wwbk.m3u8
+武术世界,https://127.0.0.1:8080/hntv/wspd.m3u8
+睛彩中原,https://127.0.0.1:8080/hntv/jczy.m3u8
+移动戏曲,https://127.0.0.1:8080/hntv/ydxj.m3u8
+象视界,https://127.0.0.1:8080/hntv/xsj.m3u8
+国学频道,https://127.0.0.1:8080/hntv/gxpd.m3u8
 
 河北,#genre#
 河北卫视,https://tv.pull.hebtv.com/jishi/weishipindao.m3u8?t=1963555056&k=a2a2ee6412906c8b2d9a6fd19116c6d9
@@ -309,38 +309,38 @@
 河北少儿,https://tv.pull.hebtv.com/jishi/shaoerkejiao.m3u8?t=1963555882&k=3b5e2390e33ef21bf9697e4d1811e261
 河北公共,https://tv.pull.hebtv.com/jishi/gonggongpindao.m3u8?t=1963555917&k=fc9fcfabd123ab877e24ee9a0ef0c862
 
-河北卫视,https://iptv.lalifeier.eu.org/hebtv/hbws.m3u8
-河北经济,https://iptv.lalifeier.eu.org/hebtv/hbjj.m3u8
-河北农民,https://iptv.lalifeier.eu.org/hebtv/hbnm.m3u8
-河北都市,https://iptv.lalifeier.eu.org/hebtv/hbds.m3u8
-河北影视,https://iptv.lalifeier.eu.org/hebtv/hbys.m3u8
-少儿科教,https://iptv.lalifeier.eu.org/hebtv/hbsekj.m3u8
-河北公共,https://iptv.lalifeier.eu.org/hebtv/hbgg.m3u8
-三佳购物,https://iptv.lalifeier.eu.org/hebtv/hbsjgw.m3u8
+河北卫视,https://127.0.0.1:8080/hebtv/hbws.m3u8
+河北经济,https://127.0.0.1:8080/hebtv/hbjj.m3u8
+河北农民,https://127.0.0.1:8080/hebtv/hbnm.m3u8
+河北都市,https://127.0.0.1:8080/hebtv/hbds.m3u8
+河北影视,https://127.0.0.1:8080/hebtv/hbys.m3u8
+少儿科教,https://127.0.0.1:8080/hebtv/hbsekj.m3u8
+河北公共,https://127.0.0.1:8080/hebtv/hbgg.m3u8
+三佳购物,https://127.0.0.1:8080/hebtv/hbsjgw.m3u8
 
 云南,#genre#
-云南卫视,https://iptv.lalifeier.eu.org/yntv/ynws.m3u8
-云南都市,https://iptv.lalifeier.eu.org/yntv/ynds.m3u8
-云南娱乐,https://iptv.lalifeier.eu.org/yntv/ynyl.m3u8
-康旅频道,https://iptv.lalifeier.eu.org/yntv/ynkl.m3u8
-澜湄国际,https://iptv.lalifeier.eu.org/yntv/yngj.m3u8
-云南少儿,https://iptv.lalifeier.eu.org/yntv/ynse.m3u8
+云南卫视,https://127.0.0.1:8080/yntv/ynws.m3u8
+云南都市,https://127.0.0.1:8080/yntv/ynds.m3u8
+云南娱乐,https://127.0.0.1:8080/yntv/ynyl.m3u8
+康旅频道,https://127.0.0.1:8080/yntv/ynkl.m3u8
+澜湄国际,https://127.0.0.1:8080/yntv/yngj.m3u8
+云南少儿,https://127.0.0.1:8080/yntv/ynse.m3u8
 
 贵州,#genre#
-贵州卫视,https://iptv.lalifeier.eu.org/gzstv/gzws.m3u8
-贵州公共,https://iptv.lalifeier.eu.org/gzstv/gzgg.m3u8
-贵州影视,https://iptv.lalifeier.eu.org/gzstv/gzwy.m3u8
-贵州生活,https://iptv.lalifeier.eu.org/gzstv/gzsh.m3u8
-贵州法制,https://iptv.lalifeier.eu.org/gzstv/gzfz.m3u8
-贵州科教,https://iptv.lalifeier.eu.org/gzstv/gzkj.m3u8
-贵州经济,https://iptv.lalifeier.eu.org/gzstv/gzjj.m3u8
-贵州家有购物,https://iptv.lalifeier.eu.org/gzstv/gzjygw.m3u8
-贵州移动,https://iptv.lalifeier.eu.org/gzstv/gzyd.m3u8
-贵州综合广播,https://iptv.lalifeier.eu.org/gzstv/fm946.m3u8
-贵州经济广播,https://iptv.lalifeier.eu.org/gzstv/fm989.m3u8
-贵州音乐广播,https://iptv.lalifeier.eu.org/gzstv/fm916.m3u8
-贵州交通广播,https://iptv.lalifeier.eu.org/gzstv/fm952.m3u8
-贵州旅游广播,https://iptv.lalifeier.eu.org/gzstv/fm972.m3u8
+贵州卫视,https://127.0.0.1:8080/gzstv/gzws.m3u8
+贵州公共,https://127.0.0.1:8080/gzstv/gzgg.m3u8
+贵州影视,https://127.0.0.1:8080/gzstv/gzwy.m3u8
+贵州生活,https://127.0.0.1:8080/gzstv/gzsh.m3u8
+贵州法制,https://127.0.0.1:8080/gzstv/gzfz.m3u8
+贵州科教,https://127.0.0.1:8080/gzstv/gzkj.m3u8
+贵州经济,https://127.0.0.1:8080/gzstv/gzjj.m3u8
+贵州家有购物,https://127.0.0.1:8080/gzstv/gzjygw.m3u8
+贵州移动,https://127.0.0.1:8080/gzstv/gzyd.m3u8
+贵州综合广播,https://127.0.0.1:8080/gzstv/fm946.m3u8
+贵州经济广播,https://127.0.0.1:8080/gzstv/fm989.m3u8
+贵州音乐广播,https://127.0.0.1:8080/gzstv/fm916.m3u8
+贵州交通广播,https://127.0.0.1:8080/gzstv/fm952.m3u8
+贵州旅游广播,https://127.0.0.1:8080/gzstv/fm972.m3u8
 
 山西,#genre#
 山西卫视,http://liveflash.sxrtv.com/live/sxwshd.m3u8?sub_m3u8=true&edge_slice=true
@@ -350,12 +350,12 @@
 山西影视,http://liveflash.sxrtv.com/live/sxfilm.m3u8?sub_m3u8=true&edge_slice=true
 山西黄河,http://liveflash.sxrtv.com/live/huanghe.m3u8?sub_m3u8=true&edge_slice=true
 
-山西卫视,https://iptv.lalifeier.eu.org/sxrtv/sxws.m3u8
-山西经济,https://iptv.lalifeier.eu.org/sxrtv/sxjj.m3u8
-山西社会与法治,https://iptv.lalifeier.eu.org/sxrtv/sxshfz.m3u8
-山西文体生活,https://iptv.lalifeier.eu.org/sxrtv/sxwtsh.m3u8
-山西影视,https://iptv.lalifeier.eu.org/sxrtv/sxys.m3u8
-山西黄河,https://iptv.lalifeier.eu.org/sxrtv/sxhh.m3u8
+山西卫视,https://127.0.0.1:8080/sxrtv/sxws.m3u8
+山西经济,https://127.0.0.1:8080/sxrtv/sxjj.m3u8
+山西社会与法治,https://127.0.0.1:8080/sxrtv/sxshfz.m3u8
+山西文体生活,https://127.0.0.1:8080/sxrtv/sxwtsh.m3u8
+山西影视,https://127.0.0.1:8080/sxrtv/sxys.m3u8
+山西黄河,https://127.0.0.1:8080/sxrtv/sxhh.m3u8
 
 海南,#genre#
 海南卫视,https://live3.hnntv.cn/srs/tv/lywsgq.m3u8
@@ -400,14 +400,14 @@
 吴忠公共,http://live.kanwz.net/ggpd/sd/live.m3u8
 
 吉林,#genre#
-吉林卫视,https://iptv.lalifeier.eu.org/jlntv/jlws.m3u8
-吉林都市,https://iptv.lalifeier.eu.org/jlntv/jlds.m3u8
-吉林生活,https://iptv.lalifeier.eu.org/jlntv/jlsh.m3u8
-吉林影视,https://iptv.lalifeier.eu.org/jlntv/jlys.m3u8
-吉林乡村,https://iptv.lalifeier.eu.org/jlntv/jlxc.m3u8
-吉林公共新闻,https://iptv.lalifeier.eu.org/jlntv/jlggxw.m3u8
-吉林综艺文化,https://iptv.lalifeier.eu.org/jlntv/jlzywh.m3u8
-东北戏曲,https://iptv.lalifeier.eu.org/jlntv/dbxq.m3u8
+吉林卫视,https://127.0.0.1:8080/jlntv/jlws.m3u8
+吉林都市,https://127.0.0.1:8080/jlntv/jlds.m3u8
+吉林生活,https://127.0.0.1:8080/jlntv/jlsh.m3u8
+吉林影视,https://127.0.0.1:8080/jlntv/jlys.m3u8
+吉林乡村,https://127.0.0.1:8080/jlntv/jlxc.m3u8
+吉林公共新闻,https://127.0.0.1:8080/jlntv/jlggxw.m3u8
+吉林综艺文化,https://127.0.0.1:8080/jlntv/jlzywh.m3u8
+东北戏曲,https://127.0.0.1:8080/jlntv/dbxq.m3u8
 
 德惠综合,http://stream11.jlntv.cn/dehuitv/playlist.m3u8
 九台区电视台,http://stream10.jlntv.cn/jiutaitv/playlist.m3u8

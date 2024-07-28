@@ -49,7 +49,7 @@ def extract_ids(url: str):
 def get_sign_url(url):
     PROXY_URL = os.getenv("PROXY_URL", "")
     if PROXY_URL:
-        url = url.replace('iptv.lalifeier.eu.org', PROXY_URL)
+        url = url.replace('127.0.0.1:8080', PROXY_URL)
 
     channel_id, video_id = extract_ids(url)
     if not channel_id or not video_id:
@@ -86,7 +86,7 @@ def txt_to_m3u(content):
         if channel_url == "#genre#":
             genre = channel_name
         else:
-            if 'lalifeier.eu.org' in channel_url:
+            if '127.0.0.1:8080' in channel_url:
                 channel_url = get_sign_url(channel_url)
 
             result += f'#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/linitfor/epg/main/logo/{channel_name}.png" group-title="{genre}",{channel_name}\n'
