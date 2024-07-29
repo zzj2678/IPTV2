@@ -4,7 +4,7 @@ pypinyin
 aiohttp
 fofa-hack
 cloudscraper
-fastapi 
+fastapi
 uvicorn
 lxml
 beautifulsoup4
@@ -12,3 +12,4 @@ pycryptodome
 tldextract
 node_vm2
 dukpy
+opencv-python

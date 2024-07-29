@@ -47,6 +47,7 @@ tldextract = "^5.1.2"
 requests = "^2.32.3"
 dukpy = "^0.4.0"
 pypinyin = "^0.51.0"
+opencv-python = "^4.10.0.84"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

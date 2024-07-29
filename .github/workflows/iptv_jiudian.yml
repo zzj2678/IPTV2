@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Update JiuDian IPTV
         run: |
-            python jiudian_iptv.py
+            python iptv_jiudian.py
 
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -44,7 +44,7 @@ jobs:
         uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
         with:
           repository: ${{ github.repository }}
-          workflow: ".github/workflows/jiudian_iptv.yml"
+          workflow: ".github/workflows/iptv_jiudian.yml"
           older-than-seconds: 3600
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
