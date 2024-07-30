@@ -106,6 +106,7 @@ def main():
 
     m3u_content = read_file_content(os.path.join(M3U_DIR, "ipv6.m3u"))
     playlists = {
+        "Hot": file_to_m3u("Hot.txt"),
         "CCTV": file_to_m3u("CCTV.txt"),
         "CNTV": file_to_m3u("CNTV.txt"),
         "Shuzi": file_to_m3u("Shuzi.txt"),
