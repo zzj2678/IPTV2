@@ -116,7 +116,7 @@ def main():
         "Movie": file_to_m3u("Movie.txt"),
         "Sport": file_to_m3u("Sport.txt"),
         "MiGu": file_to_m3u("MiGu.txt"),
-        "Huya": file_to_m3u("huya.txt"),
+        "lunbo.txt": file_to_m3u("lunbo.txt"),
         "HK": file_to_m3u("hk.txt"),
         "TW": file_to_m3u("tw.txt"),
         "YouTube": file_to_m3u("YouTube.txt"),
@@ -126,6 +126,7 @@ def main():
         "Panda": file_to_m3u("Panda.txt"),
         "Documentary": file_to_m3u("Documentary.txt"),
         "Chunwan": file_to_m3u("Chunwan.txt"),
+        "fm": file_to_m3u("fm.txt"),
         "Animated": file_to_m3u("Animated.txt"),
         "About": file_to_m3u("About.txt"),
     }
