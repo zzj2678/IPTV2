@@ -141,7 +141,7 @@ class JiuDian(Base):
             loop = asyncio.get_event_loop()
             futures = [
                 loop.run_in_executor(
-                    pool, lambda ip: self.is_url_accessible(f"http://{ip}/iptv/live/1000.json?key=txiptv"), ip
+                    pool, lambda ip: await self.is_url_accessible(f"http://{ip}/iptv/live/1000.json?key=txiptv"), ip
                 )
                 for ip in ip
             ]
@@ -164,13 +164,13 @@ class JiuDian(Base):
 
                 ip = await self.extract_ip_from_content(content)
 
-                ip_ports = set()
-                for ip_port in ip:
-                    ip_address, port = ip_port.split(":")
-                    for i in range(1, 256):  # 第四位从1到255
-                        ip_ports.add(f"{ip_address.rsplit('.', 1)[0]}.{i}:{port}")
+                # ip_ports = set()
+                # for ip_port in ip:
+                #     ip_address, port = ip_port.split(":")
+                #     for i in range(1, 256):  # 第四位从1到255
+                #         ip_ports.add(f"{ip_address.rsplit('.', 1)[0]}.{i}:{port}")
 
-                validated_ips = await self.validate_ip(ip_ports)
+                validated_ips = await self.validate_ip(ip)
 
                 self.save_ip(isp_name, region, validated_ips)
 

@@ -3,8 +3,8 @@ import os
 import re
 from typing import List, Optional
 
+import aiohttp
 import cv2
-import requests
 from bs4 import BeautifulSoup
 
 from iptv.config import IP_DIR, OUTPUT_DIR
@@ -87,19 +87,20 @@ class Base:
         values = set(remove_protocol(element.get('href', '')) for element in elements)
         return list(values)
 
-    def is_url_accessible(self, url: str) -> bool:
-        try:
-            logging.info(f"Checking accessibility for URL: {url}")
-            response = requests.get(url, timeout=5)
-            if response.status_code == 200:
-                logging.info(f"URL {url} is accessible. Status code: {response.status_code}")
-                return True
-            else:
-                logging.warning(f"URL {url} is not accessible. Status code: {response.status_code}")
+    async def is_url_accessible(self, url: str) -> bool:
+        async with aiohttp.ClientSession() as session:
+            try:
+                logging.info(f"Checking accessibility for URL: {url}")
+                async with session.get(url, timeout=5) as response:
+                    if response.status == 200:
+                        logging.info(f"URL {url} is accessible. Status code: {response.status}")
+                        return True
+                    else:
+                        logging.warning(f"URL {url} is not accessible. Status code: {response.status}")
+                        return False
+            except aiohttp.ClientError as e:
+                logging.error(f"Error checking URL {url}: {e}")
                 return False
-        except requests.RequestException as e:
-            logging.error(f"Error checking URL {url}: {e}")
-            return False
 
     def is_video_stream_valid(self, url: str) -> bool:
         logging.info(f"Checking video URL: {url}")

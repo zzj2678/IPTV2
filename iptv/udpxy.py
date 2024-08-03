@@ -49,7 +49,7 @@ class UDPxy(Base):
         with ThreadPoolExecutor() as pool:
             loop = asyncio.get_event_loop()
             futures = [
-                loop.run_in_executor(pool, lambda ip: self.is_url_accessible(f"http://{ip}/status") and self.is_video_stream_valid(f"http://{ip}/rtp/{mcast}"), ip)
+                loop.run_in_executor(pool, lambda ip: await self.is_url_accessible(f"http://{ip}/status") and self.is_video_stream_valid(f"http://{ip}/rtp/{mcast}"), ip)
                 for ip in ip
             ]
             for ip, valid in zip(ip, await asyncio.gather(*futures)):
@@ -111,7 +111,7 @@ class UDPxy(Base):
             return None
 
         for ip in valid_ips:
-            if self.is_url_accessible(f"http://{ip}/status") and self.is_video_stream_valid(f"http://{ip}/rtp/{mcast}"):
+            if await self.is_url_accessible(f"http://{ip}/status") and self.is_video_stream_valid(f"http://{ip}/rtp/{mcast}"):
                 return ip
 
         logging.warning(f"No valid IP found after re-validation for {region}.")
@@ -152,7 +152,7 @@ class UDPxy(Base):
                 output_dir = os.path.join(self.output_dir, isp)
                 os.makedirs(output_dir, exist_ok=True)
 
-                output_path = os.path.join(output_dir, f"{region}.m3u8")
+                output_path = os.path.join(output_dir, f"{region}.txt")
                 with open(output_path, "w", encoding="utf-8") as f:
                     f.write(f"{isp}-{region}-组播,#genre#\n")
                     f.write(playlists)
