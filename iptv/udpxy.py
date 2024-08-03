@@ -114,7 +114,7 @@ class UDPxy(Base):
             return None
 
         for ip in valid_ips:
-            if await self.is_url_accessible(f"http://{ip}/status") and self.is_video_stream_valid(f"http://{ip}/rtp/{mcast}"):
+            if await self.is_url_accessible(f"http://{ip}/status") and self.is_video_stream_valid(f"http://{ip}/udp/{mcast}"):
                 return ip
 
         logging.warning(f"No valid IP found after re-validation for {region}.")
@@ -150,7 +150,7 @@ class UDPxy(Base):
                 with open(file_path, "r", encoding="utf-8") as f:
                     content = f.read()
 
-                playlists = content.replace("rtp://", f"http://{ip}/rtp/")
+                playlists = content.replace("rtp://", f"http://{ip}/udp/")
 
                 output_dir = os.path.join(self.output_dir, isp)
                 os.makedirs(output_dir, exist_ok=True)
