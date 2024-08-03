@@ -6,7 +6,6 @@ import os
 import random
 import re
 import shutil
-from concurrent.futures import ThreadPoolExecutor
 from typing import List
 
 import aiohttp
@@ -137,17 +136,14 @@ class JiuDian(Base):
 
         validated_ip = []
 
-        with ThreadPoolExecutor() as pool:
-            loop = asyncio.get_event_loop()
-            futures = [
-                loop.run_in_executor(
-                    pool, lambda ip: await self.is_url_accessible(f"http://{ip}/iptv/live/1000.json?key=txiptv"), ip
-                )
-                for ip in ip
-            ]
-            for ip, valid in zip(ip, await asyncio.gather(*futures)):
-                if valid:
-                    validated_ip.append(ip)
+        tasks = [
+            self.is_url_accessible(f"http://{ip_address}/iptv/live/1000.json?key=txiptv")
+            for ip_address in ip
+        ]
+
+        for ip_address, valid in zip(ip, await asyncio.gather(*tasks)):
+            if valid:
+                validated_ip.append(ip_address)
 
         logging.info(f"Validated {len(ip)} IPs. Found {len(validated_ip)} valid IPs.")
         return validated_ip

@@ -3,7 +3,6 @@ import base64
 import logging
 import os
 import re
-from concurrent.futures import ThreadPoolExecutor
 from typing import List, Optional
 
 from pypinyin import lazy_pinyin
@@ -46,15 +45,19 @@ class UDPxy(Base):
 
         validated_ip = []
 
-        with ThreadPoolExecutor() as pool:
-            loop = asyncio.get_event_loop()
-            futures = [
-                loop.run_in_executor(pool, lambda ip: await self.is_url_accessible(f"http://{ip}/status") and self.is_video_stream_valid(f"http://{ip}/rtp/{mcast}"), ip)
-                for ip in ip
-            ]
-            for ip, valid in zip(ip, await asyncio.gather(*futures)):
-                if valid:
-                    validated_ip.append(ip)
+        async def validate_single_ip(ip_address: str) -> bool:
+            url_status = f"http://{ip_address}/status"
+            url_video = f"http://{ip_address}/rtp/{mcast}"
+            return await self.is_url_accessible(url_status) and self.is_video_stream_valid(url_video)
+
+        tasks = [
+            validate_single_ip(ip_address)
+            for ip_address in ip
+        ]
+
+        for ip_address, valid in zip(ip, await asyncio.gather(*tasks)):
+            if valid:
+                validated_ip.append(ip_address)
 
         logging.info(f"Validated {len(ip)} IPs. Found {len(validated_ip)} valid IPs.")
         return validated_ip

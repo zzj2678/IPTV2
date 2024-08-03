@@ -91,15 +91,15 @@ class Base:
         async with aiohttp.ClientSession() as session:
             try:
                 logging.info(f"Checking accessibility for URL: {url}")
-                async with session.get(url, timeout=5) as response:
+                async with session.get(url, timeout=aiohttp.ClientTimeout(total=5)) as response:
                     if response.status == 200:
                         logging.info(f"URL {url} is accessible. Status code: {response.status}")
                         return True
                     else:
                         logging.warning(f"URL {url} is not accessible. Status code: {response.status}")
                         return False
-            except aiohttp.ClientError as e:
-                logging.error(f"Error checking URL {url}: {e}")
+            except Exception as e:
+                logging.error(f"Error while checking URL {url}: {e}")
                 return False
 
     def is_video_stream_valid(self, url: str) -> bool:
