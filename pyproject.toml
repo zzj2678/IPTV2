@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "live"
+name = "iptv"
 version = "0.1.0"
 description = ""
 authors = ["lalifeier <lalifeier@gmail.com>"]
 readme = "README.md"
-packages = [{include = "live"}]
+packages = [{include = "iptv"}]
 
 [tool.poetry.group.dev]
 optional = true

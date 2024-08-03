@@ -1,9 +1,9 @@
-name: Auto Update udpxy IPTV  IP
+name: Auto Update udpxy IPTV
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "35 12,22 * * *"
+    - cron: "45 6,12,18,22 * * *"
 
 jobs:
   iptv:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Update udpxy IPTV
         run: |
-            python iptv_udp.py --ip
+            python main.py --type udpxy --ip
 
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -44,7 +44,7 @@ jobs:
         uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
         with:
           repository: ${{ github.repository }}
-          workflow: ".github/workflows/iptv_udp_ip.yml"
+          workflow: ".github/workflows/iptv_udp_playlist.yml"
           older-than-seconds: 3600
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

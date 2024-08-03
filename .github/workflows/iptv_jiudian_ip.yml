@@ -3,7 +3,7 @@ name: Auto Update JiuDian IPTV IP
 on:
   workflow_dispatch:
   schedule:
-    - cron: "5 12,18,22 * * *"
+    - cron: "5 12,22 * * *"
 
 jobs:
   iptv:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Update JiuDian IPTV
         run: |
-            python iptv_jiudian.py --ip
+             python main.py --type jiudian --ip
 
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5
