@@ -36,6 +36,8 @@ def clean_name(name):
     name = name.replace("＋", "+")
     name = name.replace("(", "")
     name = name.replace(")", "")
+    name = name.replace("（", "")
+    name = name.replace("）", "")
     name = name.replace("L", "")
     name = name.replace("CMIPTV", "")
     name = name.replace("cctv", "CCTV")
