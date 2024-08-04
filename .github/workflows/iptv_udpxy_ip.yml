@@ -44,7 +44,7 @@ jobs:
         uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
         with:
           repository: ${{ github.repository }}
-          workflow: ".github/workflows/iptv_udp_ip.yml"
+          workflow: ".github/workflows/iptv_udpxy_ip.yml"
           older-than-seconds: 3600
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
