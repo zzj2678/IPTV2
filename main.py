@@ -11,8 +11,13 @@ async def main():
     parser = argparse.ArgumentParser(description="IP fetching and playlist generation script")
     parser.add_argument("--ip", action="store_true", help="Fetch valid IPs")
     parser.add_argument("--playlist", action="store_true", help="Generate playlists from valid IPs")
+    parser.add_argument("--rtp", action="store_true", help="Init rtp")
     parser.add_argument("--type", choices=["jiudian", "udpxy"], required=True, help="Type of IP to process")
     args = parser.parse_args()
+
+    if args.rtp:
+        await UDPxy().init_rtp()
+        return
 
     if args.ip:
         if args.type == "jiudian":

@@ -5,7 +5,6 @@ import logging
 import os
 import random
 import re
-import shutil
 from typing import List
 
 import aiohttp
@@ -234,8 +233,8 @@ class JiuDian(Base):
         return ""
 
     async def generate_playlist(self):
-        if os.path.exists(self.output_dir):
-          shutil.rmtree(self.output_dir)
+        # if os.path.exists(self.output_dir):
+        #   shutil.rmtree(self.output_dir)
 
         os.makedirs(self.output_dir, exist_ok=True)
         for region in REGION_LIST:
