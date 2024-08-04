@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Update udpxy IPTV
         run: |
-            python main.py --type udpxy --ip
+            python main.py --type udpxy --playlist
 
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5
