@@ -1,4 +1,4 @@
-name: Auto Update udpxy IPTV
+name: Auto Update udpxy RTP IPTV
 
 on:
   workflow_dispatch:
