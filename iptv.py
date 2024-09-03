@@ -1,3 +1,4 @@
+import logging
 import os
 import re
 import time
@@ -7,7 +8,11 @@ from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 import requests
 
-IPTV_URL = "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
+from iptv.config import OUTPUT_DIR
+
+logger = logging.getLogger(__name__)
+
+IPTV_URL = "https://mirror.ghproxy.com/https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
 M3U_DIR = "m3u"
 TXT_DIR = "txt"
 SALT = os.getenv("SALT", "")
@@ -99,12 +104,14 @@ def main():
     os.makedirs(M3U_DIR, exist_ok=True)
     os.makedirs(TXT_DIR, exist_ok=True)
 
-    iptv_response = requests.get(IPTV_URL)
-    m3u_content = iptv_response.text
+    update_local_iptv_txt()
 
-    write_to_file(os.path.join(M3U_DIR, "ipv6.m3u"), m3u_content)
+    # iptv_response = requests.get(IPTV_URL)
+    # m3u_content = iptv_response.text
 
-    m3u_content = read_file_content(os.path.join(M3U_DIR, "ipv6.m3u"))
+    # write_to_file(os.path.join(M3U_DIR, "ipv6.m3u"), m3u_content)
+
+    # m3u_content = read_file_content(os.path.join(M3U_DIR, "ipv6.m3u"))
     playlists = {
         "Hot": file_to_m3u("Hot.txt"),
         "CCTV": file_to_m3u("CCTV.txt"),
@@ -153,6 +160,92 @@ def write_m3u_to_file(file_path, content):
     )
     write_to_file(file_path, header + content.strip())
 
+def update_local_iptv_txt():
+    logging.info("Starting to update local IPTV txt files.")
+
+    try:
+        # Fetch and convert IPTV M3U content to TXT format
+        iptv_response = requests.get(IPTV_URL)
+        iptv_response.raise_for_status()
+        iptv_m3u_content = iptv_response.text
+        iptv_txt_content = m3u_to_txt(iptv_m3u_content)
+        logging.info("Successfully fetched and converted IPTV content.")
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Error fetching IPTV content: {e}")
+        return
+
+    def update_line(channel_name, current_url, suffix, suffix_type):
+        province = suffix[1:3]
+        isp = suffix[3:5]
+        file_name = os.path.join(OUTPUT_DIR, suffix_type, f"中国{isp}", f"{province}.txt")
+        try:
+            udpxy_content = read_file_content(file_name)
+        except FileNotFoundError:
+            logging.error(f"File not found: {file_name}")
+            return None
+
+        pattern = re.compile(rf"^{re.escape(channel_name)},(http[^\s]+)", re.MULTILINE)
+        match = pattern.search(udpxy_content)
+        if match:
+            new_url = match.group(1)
+            logging.info(f"Updating URL for {channel_name}: {new_url}")
+            return f"{channel_name},{new_url}${province}{isp}{suffix_type[-2:]}\n"
+        return None
+
+    for file_name in os.listdir(OUTPUT_DIR):
+        if file_name.endswith('.txt') and file_name not in ['IPTV.txt']:
+            file_path = os.path.join(OUTPUT_DIR, file_name)
+            logging.info(f"Processing file: {file_name}")
+
+            try:
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    lines = file.readlines()
+                logging.info(f"Successfully read {file_name}.")
+            except OSError as e:
+                logging.error(f"Error reading file {file_name}: {e}")
+                continue
+
+            updated_lines = []
+            for line in lines:
+                parts = line.strip().split(',', 1)
+                if len(parts) == 2:
+                    channel_name, current_url = parts
+                    updated_line = None
+
+                    if current_url.endswith('酒店'):
+                        suffix_match = re.search(r'\$(.+)酒店$', current_url)
+                        if suffix_match:
+                            updated_line = update_line(channel_name, current_url, suffix_match.group(0), "hotel")
+
+                    elif current_url.endswith('组播'):
+                        suffix_match = re.search(r'\$(.+)组播$', current_url)
+                        if suffix_match:
+                            updated_line = update_line(channel_name, current_url, suffix_match.group(0), "udpxy")
+
+                    elif file_name in ['CCTV.txt', 'CNTV.txt', 'Shuzi.txt', 'NewTV.txt', 'iHOT.txt']:
+                        pattern = re.compile(rf"^{re.escape(channel_name)},(http[^\s]+)", re.MULTILINE)
+                        match = pattern.search(iptv_txt_content)
+                        if match:
+                            new_url = match.group(1)
+                            logging.info(f"Updating URL for {channel_name}: {new_url}")
+                            updated_line = f"{channel_name},{new_url}\n"
+
+                    if updated_line:
+                        line = updated_line
+
+                updated_lines.append(line)
+
+            try:
+                with open(file_path, 'w', encoding='utf-8') as file:
+                    file.writelines(updated_lines)
+                logging.info(f"Successfully updated {file_name}.")
+            except OSError as e:
+                logging.error(f"Error writing to file {file_name}: {e}")
+
+    logging.info("Finished updating all files.")
+
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+
     main()
