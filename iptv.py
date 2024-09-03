@@ -88,11 +88,13 @@ def m3u_to_txt(m3u_content):
     output_dict = {}
     group_name = ""
 
+    url_pattern = re.compile(r'\b(?:http|https|rtmp)://[^\s]+', re.IGNORECASE)
+
     for line in lines:
         if line.startswith("#EXTINF"):
             group_name = line.split('group-title="')[1].split('"')[0]
             channel_name = line.split(",")[-1]
-        elif line.startswith("http"):
+        elif url_pattern.match(line):
             channel_link = line
             output_dict.setdefault(group_name, []).append(f"{channel_name},{channel_link}")
 
