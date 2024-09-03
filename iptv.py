@@ -189,7 +189,7 @@ def update_local_iptv_txt():
         if match:
             new_url = match.group(1)
             logging.info(f"Updating URL for {channel_name}: {new_url}")
-            return f"{channel_name},{new_url}${province}{isp}{suffix_type[-2:]}\n"
+            return f"{channel_name},{new_url}${province}{isp}{suffix[-2:]}\n"
         return None
 
     for file_name in os.listdir(OUTPUT_DIR):
