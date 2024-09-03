@@ -18,7 +18,7 @@
   - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/IPTV.m3u`
 
 - **酒店源 TXT 订阅链接**
-  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/jiudian/全国.txt`
+  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/hotel/全国.txt`
 
 - **组播源 TXT 订阅链接**
   - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/udpxy/全国.txt`

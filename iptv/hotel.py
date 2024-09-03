@@ -111,11 +111,11 @@ def clean_name(name):
     return name
 
 
-class JiuDian(Base):
+class Hotel(Base):
     def __init__(self):
         super().__init__()
-        self.ip_dir = os.path.join(IP_DIR, "jiudian")
-        self.output_dir = os.path.join(OUTPUT_DIR, "jiudian")
+        self.ip_dir = os.path.join(IP_DIR, "hotel")
+        self.output_dir = os.path.join(OUTPUT_DIR, "hotel")
 
     def generate_search_url(self, region, isp_name, org_name):
         pinyin_name = "".join(lazy_pinyin(region, errors=lambda x: x))
