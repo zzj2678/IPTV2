@@ -224,7 +224,7 @@ def update_local_iptv_txt():
                         if suffix_match:
                             updated_line = update_line(channel_name, current_url, suffix_match.group(0), "udpxy")
 
-                    elif file_name in ['CCTV.txt', 'CNTV.txt', 'Shuzi.txt', 'NewTV.txt', 'iHOT.txt']:
+                    elif file_name in ['CCTV.txt', 'CNTV.txt', 'Shuzi.txt', 'NewTV.txt']:
                         pattern = re.compile(rf"^{re.escape(channel_name)},(http[^\s]+)", re.MULTILINE)
                         match = pattern.search(iptv_txt_content)
                         if match:
