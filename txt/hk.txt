@@ -1,7 +1,51 @@
+HKDVD,#genre#
+翡翠台,https://live.hkdvb.com/hls/live/81.m3u8?token=275839252968940
+TVB PLUS,https://live.hkdvb.com/hls/live/82.m3u8?token=275839252968940
+新聞台,https://live.hkdvb.com/hls/live/83.m3u8?token=275839252968940
+明珠台,https://live.hkdvb.com/hls/live/84.m3u8?token=275839252968940
+鳳凰香港台,https://live.hkdvb.com/hls/live/85.m3u8?token=275839252968940
+翡翠4K,https://live.hkdvb.com/hls/live/800.m3u8?token=275839252968940
+Popc,https://live.hkdvb.com/hls/live/801.m3u8?token=275839252968940
+美亞电影,https://live.hkdvb.com/hls/live/802.m3u8?token=275839252968940
+華語劇台,https://live.hkdvb.com/hls/live/803.m3u8?token=275839252968940
+粵語片台,https://live.hkdvb.com/hls/live/804.m3u8?token=275839252968940
+HOY TV,https://live.hkdvb.com/hls/live/77.m3u8?token=275839252968940
+HOY TV 資訊台,https://live.hkdvb.com/hls/live/78.m3u8?token=275839252968940
+HOY 國際財經台,https://live.hkdvb.com/hls/live/76.m3u8?token=275839252968940
+ViuTV,https://live.hkdvb.com/hls/live/99.m3u8?token=275839252968940
+ViuTV Six,https://live.hkdvb.com/hls/live/96.m3u8?token=275839252968940
+Now NEWS,https://live.hkdvb.com/hls/live/332.m3u8?token=275839252968940
+Now Sports 英超1台,https://live.hkdvb.com/hls/live/621.m3u8?token=275839252968940
+Now Sports Prime,https://live.hkdvb.com/hls/live/630.m3u8?token=275839252968940
+Now Sports 618,https://live.hkdvb.com/hls/live/618.m3u8?token=275839252968940
+Now Sports 619,https://live.hkdvb.com/hls/live/619.m3u8?token=275839252968940
+Now Sports 688,https://live.hkdvb.com/hls/live/688.m3u8?token=275839252968940
+Now Sports 632,https://live.hkdvb.com/hls/live/632.m3u8?token=275839252968940
+港台電視 31,https://live.hkdvb.com/hls/live/31.m3u8?token=275839252968940
+港台電視 32,https://live.hkdvb.com/hls/live/32.m3u8?token=275839252968940
+CCTV-1  港澳版,https://live.hkdvb.com/hls/live/33.m3u8?token=275839252968940
+CGTN Documentary,https://live.hkdvb.com/hls/live/34.m3u8?token=275839252968940
+CGTN English,https://live.hkdvb.com/hls/live/35.m3u8?token=275839252968940
+
+
 香港,#genre#
+凤凰资讯,http://148.135.93.213:81/phenix.php?id=fhzx
+凤凰中文,http://148.135.93.213:81/phenix.php?id=fhzw
+凤凰香港,http://148.135.93.213:81/phenix.php?id=fhhk
+
 凤凰中文,http://hwrr.jx.chinamobile.com:8080/PLTV/88888888/224/3221226248/index.m3u8
 凤凰资讯,http://hwrr.jx.chinamobile.com:8080/PLTV/88888888/224/3221226274/index.m3u8
 凤凰香港,http://hwrr.jx.chinamobile.com:8080/PLTV/88888888/224/3221226251/index.m3u8
+
+翡翠台(香港版),http://cdn.1678520.xyz/tvb/?id=fct
+翡翠台(国内版),http://cdn3.1678520.xyz/live/?id=fct2
+翡翠台4K,http://cdn3.1678520.xyz/live/?id=fct4k
+TVB plus,http://cdn3.1678520.xyz/live/?id=tvbp
+HOY TV,http://cdn3.1678520.xyz/live/?id=hoy
+VIUTV,http://cdn12.1678520.xyz/live/?id=viu
+Viu剧集台,http://cdn12.1678520.xyz/live/?id=viu2
+Now星河台,http://cdn12.1678520.xyz/live/?id=xyt
+龙华日韩,http://cdn3.1678520.xyz/live/?id=lhrh
 
 星河台,http://171.108.239.79:8181/tsfile/live/1005_1.m3u8$广西电信酒店
 星空卫视,http://171.108.239.79:8181/tsfile/live/1012_1.m3u8$广西电信酒店
@@ -24,3 +68,7 @@ TVB 娱乐新闻台,http://v2h.jdshipin.com/enew/enew.stream/chunklist.m3u8
 J2,http://php.jdshipin.com:8880/smt.php?id=j2_twn
 RTHK31,http://php.jdshipin.com:8880/smt.php?id=rhk31_twn
 RTHK32,http://php.jdshipin.com:8880/smt.php?id=rhk32_twn
+
+RTHK33,https://rthktv33-live.akamaized.net/hls/live/2101641/RTHKTV33/stream05/streamPlaylist.m3u8
+RTHK34,https://rthktv34-live.akamaized.net/hls/live/2101642/RTHKTV34/stream05/streamPlaylist.m3u8
+RTHK35,https://rthktv35-live.akamaized.net/hls/live/2101643/RTHKTV35/stream05/streamPlaylist.m3u8
