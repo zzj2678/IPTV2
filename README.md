@@ -23,6 +23,17 @@
 - **组播源 TXT 订阅链接**
   - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/udpxy/全国.txt`
 
+- **聚合直播源 订阅链接**
+  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/Live.m3u`
+
+- **虎牙直播源 订阅链接**
+  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/huya.m3u`
+
+- **斗鱼直播源 订阅链接**
+  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/douyu.m3u`
+
+- **YY直播源 订阅链接**
+  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/yy.m3u`
 ---
 
 ## 📚 使用教程

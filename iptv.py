@@ -2,7 +2,6 @@ import logging
 import os
 import re
 import time
-from datetime import datetime
 from hashlib import md5
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
@@ -17,6 +16,10 @@ M3U_DIR = "m3u"
 TXT_DIR = "txt"
 SALT = os.getenv("SALT", "")
 PROXY_URL = os.getenv("PROXY_URL", "")
+
+DOU_YU_M3U_URL = f"{PROXY_URL}/douyu/index.m3u"
+HU_YA_M3U_URL = f"{PROXY_URL}/huya/index.m3u"
+YY_M3U_URL = f"{PROXY_URL}/yy/index.m3u"
 
 
 def read_file_content(file_path):
@@ -114,6 +117,26 @@ def main():
     # write_to_file(os.path.join(M3U_DIR, "ipv6.m3u"), m3u_content)
 
     # m3u_content = read_file_content(os.path.join(M3U_DIR, "ipv6.m3u"))
+
+    live_m3u_content = '#EXTM3U\n'
+
+    for url in [DOU_YU_M3U_URL, HU_YA_M3U_URL, YY_M3U_URL]:
+        try:
+            m3u_content = requests.get(url).text
+            channel_id = urlparse(url).path.split('/')[1]
+            write_to_file(os.path.join(M3U_DIR, channel_id + '.m3u'), m3u_content)
+            logger.info(f"Successfully downloaded and saved M3U file for channel {channel_id}")
+
+            live_m3u_content += '\n'.join(m3u_content.split('\n')[1:]) + '\n'
+
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Failed to download M3U file for channel {channel_id}: {e}")
+        except Exception as e:
+            logger.error(f"An error occurred while processing M3U file for channel {channel_id}: {e}")
+
+    write_to_file(os.path.join(M3U_DIR, 'Live.m3u'), live_m3u_content)
+    logger.info("Successfully merged and saved Live.m3u file")
+
     playlists = {
         "Hot": file_to_m3u("Hot.txt"),
         "CCTV": file_to_m3u("CCTV.txt"),
@@ -140,11 +163,13 @@ def main():
         "About": file_to_m3u("About.txt"),
     }
 
-    iptv_m3u = "".join(playlists.values())
-    update_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    update_m3u = txt_to_m3u(f"更新时间,#genre#\n{update_time},\n")
+    iptv_m3u = "".join(playlists.values()) + '\n'
+    # update_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # update_m3u = txt_to_m3u(f"更新时间,#genre#\n{update_time},\n")
 
-    write_m3u_to_file(os.path.join(M3U_DIR, "IPTV.m3u"), iptv_m3u + update_m3u)
+    live_m3u = '\n'.join(live_m3u_content.split('\n')[1:]) + '\n'
+
+    write_m3u_to_file(os.path.join(M3U_DIR, "IPTV.m3u"), iptv_m3u + live_m3u)
 
     iptv_txt = m3u_to_txt(read_file_content(os.path.join(M3U_DIR, "IPTV.m3u")))
     write_to_file(os.path.join(TXT_DIR, "IPTV.txt"), iptv_txt)
