@@ -20,6 +20,7 @@ PROXY_URL = os.getenv("PROXY_URL", "")
 DOU_YU_M3U_URL = f"{PROXY_URL}/douyu/index.m3u"
 HU_YA_M3U_URL = f"{PROXY_URL}/huya/index.m3u"
 YY_M3U_URL = f"{PROXY_URL}/yy/index.m3u"
+AFREECATV_M3U_URL = f"{PROXY_URL}/afreecatv/index.m3u"
 
 
 def read_file_content(file_path):
@@ -120,12 +121,14 @@ def main():
 
     live_m3u_content = '#EXTM3U\n'
 
-    for url in [DOU_YU_M3U_URL, HU_YA_M3U_URL, YY_M3U_URL]:
+    for url in [DOU_YU_M3U_URL, HU_YA_M3U_URL, YY_M3U_URL, AFREECATV_M3U_URL]:
         try:
             m3u_content = requests.get(url).text
             channel_id = urlparse(url).path.split('/')[1]
-            write_to_file(os.path.join(M3U_DIR, channel_id + '.m3u'), m3u_content)
-            logger.info(f"Successfully downloaded and saved M3U file for channel {channel_id}")
+
+            if url not in [AFREECATV_M3U_URL]:
+              write_to_file(os.path.join(M3U_DIR, channel_id + '.m3u'), m3u_content)
+              logger.info(f"Successfully downloaded and saved M3U file for channel {channel_id}")
 
             live_m3u_content += '\n'.join(m3u_content.split('\n')[1:]) + '\n'
 
