@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: "0 9,12,18,20,22 * * *"
+    - cron: "0 * * * *"
 
 jobs:
   iptv:
