@@ -119,7 +119,7 @@ def main():
     for channel in ['douyu', 'huya', 'yy', 'afreecatv']:
         try:
             M3U_URL = f"{PROXY_URL}/{channel}/index.m3u"
-            if channel == 'afreecatv' and PROXY_URL:
+            if channel == 'afreecatv' and not PROXY_URL:
                 continue
 
             if not PROXY_URL:
