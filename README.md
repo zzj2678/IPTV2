@@ -12,28 +12,28 @@
 ## 🔗 订阅链接
 
 - **TXT 订阅链接**
-  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/IPTV.txt`
+  - `https://ghp.ci/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/IPTV.txt`
 
 - **M3U 订阅链接**
-  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/IPTV.m3u`
+  - `https://ghp.ci/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/IPTV.m3u`
 
 - **酒店源 TXT 订阅链接**
-  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/hotel/全国.txt`
+  - `https://ghp.ci/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/hotel/全国.txt`
 
 - **组播源 TXT 订阅链接**
-  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/udpxy/全国.txt`
+  - `https://ghp.ci/https://raw.githubusercontent.com/lalifeier/IPTV/main/txt/udpxy/全国.txt`
 
 - **聚合直播源 订阅链接**
-  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/Live.m3u`
+  - `https://ghp.ci/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/Live.m3u`
 
 - **虎牙直播源 订阅链接**
-  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/huya.m3u`
+  - `https://ghp.ci/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/huya.m3u`
 
 - **斗鱼直播源 订阅链接**
-  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/douyu.m3u`
+  - `https://ghp.ci/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/douyu.m3u`
 
 - **YY直播源 订阅链接**
-  - `https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/yy.m3u`
+  - `https://ghp.ci/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/yy.m3u`
 ---
 
 ## 📚 使用教程
@@ -68,7 +68,7 @@
 ### 4️⃣ Windows
 
 1. 使用 Potplayer 播放器播放 `M3U` 文件即可
-2. M3U 文件：[点击下载](https://mirror.ghproxy.com/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/IPTV.m3u)
+2. M3U 文件：[点击下载](https://ghp.ci/https://raw.githubusercontent.com/lalifeier/IPTV/main/m3u/IPTV.m3u)
 3. Potplayer 播放器：[点击下载](http://potplayer.tv/)
 
 ---
@@ -93,4 +93,4 @@
 
 ---
 
-Last deployment time: 2024-10-19 11:01:30 UTC
+Last deployment time: 2024-10-19 13:18:27 UTC
