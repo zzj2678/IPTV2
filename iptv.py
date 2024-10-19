@@ -116,7 +116,7 @@ def main():
 
     live_m3u_content = '#EXTM3U\n'
 
-    for channel in ['douyu', 'huya', 'afreecatv', 'yy']:
+    for channel in ['douyu', 'huya', 'yy', 'afreecatv']:
         try:
             M3U_URL = f"{PROXY_URL}/{channel}/index.m3u"
             if channel == 'afreecatv' and not PROXY_URL:
