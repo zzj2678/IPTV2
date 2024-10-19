@@ -3,12 +3,11 @@ CCTV5,http://[2409:8087:1a01:df::4077]:80/ottrrs.hl.chinamobile.com/PLTV/8888888
 CCTV5+,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221225603/index.m3u8
 CCTV16,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/8/3221226100/index.m3u8
 五星体育,http://[2409:8087:5e08:24::15]:6610/000000001000/2000000002000000007/index.m3u8?IAS
-广东体育,http://171.108.239.79:8181/tsfile/live/1004_1.m3u8$广西电信酒店
-北京体育休闲,http://iptv.8t.cx:8180/rtp/239.3.1.243:8000$北京联通组播
+广东体育,http://116.28.124.202:8520/udp/239.77.1.97:5146$广东电信组播
+北京体育休闲,http://iptv.8t.cx:8180/udp/239.3.1.243:8000$北京联通组播
 咪咕体育,http://[2409:8087:1a01:df::404d]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226124/index.m3u8
 咪咕足球,http://[2409:8087:1a01:df::403b]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226147/index.m3u8
 咪咕善跑,http://[2409:8087:1a01:df::4041]/PLTV/88888888/224/3221226053/index.m3u8
-
 
 睛彩竞技,http://111.193.234.224:8888/udp/239.3.1.125:8001$北京联通组播
 睛彩篮球,http://111.193.234.224:8888/udp/239.3.1.126:8001$北京联通组播
@@ -18,8 +17,8 @@ CCTV16,http://[2409:8087:1a01:df::4077]/ottrrs.hl.chinamobile.com/PLTV/88888888/
 纬来体育,https://hls.szsummer.cn/live/446035/playlist.m3u8?k=32f9ec7c13e4b390289143a8e1b2a898&t=1840341130
 超级体育,http://[2409:8087:1a01:df::7005]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225715/index.m3u8
 精品体育,http://[2409:8087:1a0b:df::4004]:80/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221225674/index.m3u8
-劲爆体育,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000002000000008/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000008&IASHttpSessionId=OTT19019320240419154124000281
-爱体育,http://[2409:8087:5e08:24::12]:6610/000000001000/2000000004000000060/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000004000000060&IASHttpSessionId=OTT19019320240419154124000281
+劲爆体育,http://[2409:8087:5e01:24::16]:6610/000000001000/2000000002000000008/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000002000000008&IASHttpSessionId=OTT19019320240419154124000281
+爱体育,http://[2409:8087:5e08:24::11]:6610/000000001000/2000000004000000060/index.m3u8?stbId=3&livemode=1&HlsProfileId=&channel-id=hnbblive&Contentid=2000000004000000060&IASHttpSessionId=OTT19019320240419154124000281
 欧洲体育1,http://a16e00c6.ucomist.net/iptv/UPKY3Y8BF6KNX8/141/index.m3u8
 欧洲体育2,http://a16e00c6.ucomist.net/iptv/UPKY3Y8BF6KNX8/12048/index.m3u8
 Now Sports 618 欧洲杯,http://php.jdshipin.com:8880/xsj.php?id=now-sports-618
@@ -31,6 +30,9 @@ Now Lucky 688 欧洲杯,http://php.jdshipin.com:8880/xsj.php?id=now-lucky-688
 咪咕 HD 欧洲杯 1,http://[2409:8087:1a01:df::403b]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226147/index.m3u8
 咪咕 HD 欧洲杯 2,http://[2409:8087:1a01:df::403b]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226147/index.m3u8
 咪咕 HD 欧洲杯 3,http://[2409:8087:1a01:df::403b]/ottrrs.hl.chinamobile.com/PLTV/88888888/224/3221226147/index.m3u8
+
+皇马RMTV,https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/bitrate_3.m3u8
+红牛TV,http://rbmn-live.akamaized.net:80/hls/live/590964/BoRB-AT/master_1660.m3u8
 
 游戏赛事,#genre#
 「B站」CS 2,http://live.iill.top/bilibili.php?id=21622811
@@ -55,7 +57,8 @@ Now Lucky 688 欧洲杯,http://php.jdshipin.com:8880/xsj.php?id=now-lucky-688
 「斗鱼」和平精英,http://live.iill.top/douyu.php?id=999
 「虎牙」金铲铲之战,http://live.iill.top/huya.php?id=660579
 「斗鱼」金铲铲之战,http://live.iill.top/douyu.php?id=9715241
-「虎牙」DOTA2,http://live.iill.top/huya.php?id=660118
+「虎牙」DOTA2,http://live.iill.top/huya.php?id=660118皇马RMTV,https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/bitrate_3.m3u8
+
 「斗鱼」DOTA2,http://live.iill.top/douyu.php?id=3811559
 「斗鱼」云顶之弈,http://live.iill.top/douyu.php?id=522423
 「虎牙」永劫无间,http://live.iill.top/huya.php?id=660115
